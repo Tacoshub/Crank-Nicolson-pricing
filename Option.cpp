@@ -17,8 +17,8 @@ Option::Option(int contract_type, int exercise_type, double T, double K, double 
 	interest_rate_ = interest_rate;
 	volatility_ = volatility;
 
-	dT = (T_ - T0_) / (time_mesh_ - 1);
-	dS = (4 * S0_) / (spot_mesh_ - 1);
+	dT = (T_ - T0_) / (time_mesh_ );
+	dS = (5 * S0_) / (spot_mesh_ );
 	std::vector<std::vector<double>> grid;
 	create_grid();
 
@@ -41,6 +41,7 @@ double Option::compute_aj(size_t j, unsigned int i) {
 
 double Option::compute_bj(size_t j, unsigned int i) {
 	double bj = -(dT / 2) * (volatility_ * volatility_ * j * j + curve(dT * i));
+
 	return bj;
 }
 
@@ -77,6 +78,7 @@ std::vector<double> Option::compute_K(unsigned int i) {
 	std::vector<double> K(spot_mesh_ - 1, 0.0);
 	K[0] = (compute_aj(1, i - 1) + compute_aj(1, i)) * F0;
 	K[spot_mesh_ - 2] = (compute_cj(spot_mesh_ - 1, i - 1) + compute_cj(spot_mesh_ - 1, i)) * FM;
+	
 	return K;
 }
 
@@ -89,7 +91,7 @@ std::vector<double> operator+(std::vector<double> v1, std::vector<double> v2) {
 }
 
 void Option::solve() {
-	double Sk = S0_;
+	double Sk = 0;
 	size_t ii = 0;
 	for (; ii < spot_mesh_; ii++) {
 		grid[ii][time_mesh_ - 1] = std::max(contract_type_ * (Sk - K_), 0.0);
@@ -101,6 +103,7 @@ void Option::solve() {
 	std::vector<double> K, RHS;
 	size_t zz;
 	for (size_t jj = time_mesh_ - 1; jj > 0; jj--) {
+		
 		C = compute_C(jj);
 		D = compute_D(jj);
 		K = compute_K(jj);
@@ -119,7 +122,7 @@ void Option::price() {
 }
 
 void Option::display_grid() {
-	std::cout << std::fixed << std::setprecision(4);
+	std::cout << std::fixed << std::setprecision(8);
 	for (size_t ii = 0; ii <= spot_mesh_; ii++) {
 		for (size_t jj = 0; jj < time_mesh_; jj++) {
 			std::cout << std::setw(10) << grid[ii][jj] << " ";
