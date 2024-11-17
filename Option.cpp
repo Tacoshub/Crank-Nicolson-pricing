@@ -40,12 +40,12 @@ double Option::compute_aj(size_t j, unsigned int i) {
 }
 
 double Option::compute_bj(size_t j, unsigned int i) {
-	double bj = -(dT / 2) * (volatility_ * volatility_ * j * j - curve(dT * i));
+	double bj = -(dT / 2) * (volatility_ * volatility_ * j * j + curve(dT * i));
 	return bj;
 }
 
 double Option::compute_cj(size_t j, unsigned int i) {
-	double cj = (dT / 4) * (volatility_ * volatility_ * j * j - curve(dT * i) * j);
+	double cj = (dT / 4) * (volatility_ * volatility_ * j * j + curve(dT * i) * j);
 	return cj;
 }
 
