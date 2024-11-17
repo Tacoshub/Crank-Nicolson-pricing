@@ -113,7 +113,7 @@ void Option::solve() {
 		for (zz = 1; zz < spot_mesh_; zz++) {
 			grid[zz][jj - 1] = F[zz - 1];
 		}
-		grid[zz][jj - 1] = FM;
+		grid[zz][jj - 1] = std::exp(-curve.integral(dT*(jj-1), T_))*FM;
 	}
 }
 
