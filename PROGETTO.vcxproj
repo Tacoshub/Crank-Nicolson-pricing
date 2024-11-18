@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClInclude Include="InterestRate.h" />
     <ClInclude Include="Option.h" />
+    <ClInclude Include="OptionExceptions.h" />
     <ClInclude Include="Tridiag.h" />
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,5 @@
 #include "InterestRate.h"
-#include <iostream>
+
 double InterestRate::operator()(double t) const {
 
 	for (auto it = interest_rate_.begin(); it != std::prev(interest_rate_.end(), 1); ++it) {
@@ -11,7 +11,7 @@ double InterestRate::operator()(double t) const {
 		}
 		else continue;
 	}
-	throw "cazzo";
+	throw InvalidTime();
 
 }
 

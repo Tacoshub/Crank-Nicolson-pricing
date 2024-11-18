@@ -1,5 +1,7 @@
 #pragma once
 
+#include "OptionExceptions.h"
+
 #include<vector>
 
 class InterestRate {
@@ -12,6 +14,6 @@ public:
 	InterestRate(std::vector<std::pair<double, double>> interest_rate) : interest_rate_(interest_rate) {}
 
 	double operator()(double t) const;
-	double integral(double t0, double tf)const;
+	double integral(double t0, double tf) const;
 	
 };

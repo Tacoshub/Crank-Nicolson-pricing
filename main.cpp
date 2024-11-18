@@ -1,29 +1,35 @@
 #include "Option.h"
-#include "Tridiag.h"
 
-#include<iostream>
 int main() {
 
-	int ct = 1;
-	int et = 1;
-	double T = 1.0;
-	double K = 1.0;
-	double T0 = 0.0;
-	double S0 = 1.0;
-	std::vector<std::pair<double, double>> ir = { {0.0, 0.1}, {10.0, 0.12}, {20.0, 0.15} };
+	try {
+		int ct = -1; //call -> 1, put -> -1
+		bool et = 0; //european -> 1, american -> 0
+		double T = 10.0; //maturity
+		double K = 100; //strike price
+		double T0 = 0.0; //starting time
+		double S0 = 100; //starting value of underlying
+		std::vector<std::pair<double, double>> ir = { {0.0, 0.1}, {10.0, 0.1}, {20.0, 0.1} }; //discrete interest rate curve
 
-	InterestRate IR(ir);
+		InterestRate IR(ir); //object to represent the interest rate curve
+		
+		double sigma = 0.10; //volatility
+		unsigned int N = 10000; //time mesh
+		unsigned int M = 150; //spot mesh
 
-	
-	double sigma = 0.25;
-	unsigned int N = 100;
-	unsigned int M = 100;
+		Option prova(ct, et, T, K, T0, N, M, S0, ir, sigma);
+		//prova.display_grid();
+		prova.price();
+	}
+	catch (const OptionExceptions& e) {
+		std::cout << "Exception -> " << e.what();
+	}
+	catch (const std::exception& e) {
+		std::cout << "General exception";
+	}
+	catch (...) {
+		std::cout << "Unknown exception";
+	}
 
-	Option prova(ct, et, T, K, T0, N, M, S0, ir, sigma);
-	//prova.display_grid();
-	prova.price();
-
-	
     return 0;
-	
 }
