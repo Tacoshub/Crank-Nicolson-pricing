@@ -1,6 +1,7 @@
 #include "Option.h"
 #include "Tridiag.h"
 
+#include<iostream>
 #include<algorithm>
 #include<iomanip>
 
@@ -80,7 +81,7 @@ Option::Option(int contract_type, int exercise_type, double T, double K, double 
 
 	curve = InterestRate(interest_rate_);
 
-	if (contract_type == 1) { F0 = 0, FM = 5*S0 - K; }
+	if (contract_type == 1) { F0 = 0, FM = 5*S0; }
 	else { F0 = K, FM = 0; }
 
 	solve();
@@ -127,11 +128,11 @@ Tridiag Option::compute_D(std::vector<double> a, std::vector<double> b, std::vec
 std::pair<double, double> Option::compute_K(unsigned int i) {
 	double a1_prec = (dT / 4) * (volatility_ * volatility_ * 1 * 1 - curve(dT * (i - 1)) * 1);
 	double a1_curr = (dT / 4) * (volatility_ * volatility_ * 1 * 1 - curve(dT * i) * 1);
-	double K1 = (a1_prec + a1_curr) * F0;
+	double K1 = a1_prec * F0 * std::exp(-curve.integral(dT * (i - 1), T_)) + a1_curr * F0 * std::exp(-curve.integral(dT * i, T_));
 
 	double cm_prec = (dT / 4) * (volatility_ * volatility_ * (spot_mesh_ - 1) * (spot_mesh_ - 1) - curve(dT * (i - 1)) * (spot_mesh_ - 1));
 	double cm_curr = (dT / 4) * (volatility_ * volatility_ * (spot_mesh_ - 1) * (spot_mesh_ - 1) - curve(dT * i) * (spot_mesh_ - 1));
-	double K2 = (cm_prec + cm_curr) * FM;
+	double K2 = cm_prec * (FM - K_ * std::exp(-curve.integral(dT * (i - 1), T_))) * (contract_type_ == 1) + cm_curr * (FM - K_ * std::exp(-curve.integral(dT * (i - 1), T_))) * (contract_type_ == 1);
 	
 	return std::make_pair(K1, K2);
 }
@@ -139,7 +140,7 @@ std::pair<double, double> Option::compute_K(unsigned int i) {
 double Option::compute_K_american(unsigned int i) {
 	double a1_prec = (dT / 4) * (volatility_ * volatility_ * 1 * 1 - curve(dT * (i - 1)) * 1);
 	double a1_curr = (dT / 4) * (volatility_ * volatility_ * 1 * 1 - curve(dT * i) * 1);
-	double K1 = (a1_prec + a1_curr) * F0;
+	double K1 = a1_prec * F0 * std::exp(-curve.integral(dT * (i - 1), T_)) + a1_curr * F0 * std::exp(-curve.integral(dT * i, T_));
 
 	return K1;
 }
@@ -159,11 +160,11 @@ void Option::european_price() {
 		K = compute_K(jj);
 		RHS = D * F + K;
 		F = C.solve(RHS);
-		grid[0][jj - 1] = F0;
+		grid[0][jj - 1] = F0 * std::exp(-curve.integral(dT * (jj - 1), T_));
 		for (zz = 1; zz < spot_mesh_; zz++) {
 			grid[zz][jj - 1] = F[zz - 1];
 		}
-		grid[zz][jj - 1] = FM;
+		grid[zz][jj - 1] = (FM - K_ * std::exp(-curve.integral(dT * (jj - 1), T_))) * (contract_type_ == 1);
 	}
 }
 
@@ -193,11 +194,11 @@ void Option::american_price() {
 			error = norm(F - F_tmp);
 			F = F_tmp;
 		}
-		grid[0][jj - 1] = F0;
+		grid[0][jj - 1] = F0 * std::exp(-curve.integral(dT * (jj - 1), T_));
 		for (zz = 1; zz < spot_mesh_; zz++) {
 			grid[zz][jj - 1] = F[zz - 1];
 		}
-		grid[zz][jj - 1] = FM;
+		grid[zz][jj - 1] = (FM - K_ * std::exp(-curve.integral(dT * (jj - 1), T_))) * (contract_type_ == 1);
 	}
 }
 
@@ -205,12 +206,11 @@ void Option::solve() {
 	double Sk = 0;
 	size_t ii = 0;
 	F.resize(spot_mesh_ - 1);
-	for (; ii < spot_mesh_; ii++) {
+	for (; ii <= spot_mesh_; ii++) {
 		grid[ii][time_mesh_ - 1] = std::max(contract_type_ * (Sk - K_), 0.0);
-		if (ii != 0) F[ii-1] = (grid[ii][time_mesh_ - 1]);
+		if (ii != 0 && ii != spot_mesh_) F[ii - 1] = (grid[ii][time_mesh_ - 1]);
 		Sk += dS;
 	}
-	grid[ii][time_mesh_ - 1] = FM;
 
 	if (exercise_type_) {
 		european_price();

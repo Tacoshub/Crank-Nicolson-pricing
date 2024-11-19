@@ -15,6 +15,29 @@ double InterestRate::operator()(double t) const {
 
 }
 
+double InterestRate::integral(double a, double b, int n) const {
+	if (n % 2 != 0) {
+		throw std::invalid_argument("Number of intervals 'n' must be even for Simpson's rule.");
+	}
+
+	double h = (b - a) / n;
+	double sum = operator()(a) + operator()(b);
+
+	for (int i = 1; i < n; ++i) {
+		double x = a + i * h;
+		if (i % 2 == 0) {
+			sum += 2 * this->operator()(x);
+		}
+		else {
+			sum += 4 * this->operator()(x);
+		}
+	}
+
+	sum *= h / 3.0;
+	return sum;
+}
+
+/*
 double InterestRate::integral(double t0, double tf) const
 {
 	double sum = 0;
@@ -50,3 +73,4 @@ double InterestRate::integral(double t0, double tf) const
 
 	return sum;
 }
+*/

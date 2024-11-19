@@ -6,10 +6,10 @@ int main() {
 		int ct = 1; //call -> 1, put -> -1
 		bool et = 0; //european -> 1, american -> 0
 		double T = 1.0; //maturity
-		double K = 90; //strike price
+		double K = 150; //strike price
 		double T0 = 0.0; //starting time
 		double S0 = 100; //starting value of underlying
-		std::vector<std::pair<double, double>> ir = { {0.0, 0.05}, {10.0, 0.05}, {20.0, 0.05} }; //discrete interest rate curve
+		std::vector<std::pair<double, double>> ir = { {0.0, -0.05}, {10.0, -0.05}, {20.0, -0.05} }; //discrete interest rate curve
 
 		InterestRate IR(ir); //object to represent the interest rate curve
 		

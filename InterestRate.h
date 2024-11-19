@@ -14,6 +14,6 @@ public:
 	InterestRate(std::vector<std::pair<double, double>> interest_rate) : interest_rate_(interest_rate) {}
 
 	double operator()(double t) const;
-	double integral(double t0, double tf) const;
+	double integral(double t0, double tf, int n = 1000) const;
 	
 };
