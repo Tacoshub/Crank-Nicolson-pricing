@@ -23,7 +23,7 @@ class Option {
 	void create_grid();
 
 	void european_price();
-	void american_price(int ct);
+	void american_price();
 
 	double tol_;
 	double w_;
@@ -31,7 +31,6 @@ class Option {
 public:
 
 	Option(int contract_type, int exercise_type, double T, double K, double T0, unsigned int time_mesh, unsigned int spot_mesh, double S0, std::vector<std::pair<double, double>> interest_rate, double volatility, double tol = 0.01, double w = 1.2);
-
 
 	std::vector<double> compute_aj(unsigned int i);
 	std::vector<double> compute_bj(unsigned int i);

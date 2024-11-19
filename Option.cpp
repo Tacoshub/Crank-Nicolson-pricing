@@ -1,7 +1,6 @@
 #include "Option.h"
 #include "Tridiag.h"
 
-#include<iostream>
 #include<algorithm>
 #include<iomanip>
 
@@ -164,44 +163,41 @@ void Option::european_price() {
 		for (zz = 1; zz < spot_mesh_; zz++) {
 			grid[zz][jj - 1] = F[zz - 1];
 		}
-		grid[zz][jj - 1] = std::exp(-curve.integral(dT * (jj - 1), T_)) * FM;
+		grid[zz][jj - 1] = FM;
 	}
 }
 
-void Option::american_price(int ct) {
-	if (ct == 1) european_price();
-	else {
-		std::vector<double> a, b, c;
-		Tridiag D;
-		double K, Sk;
-		std::vector<double> RHS;
-		size_t ii, zz;
-		for (size_t jj = time_mesh_ - 1; jj > 0; jj--) {
-			a = compute_aj(jj), b = compute_bj(jj), c = compute_cj(jj);
-			D = compute_D(a, b, c);
-			K = compute_K_american(jj);
-			RHS = D * F + K;
-			double error = 1000000;
-			std::vector<double> F_tmp(spot_mesh_ - 1);
-			while (error > tol_) {
-				Sk = dS;
-				F_tmp[0] = std::max(std::max(K_ - Sk, 0.0), F[0] + (w_ / (1 - b[0])) * (RHS[0] - (1 - b[0]) * F[0] + c[0] * F[1]));
-				ii = 1;
-				for (; ii < spot_mesh_ - 2; ii++) {
-					Sk += dS;
-					F_tmp[ii] = std::max(std::max(K_ - Sk, 0.0), F[ii] + (w_ / (1 - b[ii])) * (RHS[ii] + a[ii - 1] * F_tmp[ii - 1] - (1 - b[ii]) * F[ii] + c[ii] * F[ii + 1]));
-				}
+void Option::american_price() {
+	std::vector<double> a, b, c;
+	Tridiag D;
+	double K, Sk;
+	std::vector<double> RHS;
+	size_t ii, zz;
+	for (size_t jj = time_mesh_ - 1; jj > 0; jj--) {
+		a = compute_aj(jj), b = compute_bj(jj), c = compute_cj(jj);
+		D = compute_D(a, b, c);
+		K = compute_K_american(jj);
+		RHS = D * F + K;
+		double error = 1000000;
+		std::vector<double> F_tmp(spot_mesh_ - 1);
+		while (error > tol_) {
+			Sk = dS;
+			F_tmp[0] = std::max(std::max(contract_type_ * (Sk - K_), 0.0), F[0] + (w_ / (1 - b[0])) * (RHS[0] - (1 - b[0]) * F[0] + c[0] * F[1]));
+			ii = 1;
+			for (; ii < spot_mesh_ - 2; ii++) {
 				Sk += dS;
-				F_tmp[ii] = std::max(std::max(K_ - Sk, 0.0), F[ii] + (w_ / (1 - b[ii])) * (RHS[ii] + a[ii - 1] * F_tmp[ii - 1] - (1 - b[ii]) * F[ii]));
-				error = norm(F - F_tmp);
-				F = F_tmp;
+				F_tmp[ii] = std::max(std::max(contract_type_ * (Sk - K_), 0.0), F[ii] + (w_ / (1 - b[ii])) * (RHS[ii] + a[ii - 1] * F_tmp[ii - 1] - (1 - b[ii]) * F[ii] + c[ii] * F[ii + 1]));
 			}
-			grid[0][jj - 1] = F0;
-			for (zz = 1; zz < spot_mesh_; zz++) {
-				grid[zz][jj - 1] = F[zz - 1];
-			}
-			grid[zz][jj - 1] = std::exp(-curve.integral(dT * (jj - 1), T_)) * FM;
+			Sk += dS;
+			F_tmp[ii] = std::max(std::max(contract_type_ * (Sk - K_), 0.0), F[ii] + (w_ / (1 - b[ii])) * (RHS[ii] + a[ii - 1] * F_tmp[ii - 1] - (1 - b[ii]) * F[ii]));
+			error = norm(F - F_tmp);
+			F = F_tmp;
 		}
+		grid[0][jj - 1] = F0;
+		for (zz = 1; zz < spot_mesh_; zz++) {
+			grid[zz][jj - 1] = F[zz - 1];
+		}
+		grid[zz][jj - 1] = FM;
 	}
 }
 
@@ -220,7 +216,7 @@ void Option::solve() {
 		european_price();
 	}
 	else {
-		american_price(contract_type_);
+		american_price();
 	}
 }
 
