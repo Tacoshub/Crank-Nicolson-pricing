@@ -70,6 +70,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>C:\Program Files\boost_1_86_0;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -127,15 +130,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ImperialAmericanPut.h" />
     <ClInclude Include="InterestRate.h" />
     <ClInclude Include="Option.h" />
     <ClInclude Include="OptionExceptions.h" />
     <ClInclude Include="Tridiag.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Boost.cpp" />
     <ClCompile Include="InterestRate.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Option.cpp" />
+    <ClCompile Include="test.cpp" />
     <ClCompile Include="Tridiag.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

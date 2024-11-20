@@ -1,0 +1,73 @@
+\doxysection{Invalid\+Contract\+Type Class Reference}
+\hypertarget{class_invalid_contract_type}{}\label{class_invalid_contract_type}\index{InvalidContractType@{InvalidContractType}}
+
+
+Exception thrown when an invalid contract type is encountered.  
+
+
+
+
+{\ttfamily \#include $<$Option\+Exceptions.\+h$>$}
+
+Inheritance diagram for Invalid\+Contract\+Type\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_invalid_contract_type}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_invalid_contract_type_ae722ac92280507f2d3bf11d44e5bbcb8}{Invalid\+Contract\+Type}} (int N)
+\begin{DoxyCompactList}\small\item\em Constructor to initialize the error message with the invalid contract type. \end{DoxyCompactList}\item 
+virtual const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_invalid_contract_type_a5dfecbaca5022f2edb9ad58716017b49}{what}} () const  throw ()
+\begin{DoxyCompactList}\small\item\em Override the \textquotesingle{}\doxylink{class_invalid_contract_type_a5dfecbaca5022f2edb9ad58716017b49}{what()}\textquotesingle{} method to return the custom error message. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_option_exceptions}{Option\+Exceptions}}}
+
+
+\doxysubsection{Detailed Description}
+Exception thrown when an invalid contract type is encountered. 
+
+Contract types must be 1 (Call) or -\/1 (Put). 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_invalid_contract_type_ae722ac92280507f2d3bf11d44e5bbcb8}\index{InvalidContractType@{InvalidContractType}!InvalidContractType@{InvalidContractType}}
+\index{InvalidContractType@{InvalidContractType}!InvalidContractType@{InvalidContractType}}
+\doxysubsubsection{\texorpdfstring{InvalidContractType()}{InvalidContractType()}}
+{\footnotesize\ttfamily \label{class_invalid_contract_type_ae722ac92280507f2d3bf11d44e5bbcb8} 
+Invalid\+Contract\+Type\+::\+Invalid\+Contract\+Type (\begin{DoxyParamCaption}\item[{int}]{N}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor to initialize the error message with the invalid contract type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em N} & The invalid contract type received. \\
+\hline
+\end{DoxyParams}
+\texorpdfstring{$<$}{<} Append the invalid value to the error message
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_invalid_contract_type_a5dfecbaca5022f2edb9ad58716017b49}\index{InvalidContractType@{InvalidContractType}!what@{what}}
+\index{what@{what}!InvalidContractType@{InvalidContractType}}
+\doxysubsubsection{\texorpdfstring{what()}{what()}}
+{\footnotesize\ttfamily \label{class_invalid_contract_type_a5dfecbaca5022f2edb9ad58716017b49} 
+virtual const char \texorpdfstring{$\ast$}{*} Invalid\+Contract\+Type\+::what (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const throw ( ) \hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Override the \textquotesingle{}\doxylink{class_invalid_contract_type_a5dfecbaca5022f2edb9ad58716017b49}{what()}\textquotesingle{} method to return the custom error message. 
+
+\begin{DoxyReturn}{Returns}
+The error message as a C-\/string. 
+\end{DoxyReturn}
+\texorpdfstring{$<$}{<} Return the error message as a C-\/string
+
+Reimplemented from \mbox{\hyperlink{class_option_exceptions_a6e35c300bd24d172ac97aa498e66e833}{Option\+Exceptions}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/flavi/source/repos/\+Crank-\/\+Nicolson-\/pricing-\/new/\mbox{\hyperlink{_option_exceptions_8h}{Option\+Exceptions.\+h}}\end{DoxyCompactItemize}

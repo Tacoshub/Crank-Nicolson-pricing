@@ -1,5 +1,23 @@
+/**
+ * @file InterestRate.cpp
+ * @brief Contains the implementation of the InterestRate class and related functions.
+ *
+ * This file implements the functions for constructinng the interest rate curve using linear interpolation
+ * and for computing the integral of the interest rate over a given interval using Simpson's rule.
+ */
+
 #include "InterestRate.h"
 
+ /**
+  * @brief Calculates the interest rate at time t using linear interpolation between two points.
+  *
+  * This function interpolates the interest rate for a given time `t` by finding the two closest points
+  * in the `interest_rate_` container and performing a linear interpolation between them.
+  *
+  * @param t The time at which the interest rate is to be calculated.
+  * @return The interpolated interest rate at time t.
+  * @throws InvalidTime if the time t is outside the bounds of the defined interest rate intervals.
+  */
 double InterestRate::operator()(double t) const {
 
 	for (auto it = interest_rate_.begin(); it != std::prev(interest_rate_.end(), 1); ++it) {
@@ -11,10 +29,23 @@ double InterestRate::operator()(double t) const {
 		}
 		else continue;
 	}
-	throw InvalidTime();
 
+	throw InvalidTime();
 }
 
+/**
+ * @brief Calculates the integral of the interest rate function over a specified interval using Simpson's Rule.
+ *
+ * This function approximates the integral of the interest rate function over the interval [a, b] using
+ * Simpson's rule, which is a method of numerical integration. The function first ensures that the number of
+ * intervals (n) is even, and then performs the integration.
+ *
+ * @param a The start of the integration interval.
+ * @param b The end of the integration interval.
+ * @param n The number of intervals for Simpson's rule (must be even).
+ * @return The approximate integral of the interest rate function over [a, b].
+ * @throws std::invalid_argument if the number of intervals n is odd.
+ */
 double InterestRate::integral(double a, double b, int n) const {
 	if (n % 2 != 0) {
 		throw std::invalid_argument("Number of intervals 'n' must be even for Simpson's rule.");
@@ -36,6 +67,7 @@ double InterestRate::integral(double a, double b, int n) const {
 	sum *= h / 3.0;
 	return sum;
 }
+
 
 /*
 double InterestRate::integral(double t0, double tf) const

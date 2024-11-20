@@ -224,6 +224,10 @@ void Option::price() {
 	std::cout << grid[S0_ / dS][0];
 }
 
+double Option::priceval() {
+	return grid[S0_ / dS][0];
+}
+
 void Option::display_grid() {
 	std::cout << std::fixed << std::setprecision(3);
 	for (size_t ii = 0; ii <= spot_mesh_; ii++) {

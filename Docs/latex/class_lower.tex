@@ -1,0 +1,71 @@
+\doxysection{Lower Class Reference}
+\hypertarget{class_lower}{}\label{class_lower}\index{Lower@{Lower}}
+
+
+Represents the lower triangular part of a matrix and provides a method for solving linear systems.  
+
+
+
+
+{\ttfamily \#include $<$Tridiag.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_lower_ae446a86b8a51aee8a271a61db66670ca}{Lower}} (std\+::vector$<$ double $>$ subdiag, std\+::vector$<$ double $>$ diag)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_lower}{Lower} object with the given subdiagonal and diagonal elements. \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{class_lower_a5c0b07d37bacb1c93d8a299a71a5fb6b}{solve}} (std\+::vector$<$ double $>$ b)
+\begin{DoxyCompactList}\small\item\em Solves a system of linear equations using forward substitution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the lower triangular part of a matrix and provides a method for solving linear systems. 
+
+The {\ttfamily \doxylink{class_lower}{Lower}} class models a lower triangular matrix (with non-\/zero entries on the diagonal and below it) and provides a method to solve systems of linear equations using forward substitution. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_lower_ae446a86b8a51aee8a271a61db66670ca}\index{Lower@{Lower}!Lower@{Lower}}
+\index{Lower@{Lower}!Lower@{Lower}}
+\doxysubsubsection{\texorpdfstring{Lower()}{Lower()}}
+{\footnotesize\ttfamily \label{class_lower_ae446a86b8a51aee8a271a61db66670ca} 
+Lower\+::\+Lower (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$}]{subdiag}{, }\item[{std\+::vector$<$ double $>$}]{diag}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a \doxylink{class_lower}{Lower} object with the given subdiagonal and diagonal elements. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em subdiag} & A vector containing the subdiagonal elements. \\
+\hline
+{\em diag} & A vector containing the diagonal elements. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_lower_a5c0b07d37bacb1c93d8a299a71a5fb6b}\index{Lower@{Lower}!solve@{solve}}
+\index{solve@{solve}!Lower@{Lower}}
+\doxysubsubsection{\texorpdfstring{solve()}{solve()}}
+{\footnotesize\ttfamily \label{class_lower_a5c0b07d37bacb1c93d8a299a71a5fb6b} 
+std\+::vector$<$ double $>$ Lower\+::solve (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$}]{b}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Solves a system of linear equations using forward substitution. 
+
+This method solves the system {\ttfamily Lx = b}, where {\ttfamily L} is a lower triangular matrix and {\ttfamily b} is the right-\/hand side vector. The solution is computed using forward substitution.
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & The right-\/hand side vector of the system of equations. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector containing the solution to the system of equations. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/flavi/source/repos/\+Crank-\/\+Nicolson-\/pricing-\/new/Tridiag.\+h\end{DoxyCompactItemize}

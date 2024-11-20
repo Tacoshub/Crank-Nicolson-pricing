@@ -1,0 +1,25 @@
+\doxysection{C\+:/\+Users/flavi/source/repos/\+Crank-\/\+Nicolson-\/pricing-\/new/\+Interest\+Rate.h}
+\hypertarget{_interest_rate_8h_source}{}\label{_interest_rate_8h_source}\mbox{\hyperlink{_interest_rate_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_option_exceptions_8h}{OptionExceptions.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_interest_rate}{InterestRate}}\ \{}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00026\ \ \ \ \ std::vector<std::pair<double,\ double>>\ interest\_rate\_;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{class_interest_rate_a9d5fc5b93ddf0d8d635793dc4b9ef310}{InterestRate}}()\ \{\}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{class_interest_rate_ac6b128b03bc4568a555ad2d5f042c3d3}{InterestRate}}(std::vector<std::pair<double,\ double>>\ interest\_rate)\ :\ interest\_rate\_(interest\_rate)\ \{\}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_interest_rate_a87e5b5412da6472b5e58efce3dc0033e}{operator()}}(\textcolor{keywordtype}{double}\ t)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_interest_rate_a47ba55d37953c6941d9519024c42f94f}{integral}}(\textcolor{keywordtype}{double}\ t0,\ \textcolor{keywordtype}{double}\ tf,\ \textcolor{keywordtype}{int}\ n\ =\ 1000)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00072\ \};}
+
+\end{DoxyCode}

@@ -27,6 +27,9 @@
     <ClInclude Include="OptionExceptions.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="ImperialAmericanPut.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Option.cpp">
@@ -40,6 +43,12 @@
     </ClCompile>
     <ClCompile Include="Tridiag.cpp">
       <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="test.cpp">
+      <Filter>File di risorse</Filter>
+    </ClCompile>
+    <ClCompile Include="Boost.cpp">
+      <Filter>File di risorse</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

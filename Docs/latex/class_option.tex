@@ -1,0 +1,44 @@
+\doxysection{Option Class Reference}
+\hypertarget{class_option}{}\label{class_option}\index{Option@{Option}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_option_a04eaaaadb0da5ceaf51891082635b553}\label{class_option_a04eaaaadb0da5ceaf51891082635b553} 
+{\bfseries Option} (int contract\+\_\+type, int exercise\+\_\+type, double T, double K, double T0, unsigned int time\+\_\+mesh, unsigned int spot\+\_\+mesh, double S0, std\+::vector$<$ std\+::pair$<$ double, double $>$ $>$ interest\+\_\+rate, double volatility, double tol=0.\+01, double w=1.\+2)
+\item 
+\Hypertarget{class_option_aa5ccd65508c22ccd79124236c95199aa}\label{class_option_aa5ccd65508c22ccd79124236c95199aa} 
+std\+::vector$<$ double $>$ {\bfseries compute\+\_\+aj} (unsigned int i)
+\item 
+\Hypertarget{class_option_a2be21b8c072ecf70057f0bec43e3ae1b}\label{class_option_a2be21b8c072ecf70057f0bec43e3ae1b} 
+std\+::vector$<$ double $>$ {\bfseries compute\+\_\+bj} (unsigned int i)
+\item 
+\Hypertarget{class_option_aa5fdc0678bd77ed9fa280f6e3b16a3b4}\label{class_option_aa5fdc0678bd77ed9fa280f6e3b16a3b4} 
+std\+::vector$<$ double $>$ {\bfseries compute\+\_\+cj} (unsigned int i)
+\item 
+\Hypertarget{class_option_acad158c98fe682566ba48cddb8572bec}\label{class_option_acad158c98fe682566ba48cddb8572bec} 
+\mbox{\hyperlink{class_tridiag}{Tridiag}} {\bfseries compute\+\_\+C} (std\+::vector$<$ double $>$ a, std\+::vector$<$ double $>$ b, std\+::vector$<$ double $>$ c)
+\item 
+\Hypertarget{class_option_a31d3ec621b928d8622b08e6b6566c2e9}\label{class_option_a31d3ec621b928d8622b08e6b6566c2e9} 
+\mbox{\hyperlink{class_tridiag}{Tridiag}} {\bfseries compute\+\_\+D} (std\+::vector$<$ double $>$ a, std\+::vector$<$ double $>$ b, std\+::vector$<$ double $>$ c)
+\item 
+\Hypertarget{class_option_acb025c237c2647b7e25ed7891bf906bd}\label{class_option_acb025c237c2647b7e25ed7891bf906bd} 
+std\+::pair$<$ double, double $>$ {\bfseries compute\+\_\+K} (unsigned int i)
+\item 
+\Hypertarget{class_option_a64e397c1fe029b2b9d108781c43ee75b}\label{class_option_a64e397c1fe029b2b9d108781c43ee75b} 
+double {\bfseries compute\+\_\+\+K\+\_\+american} (unsigned int i)
+\item 
+\Hypertarget{class_option_add7a189920460d9045e029b5c927ad67}\label{class_option_add7a189920460d9045e029b5c927ad67} 
+void {\bfseries solve} ()
+\item 
+\Hypertarget{class_option_ad1cc9b28343b82819ff2295ddd719984}\label{class_option_ad1cc9b28343b82819ff2295ddd719984} 
+void {\bfseries display\+\_\+grid} ()
+\item 
+\Hypertarget{class_option_a603f6bb9875e27cdf4fa199e57528fc1}\label{class_option_a603f6bb9875e27cdf4fa199e57528fc1} 
+void {\bfseries price} ()
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/flavi/source/repos/\+Crank-\/\+Nicolson-\/pricing-\/new/Option.\+h\item 
+C\+:/\+Users/flavi/source/repos/\+Crank-\/\+Nicolson-\/pricing-\/new/Option.\+cpp\end{DoxyCompactItemize}

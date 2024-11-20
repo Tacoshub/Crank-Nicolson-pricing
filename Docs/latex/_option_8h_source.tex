@@ -1,0 +1,52 @@
+\doxysection{C\+:/\+Users/flavi/source/repos/\+Crank-\/\+Nicolson-\/pricing-\/new/\+Option.h}
+\hypertarget{_option_8h_source}{}\label{_option_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_interest_rate_8h}{InterestRate.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_option_exceptions_8h}{OptionExceptions.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Tridiag.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include<vector>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_option}{Option}}\ \{}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{int}\ contract\_type\_;}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{bool}\ exercise\_type\_;}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{double}\ T\_,\ K\_,\ T0\_,\ S0\_,\ volatility\_;}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ time\_mesh\_,\ spot\_mesh\_;}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ std::vector<std::pair<double,\ double>>\ interest\_rate\_;}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{class_interest_rate}{InterestRate}}\ curve;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{double}\ dT,\ dS,\ F0,\ FM;}
+\DoxyCodeLine{00020\ \ \ \ \ std::vector<std::vector<double>>\ grid;}
+\DoxyCodeLine{00021\ \ \ \ \ std::vector<double>\ F;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ create\_grid();}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ european\_price();}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ american\_price();}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{double}\ tol\_;}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{double}\ w\_;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{class_option}{Option}}(\textcolor{keywordtype}{int}\ contract\_type,\ \textcolor{keywordtype}{int}\ exercise\_type,\ \textcolor{keywordtype}{double}\ T,\ \textcolor{keywordtype}{double}\ K,\ \textcolor{keywordtype}{double}\ T0,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ time\_mesh,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ spot\_mesh,\ \textcolor{keywordtype}{double}\ S0,\ std::vector<std::pair<double,\ double>>\ interest\_rate,\ \textcolor{keywordtype}{double}\ volatility,\ \textcolor{keywordtype}{double}\ tol\ =\ 0.01,\ \textcolor{keywordtype}{double}\ w\ =\ 1.2);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ std::vector<double>\ compute\_aj(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i);}
+\DoxyCodeLine{00036\ \ \ \ \ std::vector<double>\ compute\_bj(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i);}
+\DoxyCodeLine{00037\ \ \ \ \ std::vector<double>\ compute\_cj(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{class_tridiag}{Tridiag}}\ compute\_C(std::vector<double>\ a,\ std::vector<double>\ b,\ std::vector<double>\ c);}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{class_tridiag}{Tridiag}}\ compute\_D(std::vector<double>\ a,\ std::vector<double>\ b,\ std::vector<double>\ c);}
+\DoxyCodeLine{00041\ \ \ \ \ std::pair<double,\ double>\ compute\_K(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i);}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{double}\ compute\_K\_american(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ solve();}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ display\_grid();}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ price();}
+\DoxyCodeLine{00047\ \};}
+
+\end{DoxyCode}
