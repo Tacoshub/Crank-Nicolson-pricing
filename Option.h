@@ -43,6 +43,6 @@ public:
 
 	void solve();
 	void display_grid();
-	void price();
-	double priceval();
+
+	double price();
 };

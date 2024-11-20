@@ -31,10 +31,11 @@ BOOST_AUTO_TEST_SUITE(GridExploration)
 std::vector<double> maturities = { 0.5, 1.0, 2.0 };
 std::vector<double> strikes = { 80, 100, 120 };
 std::vector<double> volatilities = { 0.1, 0.2, 0.3 };
-std::vector<double> interest_rates = { 0.0, -0.05, 0.05 };
+//std::vector<double> interest_rates = { 0.0, -0.05, 0.05 };
+std::vector<double> interest_rates = { 0.0};
 double S0 = 100; // Spot price
-unsigned int N = 100; // Time steps
-unsigned int M = 100; // Spot mesh
+unsigned int N = 1000; // Time steps
+unsigned int M = 400; // Spot mesh
 
 
 
@@ -47,7 +48,7 @@ BOOST_AUTO_TEST_CASE(AmericanPutTest) {
             for (double K : strikes) {
                 for (double sigma : volatilities) {
                     Option opt(-1, false, T, K, 0.0, N, M, S0, ir_curve, sigma); // American put
-                    double computed_price = opt.priceval();
+                    double computed_price = opt.price();
                     CNicolsonPricer CN(S0, K, T, sigma, r, 120, 0.005);
                     double bs_price = CN.Value();
 
@@ -66,7 +67,7 @@ BOOST_AUTO_TEST_CASE(AmericanPutTest) {
     }
     std::cout << "Total combinations tested for American Put: " << counter << std::endl;
 }
-/*
+
 
 
 
@@ -79,7 +80,7 @@ BOOST_AUTO_TEST_CASE(EuropeanCallTest) {
             for (double K : strikes) {
                 for (double sigma : volatilities) {
                     Option opt(1, true, T, K, 0.0, N, M, S0, ir_curve, sigma); // European call
-                    double computed_price = opt.priceval();
+                    double computed_price = opt.price();
                     double bs_price = black_scholes_price(1, S0, K, T, r, sigma);
 
                     // Print configuration
@@ -108,7 +109,7 @@ BOOST_AUTO_TEST_CASE(EuropeanPutTest) {
             for (double K : strikes) {
                 for (double sigma : volatilities) {
                     Option opt(-1, true, T, K, 0.0, N, M, S0, ir_curve, sigma); // European put
-                    double computed_price = opt.priceval();
+                    double computed_price = opt.price();
                     double bs_price = black_scholes_price(-1, S0, K, T, r, sigma);
 
                     // Print configuration
@@ -128,5 +129,5 @@ BOOST_AUTO_TEST_CASE(EuropeanPutTest) {
     std::cout << "Total combinations tested for European Put: " << counter << std::endl;
 }
 
-*/
+
 BOOST_AUTO_TEST_SUITE_END()
