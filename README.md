@@ -46,7 +46,7 @@ int main() {
 
 		Option call(ct, et, T, K, T0, N, M, S0, ir, sigma);
 		std::cout << std::fixed << std::setprecision(5);
-		std::cout << "Price: " << std::setw(5) << call.price()         << std::endl
+		std::cout << "Price: " << std::setw(5) << call.price()             << std::endl
 			      << "Delta: " << std::setw(5) << call.delta(S0 * h)   << std::endl
 			      << "Gamma: " << std::setw(5) << call.gamma(S0 * h)   << std::endl
 			      << "Theta: " << std::setw(5) << call.theta(T * h)    << std::endl
