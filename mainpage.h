@@ -1,6 +1,6 @@
 /**
  * @file mainpage.h
- * @brief Main page for the Advanced Option Pricing Framework
+ * @brief Main page for the Advanced Option Pricing Framework.
  */
 
  /*!
