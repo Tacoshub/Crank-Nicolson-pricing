@@ -118,7 +118,7 @@ public:
      * @brief Constructor to initialize the error message with the invalid strike price.
      * @param N The invalid strike price received.
      */
-    InvalidStrike(int N) {
+    InvalidStrike(double N) {
         msg = "Invalid strike, value must be positive, value received: ";
         msg += std::to_string(N);  ///< Append the invalid value to the error message
     }
@@ -202,7 +202,7 @@ public:
      * @brief Constructor to initialize the error message with the invalid spot price.
      * @param N The invalid spot price received.
      */
-    InvalidSpot(int N) {
+    InvalidSpot(double N) {
         msg = "Invalid value for spot price, value must be positive, value received: ";
         msg += std::to_string(N);  ///< Append the invalid value to the error message
     }
@@ -230,7 +230,7 @@ public:
      * @brief Constructor to initialize the error message with the invalid volatility value.
      * @param N The invalid volatility value received.
      */
-    InvalidVolatility(int N) {
+    InvalidVolatility(double N) {
         msg = "Invalid value for volatility, value must be positive, value received: ";
         msg += std::to_string(N);  ///< Append the invalid value to the error message
     }

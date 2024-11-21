@@ -1,5 +1,5 @@
 #include "Option.h"
-/*
+
 int main() {
 
 	try {
@@ -30,11 +30,11 @@ int main() {
 		std::cout << "Exception -> " << e.what();
 	}
 	catch (const std::exception& e) {
-		std::cout << "General exception";
+		std::cout << "General exception: " << e.what();
 	}
 	catch (...) {
 		std::cout << "Unknown exception";
 	}
 
     return 0;
-}*/
+}

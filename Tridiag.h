@@ -65,7 +65,7 @@ public:
      * @return Solution vector x.
      */
     std::vector<double> solve(std::vector<double> b) {
-        int n = b.size();
+        int n = int(b.size());
         std::vector<double> x(n);
         x[n - 1] = b[n - 1] / diag_[n - 1];
         for (int ii = n - 2; ii >= 0; ii--) {

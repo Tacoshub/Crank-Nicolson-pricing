@@ -80,7 +80,7 @@ public:
      * @param i Time step index.
      * @return Vector of coefficients a_j.
      */
-    std::vector<double> compute_aj(unsigned int i);
+    std::vector<double> compute_aj(size_t i);
 
     /**
      * @brief Computes the coefficients b_j for the tridiagonal matrix.
@@ -88,7 +88,7 @@ public:
      * @param i Time step index.
      * @return Vector of coefficients b_j.
      */
-    std::vector<double> compute_bj(unsigned int i);
+    std::vector<double> compute_bj(size_t i);
 
     /**
      * @brief Computes the coefficients c_j for the tridiagonal matrix.
@@ -96,7 +96,7 @@ public:
      * @param i Time step index.
      * @return Vector of coefficients c_j.
      */
-    std::vector<double> compute_cj(unsigned int i);
+    std::vector<double> compute_cj(size_t i);
 
     /**
      * @brief Computes the tridiagonal matrix C.

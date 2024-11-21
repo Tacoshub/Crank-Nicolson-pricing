@@ -175,7 +175,7 @@ void Option::create_grid() {
  * @param i Time step index.
  * @return Vector of coefficients \( a_j \).
  */
-std::vector<double> Option::compute_aj(unsigned int i) {
+std::vector<double> Option::compute_aj(size_t i) {
 	std::vector<double> aj(spot_mesh_ - 2);
 	for (size_t jj = 2; jj < spot_mesh_; jj++) {
 		aj[jj - 2] = (dT / 4) * (volatility_ * volatility_ * jj * jj - curve(dT * i) * jj);
@@ -189,7 +189,7 @@ std::vector<double> Option::compute_aj(unsigned int i) {
  * @param i Time step index.
  * @return Vector of coefficients \( b_j \).
  */
-std::vector<double> Option::compute_bj(unsigned int i) {
+std::vector<double> Option::compute_bj(size_t i) {
 	std::vector<double> bj(spot_mesh_ - 1);
 	for (size_t jj = 1; jj < spot_mesh_; jj++) {
 		bj[jj - 1] = -(dT / 2) * (volatility_ * volatility_ * jj * jj + curve(dT * i));
@@ -203,7 +203,7 @@ std::vector<double> Option::compute_bj(unsigned int i) {
  * @param i Time step index.
  * @return Vector of coefficients \( c_j \).
  */
-std::vector<double> Option::compute_cj(unsigned int i) {
+std::vector<double> Option::compute_cj(size_t i) {
 	std::vector<double> cj(spot_mesh_ - 2);
 	for (size_t jj = 1; jj < spot_mesh_ - 1; jj++) {
 		cj[jj - 1] = (dT / 4) * (volatility_ * volatility_ * jj * jj + curve(dT * i) * jj);
