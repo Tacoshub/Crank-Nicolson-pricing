@@ -1,108 +1,109 @@
-\doxysection{C\+:/\+Users/\+Admin/\+One\+Drive/\+Desktop/\+UNIVERSITÁ/\+LEZIONI/\+ANNO 2024-\/2025/\+PROJECT INFORMATIQUE/\+PROGETTO/\+Imperial\+American\+Put.h}
-\hypertarget{_imperial_american_put_8h_source}{}\label{_imperial_american_put_8h_source}
+\doxysection{C\+:/\+Users/flavi/source/repos/\+Crank-\/\+Nicolson-\/pricing-\/\+Final/\+Imperial\+American\+Put.h}
+\hypertarget{_imperial_american_put_8h_source}{}\label{_imperial_american_put_8h_source}\mbox{\hyperlink{_imperial_american_put_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include<iostream>}}
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include<cmath>}}
-\DoxyCodeLine{00004\ \textcolor{keyword}{using\ namespace\ }std;}
-\DoxyCodeLine{00005\ }
-\DoxyCodeLine{00006\ \textcolor{keywordtype}{double}\ maxx(\textcolor{keywordtype}{double}\ a,\ \textcolor{keywordtype}{double}\ b)}
-\DoxyCodeLine{00007\ \{}
-\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keywordflow}{return}\ ((a\ >\ b)\ ?\ a\ :\ b);}
-\DoxyCodeLine{00009\ \}}
-\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_nicolson_pricer}{CNicolsonPricer}}\ \{}
-\DoxyCodeLine{00011\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{double}\ Price;}
-\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{class_c_nicolson_pricer}{CNicolsonPricer}}(\textcolor{keywordtype}{double}\ S\_now,\ \textcolor{keywordtype}{double}\ K,\ \textcolor{keywordtype}{double}\ T,\ \textcolor{keywordtype}{double}}
-\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ Vol,\ \textcolor{keywordtype}{double}\ r,\ \textcolor{keywordtype}{int}\ I,\ \textcolor{keywordtype}{double}\ delta\_t);}
-\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{double}\ Value()}
-\DoxyCodeLine{00017\ \ \ \ \ \{}
-\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Price;}
-\DoxyCodeLine{00019\ \ \ \ \ \}}
-\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{class_c_nicolson_pricer}{\string~CNicolsonPricer}}()\ \{\}}
-\DoxyCodeLine{00021\ \};}
-\DoxyCodeLine{00022\ CNicolsonPricer::CNicolsonPricer(\textcolor{keywordtype}{double}\ S\_now,\ \textcolor{keywordtype}{double}\ K,\ \textcolor{keywordtype}{double}\ T,\ \textcolor{keywordtype}{double}}
-\DoxyCodeLine{00023\ \ \ \ \ Vol,\ \textcolor{keywordtype}{double}\ r,\ \textcolor{keywordtype}{int}\ I,\ \textcolor{keywordtype}{double}\ delta\_t)}
-\DoxyCodeLine{00024\ \{}
-\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ i,\ j,\ k;}
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{double}\ error,\ diff;}
-\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ MAXk\ =\ 100;}
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ TOL\ =\ 0.00000001;}
-\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ DELTA\_S\ =\ 3\ *\ K\ /\ I;}
-\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ i\_STAR\ =\ floor(S\_now\ /\ DELTA\_S);}
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ WEIGHT\ =\ (S\_now\ -\/\ i\_STAR\ *\ DELTA\_S)\ /\ DELTA\_S;}
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ J\ =\ floor(T\ /\ delta\_t);}
-\DoxyCodeLine{00033\ \ \ \ \ delta\_t\ =\ T\ /\ J;}
-\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ W\ =\ 1.5;}
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{double}*\ predictor\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{double}[I\ +\ 1];}
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{double}*\ Vprevious\_j\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{double}[I\ +\ 1];}
-\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{double}*\ Vcurrent\_j\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{double}[I\ +\ 1];}
-\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{double}*\ fix\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{double}[I\ +\ 1];}
-\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{double}*\ a\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{double}[I\ +\ 1];}
-\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{double}*\ b\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{double}[I\ +\ 1];}
-\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{double}*\ c\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{double}[I\ +\ 1];}
-\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{double}*\ A\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{double}[I\ +\ 1];}
-\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{double}*\ B\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{double}[I\ +\ 1];}
-\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{double}*\ C\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{double}[I\ +\ 1];}
-\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ i\ <=\ I;\ i++)}
-\DoxyCodeLine{00046\ \ \ \ \ \{}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ Vprevious\_j[i]\ =\ maxx(0,\ K\ -\/\ i\ *\ DELTA\_S);}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ fix[i]\ =\ Vprevious\_j[i];}
-\DoxyCodeLine{00049\ \ \ \ \ \}}
-\DoxyCodeLine{00050\ }
-\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 1;\ i\ <=\ I\ -\/\ 1;\ i++)}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include<iostream>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include<cmath>}}
+\DoxyCodeLine{00010\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keywordtype}{double}\ maxx(\textcolor{keywordtype}{double}\ a,\ \textcolor{keywordtype}{double}\ b)}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordflow}{return}\ ((a\ >\ b)\ ?\ a\ :\ b);}
+\DoxyCodeLine{00015\ \}}
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_nicolson_pricer}{CNicolsonPricer}}\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{double}\ Price;}
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{class_c_nicolson_pricer}{CNicolsonPricer}}(\textcolor{keywordtype}{double}\ S\_now,\ \textcolor{keywordtype}{double}\ K,\ \textcolor{keywordtype}{double}\ T,\ \textcolor{keywordtype}{double}}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ Vol,\ \textcolor{keywordtype}{double}\ r,\ \textcolor{keywordtype}{int}\ I,\ \textcolor{keywordtype}{double}\ delta\_t);}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{double}\ Value()}
+\DoxyCodeLine{00023\ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Price;}
+\DoxyCodeLine{00025\ \ \ \ \ \}}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{class_c_nicolson_pricer}{\string~CNicolsonPricer}}()\ \{\}}
+\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00028\ CNicolsonPricer::CNicolsonPricer(\textcolor{keywordtype}{double}\ S\_now,\ \textcolor{keywordtype}{double}\ K,\ \textcolor{keywordtype}{double}\ T,\ \textcolor{keywordtype}{double}}
+\DoxyCodeLine{00029\ \ \ \ \ Vol,\ \textcolor{keywordtype}{double}\ r,\ \textcolor{keywordtype}{int}\ I,\ \textcolor{keywordtype}{double}\ delta\_t)}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{int}\ i,\ j,\ k;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{double}\ error,\ diff;}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ MAXk\ =\ 100;}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ TOL\ =\ 0.00000001;}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ DELTA\_S\ =\ 3\ *\ K\ /\ I;}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ i\_STAR\ =\ floor(S\_now\ /\ DELTA\_S);}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ WEIGHT\ =\ (S\_now\ -\/\ i\_STAR\ *\ DELTA\_S)\ /\ DELTA\_S;}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ J\ =\ floor(T\ /\ delta\_t);}
+\DoxyCodeLine{00039\ \ \ \ \ delta\_t\ =\ T\ /\ J;}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ W\ =\ 1.5;}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{double}*\ predictor\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{double}[I\ +\ 1];}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{double}*\ Vprevious\_j\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{double}[I\ +\ 1];}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{double}*\ Vcurrent\_j\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{double}[I\ +\ 1];}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{double}*\ fix\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{double}[I\ +\ 1];}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{double}*\ a\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{double}[I\ +\ 1];}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{double}*\ b\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{double}[I\ +\ 1];}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{double}*\ c\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{double}[I\ +\ 1];}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{double}*\ A\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{double}[I\ +\ 1];}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{double}*\ B\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{double}[I\ +\ 1];}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{double}*\ C\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{double}[I\ +\ 1];}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ i\ <=\ I;\ i++)}
 \DoxyCodeLine{00052\ \ \ \ \ \{}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ a[i]\ =\ delta\_t\ /\ 4\ *\ (Vol\ *\ Vol\ *\ i\ *\ i\ -\/\ r\ *\ i);}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ b[i]\ =\ (1\ -\/\ delta\_t\ /\ 2\ *\ (r\ +\ Vol\ *\ Vol\ *\ i\ *\ i));}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ c[i]\ =\ (delta\_t\ /\ 4\ *\ (Vol\ *\ Vol\ *\ i\ *\ i\ +\ r\ *\ i));}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ A[i]\ =\ -\/a[i];}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ B[i]\ =\ (1\ +\ delta\_t\ /\ 2\ *\ (r\ +\ Vol\ *\ Vol\ *\ i\ *\ i));}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ C[i]\ =\ -\/c[i];}
-\DoxyCodeLine{00059\ \ \ \ \ \}}
-\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{//Boudary\ conitions\ (i.e.\ for\ i=0\ \&\ I):}}
-\DoxyCodeLine{00061\ \ \ \ \ Vcurrent\_j[0]\ =\ K;}
-\DoxyCodeLine{00062\ \ \ \ \ Vcurrent\_j[I]\ =\ 0;}
-\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//(2)\ Now\ let\ j>0:}}
-\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordflow}{for}\ (j\ =\ 1;\ j\ <=\ J;\ j++)\ \{}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 1;\ i\ <=\ I\ -\/\ 1;\ i++)\textcolor{comment}{//SOR's\ initial\ guess}}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ Vcurrent\_j[i]\ =\ Vprevious\_j[i];}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 1;\ i\ <=\ I\ -\/\ 1;\ i++)}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ predictor[i]\ =\ a[i]\ *\ Vprevious\_j[i\ -\/\ 1]\ +\ b[i]\ *\ Vprevious\_j[i]}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +\ c[i]\ *\ Vprevious\_j[i\ +\ 1];}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ k\ =\ 0;\ \textcolor{comment}{//\ SOR\ iteration\ count\ initialised}}
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ error\ =\ 0;}
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 1;\ i\ <=\ I\ -\/\ 1;\ i++)}
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ diff\ =\ (predictor[i]\ -\/\ A[i]\ *\ Vcurrent\_j[i\ -\/\ 1]\ -\/\ C[i]\ *}
-\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vcurrent\_j[i\ +\ 1])\ /\ B[i]\ -\/\ Vcurrent\_j[i];}
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ error\ +=\ diff\ *\ diff;}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vcurrent\_j[i]\ +=\ W\ *\ diff;}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ k++;}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (error\ >\ TOL\ \&\&\ k\ <\ MAXk);}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 1;\ i\ <=\ I\ -\/\ 1;\ i++)}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ Vcurrent\_j[i]\ =\ maxx(Vcurrent\_j[i],\ fix[i]);}
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 1;\ i\ <=\ I\ -\/\ 1;\ i++)}
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ Vprevious\_j[i]\ =\ Vcurrent\_j[i];}
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00092\ \ \ \ \ \}}
-\DoxyCodeLine{00093\ \ \ \ \ Price\ =\ (1\ -\/\ WEIGHT)\ *\ Vprevious\_j[i\_STAR]\ +\ WEIGHT\ *\ Vprevious\_j[i\_STAR\ +\ 1];}
-\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{delete}[]\ Vprevious\_j;}
-\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{delete}[]\ Vcurrent\_j;}
-\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{delete}[]\ predictor;}
-\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keyword}{delete}[]\ a;}
-\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keyword}{delete}[]\ b;}
-\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keyword}{delete}[]\ c;}
-\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keyword}{delete}[]\ A;}
-\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{delete}[]\ B;}
-\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keyword}{delete}[]\ C;}
-\DoxyCodeLine{00103\ \}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ Vprevious\_j[i]\ =\ maxx(0,\ K\ -\/\ i\ *\ DELTA\_S);}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ fix[i]\ =\ Vprevious\_j[i];}
+\DoxyCodeLine{00055\ \ \ \ \ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 1;\ i\ <=\ I\ -\/\ 1;\ i++)}
+\DoxyCodeLine{00058\ \ \ \ \ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ a[i]\ =\ delta\_t\ /\ 4\ *\ (Vol\ *\ Vol\ *\ i\ *\ i\ -\/\ r\ *\ i);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ b[i]\ =\ (1\ -\/\ delta\_t\ /\ 2\ *\ (r\ +\ Vol\ *\ Vol\ *\ i\ *\ i));}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ c[i]\ =\ (delta\_t\ /\ 4\ *\ (Vol\ *\ Vol\ *\ i\ *\ i\ +\ r\ *\ i));}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ A[i]\ =\ -\/a[i];}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ B[i]\ =\ (1\ +\ delta\_t\ /\ 2\ *\ (r\ +\ Vol\ *\ Vol\ *\ i\ *\ i));}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ C[i]\ =\ -\/c[i];}
+\DoxyCodeLine{00065\ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{comment}{//Boudary\ conitions\ (i.e.\ for\ i=0\ \&\ I):}}
+\DoxyCodeLine{00067\ \ \ \ \ Vcurrent\_j[0]\ =\ K;}
+\DoxyCodeLine{00068\ \ \ \ \ Vcurrent\_j[I]\ =\ 0;}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{comment}{//(2)\ Now\ let\ j>0:}}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordflow}{for}\ (j\ =\ 1;\ j\ <=\ J;\ j++)\ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 1;\ i\ <=\ I\ -\/\ 1;\ i++)\textcolor{comment}{//SOR's\ initial\ guess}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ Vcurrent\_j[i]\ =\ Vprevious\_j[i];}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 1;\ i\ <=\ I\ -\/\ 1;\ i++)}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ predictor[i]\ =\ a[i]\ *\ Vprevious\_j[i\ -\/\ 1]\ +\ b[i]\ *\ Vprevious\_j[i]}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +\ c[i]\ *\ Vprevious\_j[i\ +\ 1];}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ k\ =\ 0;\ \textcolor{comment}{//\ SOR\ iteration\ count\ initialised}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ error\ =\ 0;}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 1;\ i\ <=\ I\ -\/\ 1;\ i++)}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ diff\ =\ (predictor[i]\ -\/\ A[i]\ *\ Vcurrent\_j[i\ -\/\ 1]\ -\/\ C[i]\ *}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vcurrent\_j[i\ +\ 1])\ /\ B[i]\ -\/\ Vcurrent\_j[i];}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ error\ +=\ diff\ *\ diff;}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vcurrent\_j[i]\ +=\ W\ *\ diff;}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ k++;}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (error\ >\ TOL\ \&\&\ k\ <\ MAXk);}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 1;\ i\ <=\ I\ -\/\ 1;\ i++)}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ Vcurrent\_j[i]\ =\ maxx(Vcurrent\_j[i],\ fix[i]);}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 1;\ i\ <=\ I\ -\/\ 1;\ i++)}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ Vprevious\_j[i]\ =\ Vcurrent\_j[i];}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00098\ \ \ \ \ \}}
+\DoxyCodeLine{00099\ \ \ \ \ Price\ =\ (1\ -\/\ WEIGHT)\ *\ Vprevious\_j[i\_STAR]\ +\ WEIGHT\ *\ Vprevious\_j[i\_STAR\ +\ 1];}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keyword}{delete}[]\ Vprevious\_j;}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{delete}[]\ Vcurrent\_j;}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keyword}{delete}[]\ predictor;}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keyword}{delete}[]\ a;}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keyword}{delete}[]\ b;}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keyword}{delete}[]\ c;}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keyword}{delete}[]\ A;}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keyword}{delete}[]\ B;}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keyword}{delete}[]\ C;}
+\DoxyCodeLine{00109\ \}}
 
 \end{DoxyCode}

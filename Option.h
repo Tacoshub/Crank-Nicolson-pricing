@@ -1,5 +1,5 @@
 /**
- * @file OptionExceptions.h
+ * @file Option.h
  * @brief class to create an Option object
  */
 #pragma once

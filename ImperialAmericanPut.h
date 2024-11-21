@@ -1,3 +1,9 @@
+
+/**
+ * @file ImperialAmericanPut.h
+ * @brief Imperial Colledge pricer for American puts
+ */
+
 #pragma once
 #include<iostream>
 #include<cmath>

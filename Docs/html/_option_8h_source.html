@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Crank–Nicolson pricer: C:/Users/Admin/OneDrive/Desktop/UNIVERSITÁ/LEZIONI/ANNO 2024-2025/PROJECT INFORMATIQUE/PROGETTO/Option.h Source File</title>
+<title>Crank-Nicolson Pricer: C:/Users/flavi/source/repos/Crank-Nicolson-pricing-Final/Option.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Crank–Nicolson pricer
+   <div id="projectname">Crank-Nicolson Pricer
    </div>
   </td>
  </tr>
@@ -84,15 +84,15 @@ $(function(){ initResizable(false); });
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">C:/Users/Admin/OneDrive/Desktop/UNIVERSITÁ/LEZIONI/ANNO 2024-2025/PROJECT INFORMATIQUE/PROGETTO/Option.h</div></div>
+  <div class="headertitle"><div class="title">C:/Users/flavi/source/repos/Crank-Nicolson-pricing-Final/Option.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<a href="_option_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;InterestRate.h&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="_interest_rate_8h.html">InterestRate.h</a>&quot;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="_option_exceptions_8h.html">OptionExceptions.h</a>&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;Tridiag.h&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="_tridiag_8h.html">Tridiag.h</a>&quot;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
@@ -163,7 +163,9 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    <span class="keywordtype">double</span> <a class="code hl_function" href="class_option.html#a5c4c93284189004f548387149fc52811">rho</a>(<span class="keywordtype">double</span> h);</div>
 <div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>};</div>
 </div>
-<div class="ttc" id="a_option_exceptions_8h_html"><div class="ttname"><a href="_option_exceptions_8h.html">OptionExceptions.h</a></div><div class="ttdoc">contains various methods to deal with the interest rate curve</div></div>
+<div class="ttc" id="a_interest_rate_8h_html"><div class="ttname"><a href="_interest_rate_8h.html">InterestRate.h</a></div><div class="ttdoc">contains various methods to deal with the interest rate curve</div></div>
+<div class="ttc" id="a_option_exceptions_8h_html"><div class="ttname"><a href="_option_exceptions_8h.html">OptionExceptions.h</a></div><div class="ttdoc">contains various exception throwing functions</div></div>
+<div class="ttc" id="a_tridiag_8h_html"><div class="ttname"><a href="_tridiag_8h.html">Tridiag.h</a></div><div class="ttdoc">contains various methods to deal with tridiagoanl matrices</div></div>
 <div class="ttc" id="aclass_interest_rate_html"><div class="ttname"><a href="class_interest_rate.html">InterestRate</a></div><div class="ttdoc">Represents an interest rate model with time-dependent rates.</div><div class="ttdef"><b>Definition</b> InterestRate.h:16</div></div>
 <div class="ttc" id="aclass_option_html"><div class="ttname"><a href="class_option.html">Option</a></div><div class="ttdoc">Represents an option contract with numerical pricing methods.</div><div class="ttdef"><b>Definition</b> Option.h:17</div></div>
 <div class="ttc" id="aclass_option_html_a04eaaaadb0da5ceaf51891082635b553"><div class="ttname"><a href="class_option.html#a04eaaaadb0da5ceaf51891082635b553">Option::Option</a></div><div class="ttdeci">Option(int contract_type, int exercise_type, double T, double K, double T0, unsigned int time_mesh, unsigned int spot_mesh, double S0, std::vector&lt; std::pair&lt; double, double &gt; &gt; interest_rate, double volatility, double tol=0.01, double w=1.2)</div><div class="ttdoc">Constructs an Option object.</div><div class="ttdef"><b>Definition</b> Option.cpp:136</div></div>

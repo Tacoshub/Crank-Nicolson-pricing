@@ -1,5 +1,5 @@
 /**
- * @file OptionExceptions.h
+ * @file Tridiag.h
  * @brief contains various methods to deal with tridiagoanl matrices
  */
 #pragma once

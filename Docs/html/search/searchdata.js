@@ -2,7 +2,7 @@ var indexSectionsWithContent =
 {
   0: "cdgiloprstuvw",
   1: "cilotu",
-  2: "o",
+  2: "iot",
   3: "cdgiloprstuvw"
 };
 
