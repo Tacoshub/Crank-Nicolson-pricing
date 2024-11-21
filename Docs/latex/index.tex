@@ -1,14 +1,98 @@
-\chapter{My Project Documentation}
-\hypertarget{index}{}\label{index}\index{My Project Documentation@{My Project Documentation}}
+\chapter{Advanced Option Pricing Framework}
+\hypertarget{index}{}\label{index}\index{Advanced Option Pricing Framework@{Advanced Option Pricing Framework}}
 \hypertarget{index_intro_sec}{}\doxysection{\texorpdfstring{Introduction}{Introduction}}\label{index_intro_sec}
-This is the introduction to my project.\hypertarget{index_install_sec}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{index_install_sec}
-To install this project, follow these steps\+:
+This project implements a comprehensive framework for pricing financial options using numerical methods. It supports both European and American options, employing finite difference methods for solving the partial differential equations governing option prices. The framework is designed to handle various scenarios, including dynamic interest rates and early exercise features.\hypertarget{index_features_sec}{}\doxysection{\texorpdfstring{Features}{Features}}\label{index_features_sec}
+The key features of this framework include\+:
+
+
 \begin{DoxyItemize}
-\item Step 1
-\item Step 2
-\end{DoxyItemize}\hypertarget{index_usage_sec}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{index_usage_sec}
-Here is how you use it\+:
+\item {\bfseries{Support for Multiple \doxylink{class_option}{Option} Types\+:}}
 \begin{DoxyItemize}
-\item Example 1
-\item Example 2 
+\item European and American options.
+\item Call and Put contracts.
 \end{DoxyItemize}
+\item {\bfseries{Finite Difference Methods\+:}}
+\begin{DoxyItemize}
+\item Tridiagonal matrix computations for efficient numerical solutions.
+\item Iterative methods with penalty adjustments for American options.
+\end{DoxyItemize}
+\item {\bfseries{Sensitivity Analysis (the Greeks)\+:}}
+\begin{DoxyItemize}
+\item Delta, Gamma, Vega, Theta, and Rho are computed using finite differences.
+\end{DoxyItemize}
+\item {\bfseries{Dynamic Interest Rates\+:}}
+\begin{DoxyItemize}
+\item Flexible handling of interest rate curves.
+\end{DoxyItemize}
+\item {\bfseries{Grid-\/\+Based Pricing\+:}}
+\begin{DoxyItemize}
+\item A detailed computational grid for visualizing option price evolution over time and spot prices.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{index_usage_sec}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{index_usage_sec}
+To price an option, create an instance of the {\ttfamily \doxylink{class_option}{Option}} class with appropriate parameters\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Contract and Exercise Types\+:}} Use {\ttfamily 1} for Call and {\ttfamily -\/1} for Put, {\ttfamily 1} for European, and {\ttfamily 0} for American.
+\item {\bfseries{Model Parameters\+:}} Provide maturity ( T ), strike price ( K ), interest rate curve, and volatility.
+\item {\bfseries{Grid Resolution\+:}} Set the number of time and spot price steps for the finite difference grid.
+\end{DoxyItemize}
+
+Example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_option_8h}{Option.h}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main()\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Parameters}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ contract\_type\ =\ 1;\ \textcolor{comment}{//\ Call\ option}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ exercise\_type\ =\ 0;\ \textcolor{comment}{//\ American\ option}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{double}\ T\ =\ 1.0;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Maturity\ (1\ year)}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{double}\ K\ =\ 100.0;\ \ \ \ \ \ \textcolor{comment}{//\ Strike\ price}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{double}\ T0\ =\ 0.0;\ \ \ \ \ \ \ \textcolor{comment}{//\ Start\ time}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ time\_mesh\ =\ 50;\ \textcolor{comment}{//\ Time\ steps}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ spot\_mesh\ =\ 100;\ \textcolor{comment}{//\ Spot\ price\ steps}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{double}\ S0\ =\ 100.0;\ \ \ \ \ \textcolor{comment}{//\ Current\ spot\ price}}
+\DoxyCodeLine{\ \ \ \ std::vector<std::pair<double,\ double>>\ interest\_rate\ =\ \{\{0.0,\ 0.05\},\ \{1.0,\ 0.05\}\};}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{double}\ volatility\ =\ 0.2;\ \textcolor{comment}{//\ Volatility\ (20\%)}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{double}\ tol\ =\ 1e-\/6;\ \ \ \ \ \ \ \textcolor{comment}{//\ Tolerance\ for\ iterative\ methods}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{double}\ w\ =\ 1.5;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Relaxation\ parameter}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Create\ Option\ object}}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{class_option}{Option}}\ opt(contract\_type,\ exercise\_type,\ T,\ K,\ T0,\ time\_mesh,\ spot\_mesh,\ S0,\ interest\_rate,\ volatility,\ tol,\ w);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Compute\ price}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{double}\ price\ =\ opt.price();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Display\ results}}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Option\ Price:\ "{}}\ <<\ price\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ opt.display\_grid();\ \textcolor{comment}{//\ Show\ the\ pricing\ grid}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{index_impl_sec}{}\doxysection{\texorpdfstring{Implementation Details}{Implementation Details}}\label{index_impl_sec}
+
+\begin{DoxyItemize}
+\item {\bfseries{Finite Difference Grid\+:}} A 2D grid of option values is created, with rows representing spot prices and columns representing time steps.
+\item {\bfseries{Boundary Conditions\+:}} Applied to enforce realistic option values at extreme spot prices.
+\item {\bfseries{Tridiagonal Matrix Operations\+:}} Efficiently solve the linear systems arising in finite difference methods.
+\item {\bfseries{Penalty Method\+:}} Handles the early exercise feature of American options.
+\end{DoxyItemize}\hypertarget{index_greeks_sec}{}\doxysection{\texorpdfstring{Sensitivity Analysis}{Sensitivity Analysis}}\label{index_greeks_sec}
+The framework provides methods to compute the following option sensitivities (Greeks)\+:
+\begin{DoxyItemize}
+\item {\bfseries{Delta\+:}} Sensitivity to changes in the underlying asset price.
+\item {\bfseries{Gamma\+:}} Sensitivity of Delta to changes in the underlying asset price.
+\item {\bfseries{Theta\+:}} Sensitivity to the passage of time.
+\item {\bfseries{Vega\+:}} Sensitivity to changes in volatility.
+\item {\bfseries{Rho\+:}} Sensitivity to changes in the interest rate.
+\end{DoxyItemize}\hypertarget{index_future_sec}{}\doxysection{\texorpdfstring{Future Enhancements}{Future Enhancements}}\label{index_future_sec}
+Suggestions for future development\+:
+\begin{DoxyItemize}
+\item Extend support for multi-\/asset options.
+\item Implement Monte Carlo simulations for validation.
+\item Add functionality for barrier and Asian options.
+\item Improve performance with GPU-\/based parallelism.
+\end{DoxyItemize}\hypertarget{index_author_sec}{}\doxysection{\texorpdfstring{Author}{Author}}\label{index_author_sec}
+Developed as part of an advanced computational finance project. This framework is intended for educational purposes and as a foundation for further research in option pricing techniques.
+
+Authors\+: Boccia Flavio Costa Ludovico 

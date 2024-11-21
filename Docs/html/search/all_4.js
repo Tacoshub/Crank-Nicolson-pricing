@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['lower_0',['Lower',['../class_lower.html',1,'Lower'],['../class_lower.html#ae446a86b8a51aee8a271a61db66670ca',1,'Lower::Lower()']]]
+  ['features_0',['Features',['../index.html#features_sec',1,'']]],
+  ['framework_1',['Advanced Option Pricing Framework',['../index.html',1,'']]],
+  ['future_20enhancements_2',['Future Enhancements',['../index.html#future_sec',1,'']]]
 ];
