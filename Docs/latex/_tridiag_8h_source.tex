@@ -1,90 +1,89 @@
-\doxysection{C\+:/\+Users/flavi/source/repos/\+Crank-\/\+Nicolson-\/pricing-\/new/\+Tridiag.h}
+\doxysection{C\+:/\+Users/\+Admin/\+One\+Drive/\+Desktop/\+UNIVERSITÁ/\+LEZIONI/\+ANNO 2024-\/2025/\+PROJECT INFORMATIQUE/\+PROGETTO/\+Tridiag.h}
 \hypertarget{_tridiag_8h_source}{}\label{_tridiag_8h_source}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ }
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
-\DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_lower}{Lower}}\ \{}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ std::vector<double>\ subdiag\_;\ }
+\DoxyCodeLine{00014\ \ \ \ \ std::vector<double>\ diag\_;\ \ \ }
 \DoxyCodeLine{00015\ }
-\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_lower}{Lower}}\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{class_lower_ae446a86b8a51aee8a271a61db66670ca}{Lower}}(std::vector<double>\ subdiag,\ std::vector<double>\ diag)\ :\ subdiag\_(subdiag),\ diag\_(diag)\ \{\}}
 \DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \ \ \ \ std::vector<double>\ subdiag\_;\ }
-\DoxyCodeLine{00026\ \ \ \ \ std::vector<double>\ diag\_;\ \ \ \ }
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{class_lower_ae446a86b8a51aee8a271a61db66670ca}{Lower}}(std::vector<double>\ subdiag,\ std::vector<double>\ diag)\ :\ subdiag\_(subdiag),\ diag\_(diag)\ \{\}}
-\DoxyCodeLine{00037\ }
-\DoxyCodeLine{00047\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{class_lower_a5c0b07d37bacb1c93d8a299a71a5fb6b}{solve}}(std::vector<double>\ b)\ \{}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ std::vector<double>\ x(b.size());}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ x[0]\ =\ b[0]\ /\ diag\_[0];}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ ii\ =\ 1;\ ii\ <\ b.size();\ ii++)\ \{}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ x[ii]\ =\ (b[ii]\ -\/\ subdiag\_[ii\ -\/\ 1]\ *\ x[ii\ -\/\ 1])\ /\ diag\_[ii];}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ x;}
-\DoxyCodeLine{00054\ \ \ \ \ \}}
-\DoxyCodeLine{00055\ \};}
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00064\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_upper}{Upper}}\ \{}
-\DoxyCodeLine{00065\ }
-\DoxyCodeLine{00066\ \ \ \ \ std::vector<double>\ diag\_;\ \ \ \ \ \ }
-\DoxyCodeLine{00067\ \ \ \ \ std::vector<double>\ superdiag\_;\ }
-\DoxyCodeLine{00068\ }
-\DoxyCodeLine{00069\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00070\ }
-\DoxyCodeLine{00077\ \ \ \ \ \mbox{\hyperlink{class_upper_ac6a97f6040df4558c174a64e874cf8d7}{Upper}}(std::vector<double>\ diag,\ std::vector<double>\ superdiag)\ :\ diag\_(diag),\ superdiag\_(superdiag)\ \{\}}
-\DoxyCodeLine{00078\ }
-\DoxyCodeLine{00088\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{class_upper_a0455020d298314271de84a8b235655e0}{solve}}(std::vector<double>\ b)\ \{}
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ b.size();}
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ std::vector<double>\ x(n);}
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ x[n\ -\/\ 1]\ =\ b[n\ -\/\ 1]\ /\ diag\_[n\ -\/\ 1];}
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ ii\ =\ n\ -\/\ 2;\ ii\ >=\ 0;\ ii-\/-\/)\ \{}
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ x[ii]\ =\ (b[ii]\ -\/\ superdiag\_[ii]\ *\ x[ii\ +\ 1])\ /\ diag\_[ii];}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ x;}
-\DoxyCodeLine{00096\ \ \ \ \ \}}
-\DoxyCodeLine{00097\ \};}
+\DoxyCodeLine{00030\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{class_lower_a5c0b07d37bacb1c93d8a299a71a5fb6b}{solve}}(std::vector<double>\ b)\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ std::vector<double>\ x(b.size());}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ x[0]\ =\ b[0]\ /\ diag\_[0];}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ ii\ =\ 1;\ ii\ <\ b.size();\ ii++)\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ x[ii]\ =\ (b[ii]\ -\/\ subdiag\_[ii\ -\/\ 1]\ *\ x[ii\ -\/\ 1])\ /\ diag\_[ii];}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ x;}
+\DoxyCodeLine{00037\ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_upper}{Upper}}\ \{}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ std::vector<double>\ diag\_;\ \ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ std::vector<double>\ superdiag\_;\ }
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{class_upper_ac6a97f6040df4558c174a64e874cf8d7}{Upper}}(std::vector<double>\ diag,\ std::vector<double>\ superdiag)\ :\ diag\_(diag),\ superdiag\_(superdiag)\ \{\}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00063\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{class_upper_a0455020d298314271de84a8b235655e0}{solve}}(std::vector<double>\ b)\ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ b.size();}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ std::vector<double>\ x(n);}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ x[n\ -\/\ 1]\ =\ b[n\ -\/\ 1]\ /\ diag\_[n\ -\/\ 1];}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ ii\ =\ n\ -\/\ 2;\ ii\ >=\ 0;\ ii-\/-\/)\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ x[ii]\ =\ (b[ii]\ -\/\ superdiag\_[ii]\ *\ x[ii\ +\ 1])\ /\ diag\_[ii];}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ x;}
+\DoxyCodeLine{00071\ \ \ \ \ \}}
+\DoxyCodeLine{00072\ \};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00078\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_tridiag}{Tridiag}}\ \{}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ std::vector<double>\ subdiag\_;\ \ \ }
+\DoxyCodeLine{00081\ \ \ \ \ std::vector<double>\ diag\_;\ \ \ \ \ \ }
+\DoxyCodeLine{00082\ \ \ \ \ std::vector<double>\ superdiag\_;\ }
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00089\ \ \ \ \ \mbox{\hyperlink{class_tridiag_a3f03616b7a055e94b06e2926d568b151}{Tridiag}}()\ \{\}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00097\ \ \ \ \ \mbox{\hyperlink{class_tridiag_a3f03616b7a055e94b06e2926d568b151}{Tridiag}}(std::vector<double>\ subdiag,\ std::vector<double>\ diag,\ std::vector<double>\ superdiag);}
 \DoxyCodeLine{00098\ }
-\DoxyCodeLine{00106\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_tridiag}{Tridiag}}\ \{}
-\DoxyCodeLine{00107\ }
-\DoxyCodeLine{00108\ \ \ \ \ std::vector<double>\ subdiag\_;\ \ \ \ }
-\DoxyCodeLine{00109\ \ \ \ \ std::vector<double>\ diag\_;\ \ \ \ \ \ \ }
-\DoxyCodeLine{00110\ \ \ \ \ std::vector<double>\ superdiag\_;\ \ }
-\DoxyCodeLine{00111\ }
-\DoxyCodeLine{00112\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00113\ }
-\DoxyCodeLine{00117\ \ \ \ \ \mbox{\hyperlink{class_tridiag_a3f03616b7a055e94b06e2926d568b151}{Tridiag}}()\ \{\}}
+\DoxyCodeLine{00104\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{class_tridiag_afb1af67e1fd5da91f900b91d77ebec81}{operator*}}(std::vector<double>\ x);}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00111\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{class_tridiag_a912fa781039d5cb3eb969b62f7f3ad7e}{solve}}(std::vector<double>\ b);}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_tridiag_a3e50988bd98cc7d7dfdd0b8040584732}{size}}()\ \{\ \textcolor{keywordflow}{return}\ diag\_.size();\ \}}
 \DoxyCodeLine{00118\ }
-\DoxyCodeLine{00126\ \ \ \ \ \mbox{\hyperlink{class_tridiag_a3f03616b7a055e94b06e2926d568b151}{Tridiag}}(std::vector<double>\ subdiag,\ std::vector<double>\ diag,\ std::vector<double>\ superdiag);}
-\DoxyCodeLine{00127\ }
-\DoxyCodeLine{00138\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{class_tridiag_afb1af67e1fd5da91f900b91d77ebec81}{operator*}}(std::vector<double>\ x);}
-\DoxyCodeLine{00139\ }
-\DoxyCodeLine{00151\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{class_tridiag_a912fa781039d5cb3eb969b62f7f3ad7e}{solve}}(std::vector<double>\ b);}
-\DoxyCodeLine{00152\ }
-\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_tridiag_a3e50988bd98cc7d7dfdd0b8040584732}{size}}()\ \{\ \textcolor{keywordflow}{return}\ diag\_.size();\ \}}
-\DoxyCodeLine{00159\ }
-\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tridiag_ac988fc77f8bb198f967611f78c08239c}{display}}()\ \{}
-\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ n\ =\ diag\_.size();}
-\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ n;\ ++i)\ \{}
-\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ j\ =\ 0;\ j\ <\ n;\ ++j)\ \{}
-\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ ==\ j)\ \{}
-\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ std::setw(8)\ <<\ diag\_[i]\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
-\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (i\ ==\ j\ +\ 1)\ \{}
-\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ std::setw(8)\ <<\ subdiag\_[j]\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
-\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (j\ ==\ i\ +\ 1)\ \{}
-\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ std::setw(8)\ <<\ superdiag\_[i]\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
-\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ std::setw(8)\ <<\ \textcolor{stringliteral}{"{}0.00"{}}\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
-\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ std::endl;}
-\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00185\ \ \ \ \ \}}
-\DoxyCodeLine{00186\ \};}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tridiag_ac988fc77f8bb198f967611f78c08239c}{display}}()\ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ n\ =\ diag\_.size();}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ n;\ ++i)\ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ j\ =\ 0;\ j\ <\ n;\ ++j)\ \{}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ ==\ j)\ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ std::setw(8)\ <<\ diag\_[i]\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (i\ ==\ j\ +\ 1)\ \{}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ std::setw(8)\ <<\ subdiag\_[j]\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (j\ ==\ i\ +\ 1)\ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ std::setw(8)\ <<\ superdiag\_[i]\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ std::setw(8)\ <<\ \textcolor{stringliteral}{"{}0.00"{}}\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00141\ \ \ \ \ \}}
+\DoxyCodeLine{00142\ \};}
 
 \end{DoxyCode}

@@ -2,7 +2,7 @@
 \hypertarget{class_upper}{}\label{class_upper}\index{Upper@{Upper}}
 
 
-Represents the upper triangular part of a matrix and provides a method for solving linear systems.  
+Represents an upper triangular matrix and provides functionality to solve linear equations.  
 
 
 
@@ -13,15 +13,13 @@ Represents the upper triangular part of a matrix and provides a method for solvi
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_upper_ac6a97f6040df4558c174a64e874cf8d7}{Upper}} (std\+::vector$<$ double $>$ diag, std\+::vector$<$ double $>$ superdiag)
-\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_upper}{Upper} object with the given diagonal and superdiagonal elements. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_upper}{Upper} object. \end{DoxyCompactList}\item 
 std\+::vector$<$ double $>$ \mbox{\hyperlink{class_upper_a0455020d298314271de84a8b235655e0}{solve}} (std\+::vector$<$ double $>$ b)
-\begin{DoxyCompactList}\small\item\em Solves a system of linear equations using backward substitution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Solves the system of equations for an upper triangular matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Represents the upper triangular part of a matrix and provides a method for solving linear systems. 
-
-The {\ttfamily \doxylink{class_upper}{Upper}} class models an upper triangular matrix (with non-\/zero entries on the diagonal and above it) and provides a method to solve systems of linear equations using backward substitution. 
+Represents an upper triangular matrix and provides functionality to solve linear equations. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_upper_ac6a97f6040df4558c174a64e874cf8d7}\index{Upper@{Upper}!Upper@{Upper}}
@@ -32,13 +30,13 @@ Upper\+::\+Upper (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$}]{d
 
 
 
-Constructs an \doxylink{class_upper}{Upper} object with the given diagonal and superdiagonal elements. 
+Constructs an \doxylink{class_upper}{Upper} object. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em diag} & A vector containing the diagonal elements. \\
+{\em diag} & Vector containing diagonal elements. \\
 \hline
-{\em superdiag} & A vector containing the superdiagonal elements. \\
+{\em superdiag} & Vector containing superdiagonal elements. \\
 \hline
 \end{DoxyParams}
 
@@ -52,20 +50,18 @@ std\+::vector$<$ double $>$ Upper\+::solve (\begin{DoxyParamCaption}\item[{std\+
 
 
 
-Solves a system of linear equations using backward substitution. 
-
-This method solves the system {\ttfamily Ux = b}, where {\ttfamily U} is an upper triangular matrix and {\ttfamily b} is the right-\/hand side vector. The solution is computed using backward substitution.
+Solves the system of equations for an upper triangular matrix. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em b} & The right-\/hand side vector of the system of equations. \\
+{\em b} & Right-\/hand side vector. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A vector containing the solution to the system of equations. 
+Solution vector x. 
 \end{DoxyReturn}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/\+Users/flavi/source/repos/\+Crank-\/\+Nicolson-\/pricing-\/new/Tridiag.\+h\end{DoxyCompactItemize}
+C\+:/\+Users/\+Admin/\+One\+Drive/\+Desktop/\+UNIVERSITÁ/\+LEZIONI/\+ANNO 2024-\/2025/\+PROJECT INFORMATIQUE/\+PROGETTO/Tridiag.\+h\end{DoxyCompactItemize}

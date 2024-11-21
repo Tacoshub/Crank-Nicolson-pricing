@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['upper_0',['Upper',['../class_upper.html',1,'']]]
+  ['tridiag_0',['Tridiag',['../class_tridiag.html',1,'']]]
 ];

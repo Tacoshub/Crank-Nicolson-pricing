@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Cran: Lower Class Reference</title>
+<title>Crank–Nicolson pricer: Lower Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Cran
+   <div id="projectname">Crank–Nicolson pricer
    </div>
   </td>
  </tr>
@@ -91,7 +91,7 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 
-<p>Represents the lower triangular part of a matrix and provides a method for solving linear systems.  
+<p>Represents a lower triangular matrix and provides functionality to solve linear equations.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_tridiag_8h_source.html">Tridiag.h</a>&gt;</code></p>
@@ -99,15 +99,14 @@ $(function(){ initResizable(false); });
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae446a86b8a51aee8a271a61db66670ca" id="r_ae446a86b8a51aee8a271a61db66670ca"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae446a86b8a51aee8a271a61db66670ca">Lower</a> (std::vector&lt; double &gt; subdiag, std::vector&lt; double &gt; diag)</td></tr>
-<tr class="memdesc:ae446a86b8a51aee8a271a61db66670ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="class_lower.html" title="Represents the lower triangular part of a matrix and provides a method for solving linear systems.">Lower</a> object with the given subdiagonal and diagonal elements.  <br /></td></tr>
+<tr class="memdesc:ae446a86b8a51aee8a271a61db66670ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="class_lower.html" title="Represents a lower triangular matrix and provides functionality to solve linear equations.">Lower</a> object.  <br /></td></tr>
 <tr class="separator:ae446a86b8a51aee8a271a61db66670ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c0b07d37bacb1c93d8a299a71a5fb6b" id="r_a5c0b07d37bacb1c93d8a299a71a5fb6b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c0b07d37bacb1c93d8a299a71a5fb6b">solve</a> (std::vector&lt; double &gt; b)</td></tr>
-<tr class="memdesc:a5c0b07d37bacb1c93d8a299a71a5fb6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves a system of linear equations using forward substitution.  <br /></td></tr>
+<tr class="memdesc:a5c0b07d37bacb1c93d8a299a71a5fb6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the system of equations for a lower triangular matrix.  <br /></td></tr>
 <tr class="separator:a5c0b07d37bacb1c93d8a299a71a5fb6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Represents the lower triangular part of a matrix and provides a method for solving linear systems. </p>
-<p>The <code><a class="el" href="class_lower.html" title="Represents the lower triangular part of a matrix and provides a method for solving linear systems.">Lower</a></code> class models a lower triangular matrix (with non-zero entries on the diagonal and below it) and provides a method to solve systems of linear equations using forward substitution. </p>
+<div class="textblock"><p>Represents a lower triangular matrix and provides functionality to solve linear equations. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae446a86b8a51aee8a271a61db66670ca" name="ae446a86b8a51aee8a271a61db66670ca"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae446a86b8a51aee8a271a61db66670ca">&#9670;&#160;</a></span>Lower()</h2>
@@ -136,11 +135,11 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Constructs a <a class="el" href="class_lower.html" title="Represents the lower triangular part of a matrix and provides a method for solving linear systems.">Lower</a> object with the given subdiagonal and diagonal elements. </p>
+<p>Constructs a <a class="el" href="class_lower.html" title="Represents a lower triangular matrix and provides functionality to solve linear equations.">Lower</a> object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">subdiag</td><td>A vector containing the subdiagonal elements. </td></tr>
-    <tr><td class="paramname">diag</td><td>A vector containing the diagonal elements. </td></tr>
+    <tr><td class="paramname">subdiag</td><td>Vector containing subdiagonal elements. </td></tr>
+    <tr><td class="paramname">diag</td><td>Vector containing diagonal elements. </td></tr>
   </table>
   </dd>
 </dl>
@@ -171,20 +170,19 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Solves a system of linear equations using forward substitution. </p>
-<p>This method solves the system <code>Lx = b</code>, where <code>L</code> is a lower triangular matrix and <code>b</code> is the right-hand side vector. The solution is computed using forward substitution.</p>
+<p>Solves the system of equations for a lower triangular matrix. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">b</td><td>The right-hand side vector of the system of equations. </td></tr>
+    <tr><td class="paramname">b</td><td>Right-hand side vector. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A vector containing the solution to the system of equations. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Solution vector x. </dd></dl>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/flavi/source/repos/Crank-Nicolson-pricing-new/<a class="el" href="_tridiag_8h_source.html">Tridiag.h</a></li>
+<li>C:/Users/Admin/OneDrive/Desktop/UNIVERSITÁ/LEZIONI/ANNO 2024-2025/PROJECT INFORMATIQUE/PROGETTO/<a class="el" href="_tridiag_8h_source.html">Tridiag.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

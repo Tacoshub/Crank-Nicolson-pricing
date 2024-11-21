@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Cran: InterestRate Class Reference</title>
+<title>Crank–Nicolson pricer: InterestRate Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Cran
+   <div id="projectname">Crank–Nicolson pricer
    </div>
   </td>
  </tr>
@@ -91,7 +91,7 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 
-<p>Represents a collection of interest rate data and provides methods for interpolation and integration.  
+<p>Represents an interest rate model with time-dependent rates.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_interest_rate_8h_source.html">InterestRate.h</a>&gt;</code></p>
@@ -102,18 +102,24 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a9d5fc5b93ddf0d8d635793dc4b9ef310"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <br /></td></tr>
 <tr class="separator:a9d5fc5b93ddf0d8d635793dc4b9ef310"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6b128b03bc4568a555ad2d5f042c3d3" id="r_ac6b128b03bc4568a555ad2d5f042c3d3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac6b128b03bc4568a555ad2d5f042c3d3">InterestRate</a> (std::vector&lt; std::pair&lt; double, double &gt; &gt; interest_rate)</td></tr>
-<tr class="memdesc:ac6b128b03bc4568a555ad2d5f042c3d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameterized constructor.  <br /></td></tr>
+<tr class="memdesc:ac6b128b03bc4568a555ad2d5f042c3d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an <a class="el" href="class_interest_rate.html" title="Represents an interest rate model with time-dependent rates.">InterestRate</a> object with a given interest rate curve.  <br /></td></tr>
 <tr class="separator:ac6b128b03bc4568a555ad2d5f042c3d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87e5b5412da6472b5e58efce3dc0033e" id="r_a87e5b5412da6472b5e58efce3dc0033e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87e5b5412da6472b5e58efce3dc0033e">operator()</a> (double t) const</td></tr>
-<tr class="memdesc:a87e5b5412da6472b5e58efce3dc0033e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interpolates the interest rate at a given time.  <br /></td></tr>
+<tr class="memdesc:a87e5b5412da6472b5e58efce3dc0033e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluates the interest rate at a given time.  <br /></td></tr>
 <tr class="separator:a87e5b5412da6472b5e58efce3dc0033e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47ba55d37953c6941d9519024c42f94f" id="r_a47ba55d37953c6941d9519024c42f94f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a47ba55d37953c6941d9519024c42f94f">integral</a> (double t0, double tf, int n=1000) const</td></tr>
-<tr class="memdesc:a47ba55d37953c6941d9519024c42f94f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the integral of the interest rate function over a given interval using Simpson's Rule.  <br /></td></tr>
-<tr class="separator:a47ba55d37953c6941d9519024c42f94f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07373758742090d58f97adb9690f07a7" id="r_a07373758742090d58f97adb9690f07a7"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a07373758742090d58f97adb9690f07a7">integral</a> (double t0) const</td></tr>
+<tr class="memdesc:a07373758742090d58f97adb9690f07a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the integral of the interest rate curve from 0 to a given time ( t_0 ).  <br /></td></tr>
+<tr class="separator:a07373758742090d58f97adb9690f07a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a585073f03da291630cee96801f3b0261" id="r_a585073f03da291630cee96801f3b0261"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a585073f03da291630cee96801f3b0261">operator+=</a> (double h)</td></tr>
+<tr class="memdesc:a585073f03da291630cee96801f3b0261"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increments all interest rates by a given value.  <br /></td></tr>
+<tr class="separator:a585073f03da291630cee96801f3b0261"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9fee4e94dbf39d7079911e20fbd1ba3" id="r_ab9fee4e94dbf39d7079911e20fbd1ba3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab9fee4e94dbf39d7079911e20fbd1ba3">operator-=</a> (double h)</td></tr>
+<tr class="memdesc:ab9fee4e94dbf39d7079911e20fbd1ba3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrements all interest rates by a given value.  <br /></td></tr>
+<tr class="separator:ab9fee4e94dbf39d7079911e20fbd1ba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Represents a collection of interest rate data and provides methods for interpolation and integration. </p>
-<p>The <code><a class="el" href="class_interest_rate.html" title="Represents a collection of interest rate data and provides methods for interpolation and integration.">InterestRate</a></code> class stores a set of interest rate data as pairs of time and rate. It offers functionality to interpolate interest rates at any given time using linear interpolation, as well as to compute the integral of the interest rate function over a specified interval using Simpson's rule. </p>
+<div class="textblock"><p>Represents an interest rate model with time-dependent rates. </p>
+<p>This class provides functionality to evaluate interest rates, compute integrals, and modify rates. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a9d5fc5b93ddf0d8d635793dc4b9ef310" name="a9d5fc5b93ddf0d8d635793dc4b9ef310"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9d5fc5b93ddf0d8d635793dc4b9ef310">&#9670;&#160;</a></span>InterestRate() <span class="overload">[1/2]</span></h2>
@@ -139,7 +145,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Default constructor. </p>
-<p>This constructor initializes an empty <code><a class="el" href="class_interest_rate.html" title="Represents a collection of interest rate data and provides methods for interpolation and integration.">InterestRate</a></code> object with no data. </p>
+<p>Creates an empty interest rate object. </p>
 
 </div>
 </div>
@@ -166,11 +172,10 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Parameterized constructor. </p>
-<p>This constructor initializes the <code><a class="el" href="class_interest_rate.html" title="Represents a collection of interest rate data and provides methods for interpolation and integration.">InterestRate</a></code> object with a set of interest rate data.</p>
+<p>Constructs an <a class="el" href="class_interest_rate.html" title="Represents an interest rate model with time-dependent rates.">InterestRate</a> object with a given interest rate curve. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">interest_rate</td><td>A vector of pairs where each pair contains a time and its corresponding interest rate. </td></tr>
+    <tr><td class="paramname">interest_rate</td><td>Vector of (time, rate) pairs. </td></tr>
   </table>
   </dd>
 </dl>
@@ -178,8 +183,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a47ba55d37953c6941d9519024c42f94f" name="a47ba55d37953c6941d9519024c42f94f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a47ba55d37953c6941d9519024c42f94f">&#9670;&#160;</a></span>integral()</h2>
+<a id="a07373758742090d58f97adb9690f07a7" name="a07373758742090d58f97adb9690f07a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07373758742090d58f97adb9690f07a7">&#9670;&#160;</a></span>integral()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -187,55 +192,29 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">double InterestRate::integral </td>
           <td>(</td>
-          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>a</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>b</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>n</em></span><span class="paramdefsep"> = </span><span class="paramdefval">1000</span>&#160;) const</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>t0</em></span></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Calculates the integral of the interest rate function over a given interval using Simpson's Rule. </p>
-<p>Calculates the integral of the interest rate function over a specified interval using Simpson's Rule.</p>
-<p>This function approximates the integral of the interest rate function over the interval [t0, tf] using Simpson's rule. The function ensures that the number of intervals (n) is even, and it calculates the integral accordingly.</p>
+<p>Computes the integral of the interest rate curve from 0 to a given time ( t_0 ). </p>
+<p>Uses numerical integration to approximate the integral of the interest rate function over the specified interval.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">t0</td><td>The start of the integration interval. </td></tr>
-    <tr><td class="paramname">tf</td><td>The end of the integration interval. </td></tr>
-    <tr><td class="paramname">n</td><td>The number of intervals for Simpson's rule (defaults to 1000, must be even). </td></tr>
+    <tr><td class="paramname">t0</td><td>The upper limit of integration. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The approximate integral of the interest rate function over [t0, tf]. </dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">std::invalid_argument</td><td>if the number of intervals n is odd.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>This function approximates the integral of the interest rate function over the interval [a, b] using Simpson's rule, which is a method of numerical integration. The function first ensures that the number of intervals (n) is even, and then performs the integration.</p>
+<dl class="section return"><dt>Returns</dt><dd>The integral value from 0 to ( t_0 ).</dd></dl>
+<p>Uses the <code>support_integral</code> function to compute the area under each line segment of the curve. Handles cases where ( t_0 ) lies within an interval by partially integrating that segment.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">a</td><td>The start of the integration interval. </td></tr>
-    <tr><td class="paramname">b</td><td>The end of the integration interval. </td></tr>
-    <tr><td class="paramname">n</td><td>The number of intervals for Simpson's rule (must be even). </td></tr>
+    <tr><td class="paramname">t0</td><td>The upper limit of integration. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The approximate integral of the interest rate function over [a, b]. </dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">std::invalid_argument</td><td>if the number of intervals n is odd. </td></tr>
-  </table>
-  </dd>
-</dl>
+<dl class="section return"><dt>Returns</dt><dd>The integral value from 0 to ( t_0 ). </dd></dl>
 
 </div>
 </div>
@@ -254,33 +233,83 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Interpolates the interest rate at a given time. </p>
-<p>Calculates the interest rate at time t using linear interpolation between two points.</p>
-<p>This function calculates the interest rate at a specific time <code>t</code> by performing linear interpolation between two points in the <code>interest_rate_</code> container.</p>
+<p>Evaluates the interest rate at a given time. </p>
+<p>Evaluates the interest rate at a given time using linear interpolation.</p>
+<p>This operator interpolates the interest rate based on the provided time, ( t ).</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">t</td><td>The time at which the interest rate is to be calculated. </td></tr>
+    <tr><td class="paramname">t</td><td>The time at which to evaluate the interest rate. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The interpolated interest rate at time t. </dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname"><a class="el" href="class_invalid_time.html" title="Exception thrown when an invalid time value is encountered.">InvalidTime</a></td><td>if the time t is outside the bounds of the defined interest rate intervals.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>This function interpolates the interest rate for a given time <code>t</code> by finding the two closest points in the <code>interest_rate_</code> container and performing a linear interpolation between them.</p>
+<dl class="section return"><dt>Returns</dt><dd>The interest rate at time ( t ).</dd></dl>
+<p>Finds the interval ([t_i, t_{i+1}]) where ( t ) lies and performs linear interpolation between the corresponding rates.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">t</td><td>The time at which the interest rate is to be calculated. </td></tr>
+    <tr><td class="paramname">t</td><td>The time at which to evaluate the interest rate. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The interpolated interest rate at time t. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The interpolated interest rate at time ( t ). </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="class_invalid_time.html" title="Exception thrown when an invalid time value is encountered.">InvalidTime</a></td><td>if the time t is outside the bounds of the defined interest rate intervals. </td></tr>
+    <tr><td class="paramname"><a class="el" href="class_invalid_time.html" title="Exception thrown when an invalid time value is encountered.">InvalidTime</a></td><td>If ( t ) is outside the bounds of the interest rate curve. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a585073f03da291630cee96801f3b0261" name="a585073f03da291630cee96801f3b0261"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a585073f03da291630cee96801f3b0261">&#9670;&#160;</a></span>operator+=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void InterestRate::operator+= </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>h</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Increments all interest rates by a given value. </p>
+<p>Increments all interest rates in the curve by a constant value.</p>
+<p>Adds ( h ) to the rates of all time points in the interest rate curve.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">h</td><td>The value to increment the rates by.</td></tr>
+    <tr><td class="paramname">h</td><td>The value to add to all interest rates. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab9fee4e94dbf39d7079911e20fbd1ba3" name="ab9fee4e94dbf39d7079911e20fbd1ba3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9fee4e94dbf39d7079911e20fbd1ba3">&#9670;&#160;</a></span>operator-=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void InterestRate::operator-= </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>h</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Decrements all interest rates by a given value. </p>
+<p>Decrements all interest rates in the curve by a constant value.</p>
+<p>Subtracts ( h ) from the rates of all time points in the interest rate curve.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">h</td><td>The value to decrement the rates by.</td></tr>
+    <tr><td class="paramname">h</td><td>The value to subtract from all interest rates. </td></tr>
   </table>
   </dd>
 </dl>
@@ -288,8 +317,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/flavi/source/repos/Crank-Nicolson-pricing-new/<a class="el" href="_interest_rate_8h_source.html">InterestRate.h</a></li>
-<li>C:/Users/flavi/source/repos/Crank-Nicolson-pricing-new/<a class="el" href="_interest_rate_8cpp.html">InterestRate.cpp</a></li>
+<li>C:/Users/Admin/OneDrive/Desktop/UNIVERSITÁ/LEZIONI/ANNO 2024-2025/PROJECT INFORMATIQUE/PROGETTO/<a class="el" href="_interest_rate_8h_source.html">InterestRate.h</a></li>
+<li>C:/Users/Admin/OneDrive/Desktop/UNIVERSITÁ/LEZIONI/ANNO 2024-2025/PROJECT INFORMATIQUE/PROGETTO/<b>InterestRate.cpp</b></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

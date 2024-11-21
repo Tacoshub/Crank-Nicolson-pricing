@@ -45,4 +45,10 @@ public:
 	void display_grid();
 
 	double price();
+
+	double delta(double h);
+	double gamma(double h);
+	double theta(double h);
+	double vega(double h);
+	double rho(double h);
 };

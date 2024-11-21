@@ -2,7 +2,7 @@
 \hypertarget{class_interest_rate}{}\label{class_interest_rate}\index{InterestRate@{InterestRate}}
 
 
-Represents a collection of interest rate data and provides methods for interpolation and integration.  
+Represents an interest rate model with time-\/dependent rates.  
 
 
 
@@ -15,17 +15,21 @@ Represents a collection of interest rate data and provides methods for interpola
 \mbox{\hyperlink{class_interest_rate_a9d5fc5b93ddf0d8d635793dc4b9ef310}{Interest\+Rate}} ()
 \begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_interest_rate_ac6b128b03bc4568a555ad2d5f042c3d3}{Interest\+Rate}} (std\+::vector$<$ std\+::pair$<$ double, double $>$ $>$ interest\+\_\+rate)
-\begin{DoxyCompactList}\small\item\em Parameterized constructor. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_interest_rate}{Interest\+Rate} object with a given interest rate curve. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{class_interest_rate_a87e5b5412da6472b5e58efce3dc0033e}{operator()}} (double t) const
-\begin{DoxyCompactList}\small\item\em Interpolates the interest rate at a given time. \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{class_interest_rate_a47ba55d37953c6941d9519024c42f94f}{integral}} (double t0, double tf, int n=1000) const
-\begin{DoxyCompactList}\small\item\em Calculates the integral of the interest rate function over a given interval using Simpson\textquotesingle{}s Rule. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Evaluates the interest rate at a given time. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_interest_rate_a07373758742090d58f97adb9690f07a7}{integral}} (double t0) const
+\begin{DoxyCompactList}\small\item\em Computes the integral of the interest rate curve from 0 to a given time ( t\+\_\+0 ). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_interest_rate_a585073f03da291630cee96801f3b0261}{operator+=}} (double h)
+\begin{DoxyCompactList}\small\item\em Increments all interest rates by a given value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_interest_rate_ab9fee4e94dbf39d7079911e20fbd1ba3}{operator-\/=}} (double h)
+\begin{DoxyCompactList}\small\item\em Decrements all interest rates by a given value. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Represents a collection of interest rate data and provides methods for interpolation and integration. 
+Represents an interest rate model with time-\/dependent rates. 
 
-The {\ttfamily \doxylink{class_interest_rate}{Interest\+Rate}} class stores a set of interest rate data as pairs of time and rate. It offers functionality to interpolate interest rates at any given time using linear interpolation, as well as to compute the integral of the interest rate function over a specified interval using Simpson\textquotesingle{}s rule. 
+This class provides functionality to evaluate interest rates, compute integrals, and modify rates. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_interest_rate_a9d5fc5b93ddf0d8d635793dc4b9ef310}\index{InterestRate@{InterestRate}!InterestRate@{InterestRate}}
@@ -38,7 +42,7 @@ Interest\+Rate\+::\+Interest\+Rate (\begin{DoxyParamCaption}{}{}\end{DoxyParamCa
 
 Default constructor. 
 
-This constructor initializes an empty {\ttfamily \doxylink{class_interest_rate}{Interest\+Rate}} object with no data. \Hypertarget{class_interest_rate_ac6b128b03bc4568a555ad2d5f042c3d3}\index{InterestRate@{InterestRate}!InterestRate@{InterestRate}}
+Creates an empty interest rate object. \Hypertarget{class_interest_rate_ac6b128b03bc4568a555ad2d5f042c3d3}\index{InterestRate@{InterestRate}!InterestRate@{InterestRate}}
 \index{InterestRate@{InterestRate}!InterestRate@{InterestRate}}
 \doxysubsubsection{\texorpdfstring{InterestRate()}{InterestRate()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily \label{class_interest_rate_ac6b128b03bc4568a555ad2d5f042c3d3} 
@@ -46,68 +50,46 @@ Interest\+Rate\+::\+Interest\+Rate (\begin{DoxyParamCaption}\item[{std\+::vector
 
 
 
-Parameterized constructor. 
-
-This constructor initializes the {\ttfamily \doxylink{class_interest_rate}{Interest\+Rate}} object with a set of interest rate data.
+Constructs an \doxylink{class_interest_rate}{Interest\+Rate} object with a given interest rate curve. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em interest\+\_\+rate} & A vector of pairs where each pair contains a time and its corresponding interest rate. \\
+{\em interest\+\_\+rate} & Vector of (time, rate) pairs. \\
 \hline
 \end{DoxyParams}
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{class_interest_rate_a47ba55d37953c6941d9519024c42f94f}\index{InterestRate@{InterestRate}!integral@{integral}}
+\Hypertarget{class_interest_rate_a07373758742090d58f97adb9690f07a7}\index{InterestRate@{InterestRate}!integral@{integral}}
 \index{integral@{integral}!InterestRate@{InterestRate}}
 \doxysubsubsection{\texorpdfstring{integral()}{integral()}}
-{\footnotesize\ttfamily \label{class_interest_rate_a47ba55d37953c6941d9519024c42f94f} 
-double Interest\+Rate\+::integral (\begin{DoxyParamCaption}\item[{double}]{a}{, }\item[{double}]{b}{, }\item[{int}]{n}{ = {\ttfamily 1000}}\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily \label{class_interest_rate_a07373758742090d58f97adb9690f07a7} 
+double Interest\+Rate\+::integral (\begin{DoxyParamCaption}\item[{double}]{t0}{}\end{DoxyParamCaption}) const}
 
 
 
-Calculates the integral of the interest rate function over a given interval using Simpson\textquotesingle{}s Rule. 
+Computes the integral of the interest rate curve from 0 to a given time ( t\+\_\+0 ). 
 
-Calculates the integral of the interest rate function over a specified interval using Simpson\textquotesingle{}s Rule.
-
-This function approximates the integral of the interest rate function over the interval \mbox{[}t0, tf\mbox{]} using Simpson\textquotesingle{}s rule. The function ensures that the number of intervals (n) is even, and it calculates the integral accordingly.
-
-
-\begin{DoxyParams}{Parameters}
-{\em t0} & The start of the integration interval. \\
-\hline
-{\em tf} & The end of the integration interval. \\
-\hline
-{\em n} & The number of intervals for Simpson\textquotesingle{}s rule (defaults to 1000, must be even). \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-The approximate integral of the interest rate function over \mbox{[}t0, tf\mbox{]}. 
-\end{DoxyReturn}
-
-\begin{DoxyExceptions}{Exceptions}
-{\em std\+::invalid\+\_\+argument} & if the number of intervals n is odd.\\
-\hline
-\end{DoxyExceptions}
-This function approximates the integral of the interest rate function over the interval \mbox{[}a, b\mbox{]} using Simpson\textquotesingle{}s rule, which is a method of numerical integration. The function first ensures that the number of intervals (n) is even, and then performs the integration.
+Uses numerical integration to approximate the integral of the interest rate function over the specified interval.
 
 
 \begin{DoxyParams}{Parameters}
-{\em a} & The start of the integration interval. \\
-\hline
-{\em b} & The end of the integration interval. \\
-\hline
-{\em n} & The number of intervals for Simpson\textquotesingle{}s rule (must be even). \\
+{\em t0} & The upper limit of integration. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The approximate integral of the interest rate function over \mbox{[}a, b\mbox{]}. 
+The integral value from 0 to ( t\+\_\+0 ).
 \end{DoxyReturn}
+Uses the {\ttfamily support\+\_\+integral} function to compute the area under each line segment of the curve. Handles cases where ( t\+\_\+0 ) lies within an interval by partially integrating that segment.
 
-\begin{DoxyExceptions}{Exceptions}
-{\em std\+::invalid\+\_\+argument} & if the number of intervals n is odd. \\
+
+\begin{DoxyParams}{Parameters}
+{\em t0} & The upper limit of integration. \\
 \hline
-\end{DoxyExceptions}
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The integral value from 0 to ( t\+\_\+0 ). 
+\end{DoxyReturn}
 \Hypertarget{class_interest_rate_a87e5b5412da6472b5e58efce3dc0033e}\index{InterestRate@{InterestRate}!operator()@{operator()}}
 \index{operator()@{operator()}!InterestRate@{InterestRate}}
 \doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
@@ -116,43 +98,80 @@ double Interest\+Rate\+::operator() (\begin{DoxyParamCaption}\item[{double}]{t}{
 
 
 
-Interpolates the interest rate at a given time. 
+Evaluates the interest rate at a given time. 
 
-Calculates the interest rate at time t using linear interpolation between two points.
+Evaluates the interest rate at a given time using linear interpolation.
 
-This function calculates the interest rate at a specific time {\ttfamily t} by performing linear interpolation between two points in the {\ttfamily interest\+\_\+rate\+\_\+} container.
-
-
-\begin{DoxyParams}{Parameters}
-{\em t} & The time at which the interest rate is to be calculated. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-The interpolated interest rate at time t. 
-\end{DoxyReturn}
-
-\begin{DoxyExceptions}{Exceptions}
-{\em \doxylink{class_invalid_time}{Invalid\+Time}} & if the time t is outside the bounds of the defined interest rate intervals.\\
-\hline
-\end{DoxyExceptions}
-This function interpolates the interest rate for a given time {\ttfamily t} by finding the two closest points in the {\ttfamily interest\+\_\+rate\+\_\+} container and performing a linear interpolation between them.
+This operator interpolates the interest rate based on the provided time, ( t ).
 
 
 \begin{DoxyParams}{Parameters}
-{\em t} & The time at which the interest rate is to be calculated. \\
+{\em t} & The time at which to evaluate the interest rate. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The interpolated interest rate at time t. 
+The interest rate at time ( t ).
+\end{DoxyReturn}
+Finds the interval (\mbox{[}t\+\_\+i, t\+\_\+\{i+1\}\mbox{]}) where ( t ) lies and performs linear interpolation between the corresponding rates.
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & The time at which to evaluate the interest rate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The interpolated interest rate at time ( t ). 
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em \doxylink{class_invalid_time}{Invalid\+Time}} & if the time t is outside the bounds of the defined interest rate intervals. \\
+{\em \doxylink{class_invalid_time}{Invalid\+Time}} & If ( t ) is outside the bounds of the interest rate curve. \\
 \hline
 \end{DoxyExceptions}
+\Hypertarget{class_interest_rate_a585073f03da291630cee96801f3b0261}\index{InterestRate@{InterestRate}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!InterestRate@{InterestRate}}
+\doxysubsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily \label{class_interest_rate_a585073f03da291630cee96801f3b0261} 
+void Interest\+Rate\+::operator+= (\begin{DoxyParamCaption}\item[{double}]{h}{}\end{DoxyParamCaption})}
+
+
+
+Increments all interest rates by a given value. 
+
+Increments all interest rates in the curve by a constant value.
+
+Adds ( h ) to the rates of all time points in the interest rate curve.
+
+
+\begin{DoxyParams}{Parameters}
+{\em h} & The value to increment the rates by.\\
+\hline
+{\em h} & The value to add to all interest rates. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_interest_rate_ab9fee4e94dbf39d7079911e20fbd1ba3}\index{InterestRate@{InterestRate}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!InterestRate@{InterestRate}}
+\doxysubsubsection{\texorpdfstring{operator-\/=()}{operator-=()}}
+{\footnotesize\ttfamily \label{class_interest_rate_ab9fee4e94dbf39d7079911e20fbd1ba3} 
+void Interest\+Rate\+::operator-\/= (\begin{DoxyParamCaption}\item[{double}]{h}{}\end{DoxyParamCaption})}
+
+
+
+Decrements all interest rates by a given value. 
+
+Decrements all interest rates in the curve by a constant value.
+
+Subtracts ( h ) from the rates of all time points in the interest rate curve.
+
+
+\begin{DoxyParams}{Parameters}
+{\em h} & The value to decrement the rates by.\\
+\hline
+{\em h} & The value to subtract from all interest rates. \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/\+Users/flavi/source/repos/\+Crank-\/\+Nicolson-\/pricing-\/new/\mbox{\hyperlink{_interest_rate_8h}{Interest\+Rate.\+h}}\item 
-C\+:/\+Users/flavi/source/repos/\+Crank-\/\+Nicolson-\/pricing-\/new/\mbox{\hyperlink{_interest_rate_8cpp}{Interest\+Rate.\+cpp}}\end{DoxyCompactItemize}
+C\+:/\+Users/\+Admin/\+One\+Drive/\+Desktop/\+UNIVERSITÁ/\+LEZIONI/\+ANNO 2024-\/2025/\+PROJECT INFORMATIQUE/\+PROGETTO/Interest\+Rate.\+h\item 
+C\+:/\+Users/\+Admin/\+One\+Drive/\+Desktop/\+UNIVERSITÁ/\+LEZIONI/\+ANNO 2024-\/2025/\+PROJECT INFORMATIQUE/\+PROGETTO/Interest\+Rate.\+cpp\end{DoxyCompactItemize}

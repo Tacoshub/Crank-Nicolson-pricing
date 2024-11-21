@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lower_0',['Lower',['../class_lower.html',1,'Lower'],['../class_lower.html#ae446a86b8a51aee8a271a61db66670ca',1,'Lower::Lower()']]]
+  ['gamma_0',['gamma',['../class_option.html#a55c91ea60f925ed9927995d29f88c029',1,'Option']]]
 ];

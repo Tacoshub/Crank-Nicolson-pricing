@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['tridiag_0',['Tridiag',['../class_tridiag.html',1,'']]]
+  ['option_0',['Option',['../class_option.html',1,'']]],
+  ['optionexceptions_1',['OptionExceptions',['../class_option_exceptions.html',1,'']]]
 ];

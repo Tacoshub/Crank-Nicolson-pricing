@@ -1,9 +1,9 @@
-\doxysection{C\+:/\+Users/flavi/source/repos/\+Crank-\/\+Nicolson-\/pricing-\/new/\+Option.h}
+\doxysection{C\+:/\+Users/\+Admin/\+One\+Drive/\+Desktop/\+UNIVERSITÁ/\+LEZIONI/\+ANNO 2024-\/2025/\+PROJECT INFORMATIQUE/\+PROGETTO/\+Option.h}
 \hypertarget{_option_8h_source}{}\label{_option_8h_source}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
 \DoxyCodeLine{00002\ }
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_interest_rate_8h}{InterestRate.h}}"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}InterestRate.h"{}}}
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_option_exceptions_8h}{OptionExceptions.h}}"{}}}
 \DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Tridiag.h"{}}}
 \DoxyCodeLine{00006\ }
@@ -33,20 +33,27 @@
 \DoxyCodeLine{00030\ }
 \DoxyCodeLine{00031\ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{class_option}{Option}}(\textcolor{keywordtype}{int}\ contract\_type,\ \textcolor{keywordtype}{int}\ exercise\_type,\ \textcolor{keywordtype}{double}\ T,\ \textcolor{keywordtype}{double}\ K,\ \textcolor{keywordtype}{double}\ T0,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ time\_mesh,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ spot\_mesh,\ \textcolor{keywordtype}{double}\ S0,\ std::vector<std::pair<double,\ double>>\ interest\_rate,\ \textcolor{keywordtype}{double}\ volatility,\ \textcolor{keywordtype}{double}\ tol\ =\ 0.01,\ \textcolor{keywordtype}{double}\ w\ =\ 1.2);}
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{class_option_a04eaaaadb0da5ceaf51891082635b553}{Option}}(\textcolor{keywordtype}{int}\ contract\_type,\ \textcolor{keywordtype}{int}\ exercise\_type,\ \textcolor{keywordtype}{double}\ T,\ \textcolor{keywordtype}{double}\ K,\ \textcolor{keywordtype}{double}\ T0,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ time\_mesh,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ spot\_mesh,\ \textcolor{keywordtype}{double}\ S0,\ std::vector<std::pair<double,\ double>>\ interest\_rate,\ \textcolor{keywordtype}{double}\ volatility,\ \textcolor{keywordtype}{double}\ tol\ =\ 0.01,\ \textcolor{keywordtype}{double}\ w\ =\ 1.2);}
 \DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \ \ \ \ std::vector<double>\ compute\_aj(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i);}
-\DoxyCodeLine{00036\ \ \ \ \ std::vector<double>\ compute\_bj(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i);}
-\DoxyCodeLine{00037\ \ \ \ \ std::vector<double>\ compute\_cj(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i);}
+\DoxyCodeLine{00035\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{class_option_aa5ccd65508c22ccd79124236c95199aa}{compute\_aj}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i);}
+\DoxyCodeLine{00036\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{class_option_a2be21b8c072ecf70057f0bec43e3ae1b}{compute\_bj}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i);}
+\DoxyCodeLine{00037\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{class_option_aa5fdc0678bd77ed9fa280f6e3b16a3b4}{compute\_cj}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i);}
 \DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{class_tridiag}{Tridiag}}\ compute\_C(std::vector<double>\ a,\ std::vector<double>\ b,\ std::vector<double>\ c);}
-\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{class_tridiag}{Tridiag}}\ compute\_D(std::vector<double>\ a,\ std::vector<double>\ b,\ std::vector<double>\ c);}
-\DoxyCodeLine{00041\ \ \ \ \ std::pair<double,\ double>\ compute\_K(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i);}
-\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{double}\ compute\_K\_american(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i);}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{class_tridiag}{Tridiag}}\ \mbox{\hyperlink{class_option_acad158c98fe682566ba48cddb8572bec}{compute\_C}}(std::vector<double>\ a,\ std::vector<double>\ b,\ std::vector<double>\ c);}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{class_tridiag}{Tridiag}}\ \mbox{\hyperlink{class_option_a31d3ec621b928d8622b08e6b6566c2e9}{compute\_D}}(std::vector<double>\ a,\ std::vector<double>\ b,\ std::vector<double>\ c);}
+\DoxyCodeLine{00041\ \ \ \ \ std::pair<double,\ double>\ \mbox{\hyperlink{class_option_acb025c237c2647b7e25ed7891bf906bd}{compute\_K}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i);}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_option_a64e397c1fe029b2b9d108781c43ee75b}{compute\_K\_american}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i);}
 \DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ solve();}
-\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ display\_grid();}
-\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ price();}
-\DoxyCodeLine{00047\ \};}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_option_add7a189920460d9045e029b5c927ad67}{solve}}();}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_option_ad1cc9b28343b82819ff2295ddd719984}{display\_grid}}();}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_option_a9d47a9cc0250f1249df1f28b8a5368b0}{price}}();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_option_ab23aaadf1ad3af7a47be137a59651ab4}{delta}}(\textcolor{keywordtype}{double}\ h);}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_option_a55c91ea60f925ed9927995d29f88c029}{gamma}}(\textcolor{keywordtype}{double}\ h);}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_option_a68af72caae1e41bd011eef0652580d68}{theta}}(\textcolor{keywordtype}{double}\ h);}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_option_ac13559935944ce46a3fb5b123e3a2415}{vega}}(\textcolor{keywordtype}{double}\ h);}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_option_a5c4c93284189004f548387149fc52811}{rho}}(\textcolor{keywordtype}{double}\ h);}
+\DoxyCodeLine{00054\ \};}
 
 \end{DoxyCode}

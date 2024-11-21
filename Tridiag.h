@@ -1,48 +1,31 @@
-/**
- * @file MatrixDecomposition.h
- * @brief Contains the definitions of the Lower, Upper, and Tridiag classes for matrix decomposition and solving linear systems.
- *
- * This file defines classes to work with tridiagonal matrices, including methods for solving systems of linear equations
- * using forward and backward substitution. The `Tridiag` class also includes methods for matrix-vector multiplication
- * and displaying the matrix.
- */
-
 #pragma once
 
 #include <vector>
 #include <iostream>
 #include <iomanip>
 
- /**
-  * @class Lower
-  * @brief Represents the lower triangular part of a matrix and provides a method for solving linear systems.
-  *
-  * The `Lower` class models a lower triangular matrix (with non-zero entries on the diagonal and below it)
-  * and provides a method to solve systems of linear equations using forward substitution.
-  */
+/**
+ * @class Lower
+ * @brief Represents a lower triangular matrix and provides functionality to solve linear equations.
+ */
 class Lower {
 
-    std::vector<double> subdiag_; ///< Subdiagonal elements of the lower triangular matrix
-    std::vector<double> diag_;    ///< Diagonal elements of the lower triangular matrix
+    std::vector<double> subdiag_; ///< Subdiagonal elements of the lower triangular matrix.
+    std::vector<double> diag_;   ///< Diagonal elements of the lower triangular matrix.
 
 public:
 
     /**
-     * @brief Constructs a Lower object with the given subdiagonal and diagonal elements.
-     *
-     * @param subdiag A vector containing the subdiagonal elements.
-     * @param diag A vector containing the diagonal elements.
+     * @brief Constructs a Lower object.
+     * @param subdiag Vector containing subdiagonal elements.
+     * @param diag Vector containing diagonal elements.
      */
     Lower(std::vector<double> subdiag, std::vector<double> diag) : subdiag_(subdiag), diag_(diag) {}
 
     /**
-     * @brief Solves a system of linear equations using forward substitution.
-     *
-     * This method solves the system `Lx = b`, where `L` is a lower triangular matrix and `b` is the right-hand side vector.
-     * The solution is computed using forward substitution.
-     *
-     * @param b The right-hand side vector of the system of equations.
-     * @return A vector containing the solution to the system of equations.
+     * @brief Solves the system of equations for a lower triangular matrix.
+     * @param b Right-hand side vector.
+     * @return Solution vector x.
      */
     std::vector<double> solve(std::vector<double> b) {
         std::vector<double> x(b.size());
@@ -56,34 +39,26 @@ public:
 
 /**
  * @class Upper
- * @brief Represents the upper triangular part of a matrix and provides a method for solving linear systems.
- *
- * The `Upper` class models an upper triangular matrix (with non-zero entries on the diagonal and above it)
- * and provides a method to solve systems of linear equations using backward substitution.
+ * @brief Represents an upper triangular matrix and provides functionality to solve linear equations.
  */
 class Upper {
 
-    std::vector<double> diag_;      ///< Diagonal elements of the upper triangular matrix
-    std::vector<double> superdiag_; ///< Superdiagonal elements of the upper triangular matrix
+    std::vector<double> diag_;      ///< Diagonal elements of the upper triangular matrix.
+    std::vector<double> superdiag_; ///< Superdiagonal elements of the upper triangular matrix.
 
 public:
 
     /**
-     * @brief Constructs an Upper object with the given diagonal and superdiagonal elements.
-     *
-     * @param diag A vector containing the diagonal elements.
-     * @param superdiag A vector containing the superdiagonal elements.
+     * @brief Constructs an Upper object.
+     * @param diag Vector containing diagonal elements.
+     * @param superdiag Vector containing superdiagonal elements.
      */
     Upper(std::vector<double> diag, std::vector<double> superdiag) : diag_(diag), superdiag_(superdiag) {}
 
     /**
-     * @brief Solves a system of linear equations using backward substitution.
-     *
-     * This method solves the system `Ux = b`, where `U` is an upper triangular matrix and `b` is the right-hand side vector.
-     * The solution is computed using backward substitution.
-     *
-     * @param b The right-hand side vector of the system of equations.
-     * @return A vector containing the solution to the system of equations.
+     * @brief Solves the system of equations for an upper triangular matrix.
+     * @param b Right-hand side vector.
+     * @return Solution vector x.
      */
     std::vector<double> solve(std::vector<double> b) {
         int n = b.size();
@@ -98,70 +73,51 @@ public:
 
 /**
  * @class Tridiag
- * @brief Represents a tridiagonal matrix and provides methods for matrix-vector multiplication and solving linear systems.
- *
- * The `Tridiag` class models a tridiagonal matrix (with non-zero elements on the diagonal, subdiagonal, and superdiagonal)
- * and provides functions to multiply the matrix by a vector and solve systems of linear equations using LU decomposition.
+ * @brief Represents a tridiagonal matrix and provides functionality for matrix operations and solving equations.
  */
 class Tridiag {
 
-    std::vector<double> subdiag_;    ///< Subdiagonal elements of the tridiagonal matrix
-    std::vector<double> diag_;       ///< Diagonal elements of the tridiagonal matrix
-    std::vector<double> superdiag_;  ///< Superdiagonal elements of the tridiagonal matrix
+    std::vector<double> subdiag_;   ///< Subdiagonal elements of the tridiagonal matrix.
+    std::vector<double> diag_;      ///< Diagonal elements of the tridiagonal matrix.
+    std::vector<double> superdiag_; ///< Superdiagonal elements of the tridiagonal matrix.
 
 public:
 
     /**
-     * @brief Default constructor for the Tridiag class.
+     * @brief Default constructor.
      */
     Tridiag() {}
 
     /**
-     * @brief Constructs a Tridiag object with the given subdiagonal, diagonal, and superdiagonal elements.
-     *
-     * @param subdiag A vector containing the subdiagonal elements.
-     * @param diag A vector containing the diagonal elements.
-     * @param superdiag A vector containing the superdiagonal elements.
+     * @brief Constructs a Tridiag object.
+     * @param subdiag Vector containing subdiagonal elements.
+     * @param diag Vector containing diagonal elements.
+     * @param superdiag Vector containing superdiagonal elements.
      */
     Tridiag(std::vector<double> subdiag, std::vector<double> diag, std::vector<double> superdiag);
 
     /**
      * @brief Multiplies the tridiagonal matrix by a vector.
-     *
-     * This function multiplies the tridiagonal matrix (represented by the `Tridiag` class) with a given vector `x`
-     * and returns the result as a new vector. The matrix-vector multiplication is done in a computationally efficient
-     * manner by taking advantage of the sparsity of the tridiagonal matrix.
-     *
-     * @param x The vector to be multiplied by the matrix.
-     * @return A vector resulting from the matrix-vector multiplication.
+     * @param x Input vector.
+     * @return Resulting vector after multiplication.
      */
     std::vector<double> operator*(std::vector<double> x);
 
     /**
-     * @brief Solves a system of linear equations involving the tridiagonal matrix.
-     *
-     * This function solves a system of linear equations of the form `Ax = b`, where `A` is a tridiagonal matrix
-     * and `b` is the given vector. The solution is computed using LU decomposition, where the matrix `A` is decomposed
-     * into a lower triangular matrix `L` and an upper triangular matrix `U`. The function first solves for `y` using `L`
-     * and then solves for `x` using `U`.
-     *
-     * @param b The right-hand side vector of the system of equations.
-     * @return The solution vector `x` to the system of equations `Ax = b`.
+     * @brief Solves the system of equations for the tridiagonal matrix.
+     * @param b Right-hand side vector.
+     * @return Solution vector x.
      */
     std::vector<double> solve(std::vector<double> b);
 
     /**
-     * @brief Returns the size of the matrix (number of rows/columns).
-     *
-     * @return The size of the matrix (i.e., the number of rows or columns).
+     * @brief Returns the size of the tridiagonal matrix.
+     * @return Size of the matrix.
      */
     size_t size() { return diag_.size(); }
 
     /**
-     * @brief Displays the tridiagonal matrix in a readable format.
-     *
-     * This function prints the tridiagonal matrix to the console, with zero elements displayed as "0.00"
-     * and non-zero elements formatted to 2 decimal places.
+     * @brief Displays the tridiagonal matrix in a formatted way.
      */
     void display() {
         size_t n = diag_.size();
