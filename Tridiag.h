@@ -1,6 +1,6 @@
 /**
  * @file Tridiag.h
- * @brief contains various methods to deal with tridiagoanl matrices
+ * @brief class to deal with tridiagonal matrix
  */
 #pragma once
 

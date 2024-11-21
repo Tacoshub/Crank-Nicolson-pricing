@@ -1,0 +1,48 @@
+\doxysection{C\+:/\+Users/\+Admin/\+One\+Drive/\+Desktop/\+UNIVERSITÁ/\+LEZIONI/\+ANNO 2024-\/2025/\+PROJECT INFORMATIQUE/\+PROGETTO/\+Interest\+Rate.cpp File Reference}
+\hypertarget{_interest_rate_8cpp}{}\label{_interest_rate_8cpp}\index{C:/Users/Admin/OneDrive/Desktop/UNIVERSITÁ/LEZIONI/ANNO 2024-\/2025/PROJECT INFORMATIQUE/PROGETTO/InterestRate.cpp@{C:/Users/Admin/OneDrive/Desktop/UNIVERSITÁ/LEZIONI/ANNO 2024-\/2025/PROJECT INFORMATIQUE/PROGETTO/InterestRate.cpp}}
+
+
+contains various methods to deal with the interest rate curve  
+
+
+{\ttfamily \#include "{}Interest\+Rate.\+h"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{_interest_rate_8cpp_ac4edf9807c01d726c9c2b526196fc82e}{support\+\_\+integral}} (double r1, double r2, double t1, double t2)
+\begin{DoxyCompactList}\small\item\em Computes the area under a line segment in the interest rate curve between two time points. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+contains various methods to deal with the interest rate curve 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_interest_rate_8cpp_ac4edf9807c01d726c9c2b526196fc82e}\index{InterestRate.cpp@{InterestRate.cpp}!support\_integral@{support\_integral}}
+\index{support\_integral@{support\_integral}!InterestRate.cpp@{InterestRate.cpp}}
+\doxysubsubsection{\texorpdfstring{support\_integral()}{support\_integral()}}
+{\footnotesize\ttfamily \label{_interest_rate_8cpp_ac4edf9807c01d726c9c2b526196fc82e} 
+double support\+\_\+integral (\begin{DoxyParamCaption}\item[{double}]{r1}{, }\item[{double}]{r2}{, }\item[{double}]{t1}{, }\item[{double}]{t2}{}\end{DoxyParamCaption})}
+
+
+
+Computes the area under a line segment in the interest rate curve between two time points. 
+
+Handles cases where the rates ( r\+\_\+1 ) and ( r\+\_\+2 ) have opposite signs by splitting the integral at the zero crossing.
+
+
+\begin{DoxyParams}{Parameters}
+{\em r1} & Interest rate at ( t\+\_\+1 ). \\
+\hline
+{\em r2} & Interest rate at ( t\+\_\+2 ). \\
+\hline
+{\em t1} & Starting time of the segment. \\
+\hline
+{\em t2} & Ending time of the segment. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The computed area under the curve between ( t\+\_\+1 ) and ( t\+\_\+2 ). 
+\end{DoxyReturn}

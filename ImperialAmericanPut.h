@@ -1,7 +1,6 @@
-
 /**
  * @file ImperialAmericanPut.h
- * @brief Imperial Colledge pricer for American puts
+ * @brief Imperial College pricer for American puts
  */
 
 #pragma once

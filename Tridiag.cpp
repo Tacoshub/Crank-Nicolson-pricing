@@ -1,3 +1,7 @@
+/**
+ * @file Tridiag.cpp
+ * @brief contains various methods to deal with tridiagonal matrix
+ */
 #include "Tridiag.h"
 
 /**

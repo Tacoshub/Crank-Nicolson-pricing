@@ -132,6 +132,7 @@
   <ItemGroup>
     <ClInclude Include="ImperialAmericanPut.h" />
     <ClInclude Include="InterestRate.h" />
+    <ClInclude Include="mainpage.h" />
     <ClInclude Include="Option.h" />
     <ClInclude Include="OptionExceptions.h" />
     <ClInclude Include="Tridiag.h" />

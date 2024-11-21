@@ -1,3 +1,7 @@
+/**
+ * @file InterestRate.cpp
+ * @brief contains various methods to deal with the interest rate curve
+ */
 #include "InterestRate.h"
 #include <iostream>
 

@@ -1,3 +1,7 @@
+/**
+ * @file Option.cpp
+ * @brief contains various methods to deal with the Option object
+ */
 #include "Option.h"
 #include "Tridiag.h"
 

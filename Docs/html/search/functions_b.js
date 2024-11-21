@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vega_0',['vega',['../class_option.html#ac13559935944ce46a3fb5b123e3a2415',1,'Option']]]
+  ['upper_0',['Upper',['../class_upper.html#ac6a97f6040df4558c174a64e874cf8d7',1,'Upper']]]
 ];
