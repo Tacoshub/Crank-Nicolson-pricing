@@ -1,4 +1,3 @@
-/*
 #define BOOST_TEST_MODULE GridExplorationTest
 #include <boost/test/included/unit_test.hpp>
 #include <vector>
@@ -25,6 +24,7 @@ double black_scholes_price(int ct, double S0, double K, double T, double r, doub
 
 // Global counter
 unsigned int counter = 0;
+unsigned int errors = 0;
 
 BOOST_AUTO_TEST_SUITE(GridExploration)
 
@@ -35,12 +35,117 @@ std::vector<double> volatilities = { 0.1, 0.2, 0.3 };
 //std::vector<double> interest_rates = { 0.0, -0.05, 0.05 };
 std::vector<double> interest_rates = { 0.0};
 double S0 = 100; // Spot price
-unsigned int N = 1000; // Time steps
-unsigned int M = 400; // Spot mesh
+unsigned int N = 100; // Time steps
+unsigned int M = 100; // Spot mesh
 
+
+
+
+
+BOOST_AUTO_TEST_CASE(EuropeanCallTest) {
+    std::cout << "Testing European Calls..." << std::endl;
+
+    for (double r : interest_rates) {
+        std::vector<std::pair<double, double>> ir_curve = { {0.0, r}, {10.0, r}, {20.0, r} };
+        InterestRate IR(ir_curve);
+
+        for (double T : maturities) {
+            for (double K : strikes) {
+                for (double sigma : volatilities) {
+                    Option opt(1, true, T, K, 0.0, N, M, S0, ir_curve, sigma); // European call
+                    double computed_price = opt.price();
+                    double bs_price = black_scholes_price(1, S0, K, T, r, sigma);   
+
+                    BOOST_TEST(std::abs(computed_price - bs_price) < 0.2 * bs_price); // Compare with Black-Scholes
+                    if (std::abs(computed_price - bs_price) > 0.2 * bs_price)
+                    {
+                        errors += 1;
+                    }
+                    counter++;
+                }
+            }
+        }
+    }
+
+    std::cout << "Total combinations tested for European Call: " << counter << std::endl;
+    std::cout << "Total Errors for European Call: " << errors << std::endl;
+
+}
+
+BOOST_AUTO_TEST_CASE(EuropeanPutTest) {
+    std::cout << "Testing European Puts..." << std::endl;
+
+    for (double r : interest_rates) {
+        std::vector<std::pair<double, double>> ir_curve = { {0.0, r}, {10.0, r}, {20.0, r} };
+        InterestRate IR(ir_curve);
+
+        for (double T : maturities) {
+            for (double K : strikes) {
+                for (double sigma : volatilities) {
+                    Option opt(-1, true, T, K, 0.0, N, M, S0, ir_curve, sigma); // European put
+                    double computed_price = opt.price();
+                    double bs_price = black_scholes_price(-1, S0, K, T, r, sigma);
+ 
+
+                    BOOST_TEST(std::abs(computed_price - bs_price) < 0.2 * bs_price); // Compare with Black-Scholes
+                    if (std::abs(computed_price - bs_price) > 0.2 * bs_price)
+                    {
+                        errors += 1;
+                    }
+                    counter++;
+                }
+            }
+        }
+    }
+
+    std::cout << "Total combinations tested for European Put: " << counter << std::endl;
+    std::cout << "Total errors  for European Put: " << errors << std::endl;
+
+}
+
+BOOST_AUTO_TEST_CASE(PutCallParityTest) {
+    std::cout << "Testing Put Call Parity" << std::endl;
+
+    for (double r : interest_rates) {
+        std::vector<std::pair<double, double>> ir_curve = { {0.0, r}, {10.0, r}, {20.0, r} };
+        InterestRate IR(ir_curve);
+
+        for (double T : maturities) {
+            for (double K : strikes) {
+                for (double sigma : volatilities) {
+                    // European call
+                    Option call_opt(1, true, T, K, 0.0, N, M, S0, ir_curve, sigma);
+                    double call_price = call_opt.price();
+
+                    // European put
+                    Option put_opt(-1, true, T, K, 0.0, N, M, S0, ir_curve, sigma);
+                    double put_price = put_opt.price();
+
+                    // Put-Call Parity Value
+                    double parity_value = S0 - K * std::exp(-r * T);
+
+                    // Check put-call parity
+                    BOOST_TEST(std::abs((call_price - put_price) - parity_value) < call_price *0.2);
+                    if (std::abs((call_price - put_price) - parity_value) > call_price * 0.2)
+                    {
+                        errors += 1;
+                    }
+
+                    counter++;
+                }
+            }
+        }
+    }
+
+    std::cout << "Total combinations tested for Put-Call Parity: " << counter << std::endl;
+    std::cout << "Total errors for Put-Call Parity: " << errors << std::endl;
+
+}
 
 
 BOOST_AUTO_TEST_CASE(AmericanPutTest) {
+    std::cout << "Testing Ametican Put " << std::endl;
+
     for (double r : interest_rates) {
         std::vector<std::pair<double, double>> ir_curve = { {0.0, r}, {10.0, r}, {20.0, r} };
         InterestRate IR(ir_curve);
@@ -53,83 +158,101 @@ BOOST_AUTO_TEST_CASE(AmericanPutTest) {
                     CNicolsonPricer CN(S0, K, T, sigma, r, 120, 0.005);
                     double bs_price = CN.Value();
 
-                    // Print configuration
-                    std::cout << "Configuration #" << counter + 1
-                        << ": Type=American Put, T=" << T << ", K=" << K
-                        << ", r=" << r << ", sigma=" << sigma
-                        << ", Computed Price=" << computed_price
-                        << ", Approx Black-Scholes Price=" << bs_price << "\n";
-
                     BOOST_TEST(std::abs(computed_price - bs_price) < 0.2 * bs_price); // American put >= European put
                     counter++;
+                    if (std::abs(computed_price - bs_price) > 0.2 * bs_price)
+                    {
+                        errors += 1;
+                    }
                 }
             }
         }
     }
     std::cout << "Total combinations tested for American Put: " << counter << std::endl;
+    std::cout << "Total Errors  for American Put: " << errors << std::endl;
 }
-
-
-
-
-BOOST_AUTO_TEST_CASE(EuropeanCallTest) {
+BOOST_AUTO_TEST_CASE(EuropeanAndAmericanCallPriceEqualityTest) {
     for (double r : interest_rates) {
-        std::vector<std::pair<double, double>> ir_curve = { {0.0, r}, {10.0, r}, {20.0, r} };
-        InterestRate IR(ir_curve);
+        if (r > 0) { // Only test for r > 0
+            std::vector<std::pair<double, double>> ir_curve = { {0.0, r}, {10.0, r}, {20.0, r} };
+            InterestRate IR(ir_curve);
 
-        for (double T : maturities) {
-            for (double K : strikes) {
-                for (double sigma : volatilities) {
-                    Option opt(1, true, T, K, 0.0, N, M, S0, ir_curve, sigma); // European call
-                    double computed_price = opt.price();
-                    double bs_price = black_scholes_price(1, S0, K, T, r, sigma);
+            for (double T : maturities) {
+                for (double K : strikes) {
+                    for (double sigma : volatilities) {
+                        // European call
+                        Option european_call(1, true, T, K, 0.0, N, M, S0, ir_curve, sigma);
+                        double european_price = european_call.price();
 
-                    // Print configuration
-                    std::cout << "Configuration #" << counter + 1
-                        << ": Type=European Call, T=" << T << ", K=" << K
-                        << ", r=" << r << ", sigma=" << sigma
-                        << ", Computed Price=" << computed_price
-                        << ", Black-Scholes Price=" << bs_price << "\n";
+                        // American call
+                        Option american_call(1, false, T, K, 0.0, N, M, S0, ir_curve, sigma);
+                        double american_price = american_call.price();
 
-                    BOOST_TEST(std::abs(computed_price - bs_price) < 0.2 * bs_price); // Compare with Black-Scholes
-                    counter++;
+                        // Print configuration
+                        
+
+                        // Check equality
+                        BOOST_TEST(std::abs(european_price - american_price) >0.01* european_price); // Allow small numerical error
+
+                        if (std::abs((european_price - american_price) >0.01* european_price))
+                        {
+                            errors += 1;
+                        }
+
+                        counter++;
+                    }
                 }
             }
         }
     }
 
-    std::cout << "Total combinations tested for European Call: " << counter << std::endl;
+    std::cout << "Total combinations tested for European and American Call Price Equality: " << counter << std::endl;
+    std::cout << "Total Errors for European and American Call Price Equality: " << counter << std::endl;
+
 }
 
-BOOST_AUTO_TEST_CASE(EuropeanPutTest) {
+BOOST_AUTO_TEST_CASE(EuropeanAndAmericanPutPriceEqualityTest) {
     for (double r : interest_rates) {
-        std::vector<std::pair<double, double>> ir_curve = { {0.0, r}, {10.0, r}, {20.0, r} };
-        InterestRate IR(ir_curve);
+        if (r < 0) { // Only test for r < 0
+            std::vector<std::pair<double, double>> ir_curve = { {0.0, r}, {10.0, r}, {20.0, r} };
+            InterestRate IR(ir_curve);
 
-        for (double T : maturities) {
-            for (double K : strikes) {
-                for (double sigma : volatilities) {
-                    Option opt(-1, true, T, K, 0.0, N, M, S0, ir_curve, sigma); // European put
-                    double computed_price = opt.price();
-                    double bs_price = black_scholes_price(-1, S0, K, T, r, sigma);
+            for (double T : maturities) {
+                for (double K : strikes) {
+                    for (double sigma : volatilities) {
+                        // European put
+                        Option european_put(-1, true, T, K, 0.0, N, M, S0, ir_curve, sigma);
+                        double european_price = european_put.price();
 
-                    // Print configuration
-                    std::cout << "Configuration #" << counter + 1
-                        << ": Type=European Put, T=" << T << ", K=" << K
-                        << ", r=" << r << ", sigma=" << sigma
-                        << ", Computed Price=" << computed_price
-                        << ", Black-Scholes Price=" << bs_price << "\n";
+                        // American put
+                        Option american_put(-1, false, T, K, 0.0, N, M, S0, ir_curve, sigma);
+                        double american_price = american_put.price();
 
-                    BOOST_TEST(std::abs(computed_price - bs_price) < 0.2 * bs_price); // Compare with Black-Scholes
-                    counter++;
+                        // Print configuration
+                       
+
+                        // Check equality
+                        BOOST_TEST(std::abs(european_price - american_price) < 0.01); // Allow small numerical error
+
+                        if (std::abs((european_price - american_price) > 0.01 * european_price))
+                        {
+                            errors += 1;
+                        }
+
+
+
+                        counter++;
+                    }
                 }
             }
         }
     }
 
-    std::cout << "Total combinations tested for European Put: " << counter << std::endl;
+    std::cout << "Total combinations tested for European and American Put Price Equality: " << counter << std::endl;
+    std::cout << "Total Errrors for European and American Put Price Equality: " << counter << std::endl;
+
 }
 
 
 BOOST_AUTO_TEST_SUITE_END()
-*/
+

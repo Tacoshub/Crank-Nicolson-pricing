@@ -1,5 +1,5 @@
 #include "Option.h"
-
+/*
 int main() {
 
 	try {
@@ -37,4 +37,4 @@ int main() {
 	}
 
     return 0;
-}
+}*/
