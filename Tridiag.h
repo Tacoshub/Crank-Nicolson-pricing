@@ -1,3 +1,7 @@
+/**
+ * @file OptionExceptions.h
+ * @brief contains various methods to deal with tridiagoanl matrices
+ */
 #pragma once
 
 #include <vector>

@@ -1,3 +1,7 @@
+/**
+ * @file OptionExceptions.h
+ * @brief contains various methods to deal with the interest rate curve
+ */
 #pragma once
 
 #include "OptionExceptions.h"

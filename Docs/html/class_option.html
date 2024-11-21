@@ -90,59 +90,66 @@ $(function(){ initResizable(false); });
   <div class="headertitle"><div class="title">Option Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Represents an option contract with numerical pricing methods.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_option_8h_source.html">Option.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a04eaaaadb0da5ceaf51891082635b553" id="r_a04eaaaadb0da5ceaf51891082635b553"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04eaaaadb0da5ceaf51891082635b553">Option</a> (int contract_type, int exercise_type, double T, double K, double T0, unsigned int time_mesh, unsigned int spot_mesh, double S0, std::vector&lt; std::pair&lt; double, double &gt; &gt; interest_rate, double volatility, double tol=0.01, double w=1.2)</td></tr>
-<tr class="memdesc:a04eaaaadb0da5ceaf51891082635b553"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an <a class="el" href="class_option.html">Option</a> object and validates input parameters.  <br /></td></tr>
+<tr class="memdesc:a04eaaaadb0da5ceaf51891082635b553"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an <a class="el" href="class_option.html" title="Represents an option contract with numerical pricing methods.">Option</a> object.  <br /></td></tr>
 <tr class="separator:a04eaaaadb0da5ceaf51891082635b553"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5ccd65508c22ccd79124236c95199aa" id="r_aa5ccd65508c22ccd79124236c95199aa"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5ccd65508c22ccd79124236c95199aa">compute_aj</a> (unsigned int i)</td></tr>
-<tr class="memdesc:aa5ccd65508c22ccd79124236c95199aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes coefficients ( a_j ) for the tridiagonal matrix in the finite difference method.  <br /></td></tr>
+<tr class="memdesc:aa5ccd65508c22ccd79124236c95199aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the coefficients a_j for the tridiagonal matrix.  <br /></td></tr>
 <tr class="separator:aa5ccd65508c22ccd79124236c95199aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2be21b8c072ecf70057f0bec43e3ae1b" id="r_a2be21b8c072ecf70057f0bec43e3ae1b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2be21b8c072ecf70057f0bec43e3ae1b">compute_bj</a> (unsigned int i)</td></tr>
-<tr class="memdesc:a2be21b8c072ecf70057f0bec43e3ae1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes coefficients ( b_j ) for the tridiagonal matrix in the finite difference method.  <br /></td></tr>
+<tr class="memdesc:a2be21b8c072ecf70057f0bec43e3ae1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the coefficients b_j for the tridiagonal matrix.  <br /></td></tr>
 <tr class="separator:a2be21b8c072ecf70057f0bec43e3ae1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5fdc0678bd77ed9fa280f6e3b16a3b4" id="r_aa5fdc0678bd77ed9fa280f6e3b16a3b4"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5fdc0678bd77ed9fa280f6e3b16a3b4">compute_cj</a> (unsigned int i)</td></tr>
-<tr class="memdesc:aa5fdc0678bd77ed9fa280f6e3b16a3b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes coefficients ( c_j ) for the tridiagonal matrix in the finite difference method.  <br /></td></tr>
+<tr class="memdesc:aa5fdc0678bd77ed9fa280f6e3b16a3b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the coefficients c_j for the tridiagonal matrix.  <br /></td></tr>
 <tr class="separator:aa5fdc0678bd77ed9fa280f6e3b16a3b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acad158c98fe682566ba48cddb8572bec" id="r_acad158c98fe682566ba48cddb8572bec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_tridiag.html">Tridiag</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acad158c98fe682566ba48cddb8572bec">compute_C</a> (std::vector&lt; double &gt; a, std::vector&lt; double &gt; b, std::vector&lt; double &gt; c)</td></tr>
-<tr class="memdesc:acad158c98fe682566ba48cddb8572bec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the tridiagonal matrix ( C ) used in the finite difference method.  <br /></td></tr>
+<tr class="memdesc:acad158c98fe682566ba48cddb8572bec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the tridiagonal matrix C.  <br /></td></tr>
 <tr class="separator:acad158c98fe682566ba48cddb8572bec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31d3ec621b928d8622b08e6b6566c2e9" id="r_a31d3ec621b928d8622b08e6b6566c2e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_tridiag.html">Tridiag</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a31d3ec621b928d8622b08e6b6566c2e9">compute_D</a> (std::vector&lt; double &gt; a, std::vector&lt; double &gt; b, std::vector&lt; double &gt; c)</td></tr>
-<tr class="memdesc:a31d3ec621b928d8622b08e6b6566c2e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the tridiagonal matrix ( D ) used in the finite difference method.  <br /></td></tr>
+<tr class="memdesc:a31d3ec621b928d8622b08e6b6566c2e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the tridiagonal matrix D.  <br /></td></tr>
 <tr class="separator:a31d3ec621b928d8622b08e6b6566c2e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb025c237c2647b7e25ed7891bf906bd" id="r_acb025c237c2647b7e25ed7891bf906bd"><td class="memItemLeft" align="right" valign="top">std::pair&lt; double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb025c237c2647b7e25ed7891bf906bd">compute_K</a> (unsigned int i)</td></tr>
-<tr class="memdesc:acb025c237c2647b7e25ed7891bf906bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the boundary terms ( K_1 ) and ( K_2 ) used for pricing adjustments at the boundaries.  <br /></td></tr>
+<tr class="memdesc:acb025c237c2647b7e25ed7891bf906bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the vector K for the boundary conditions.  <br /></td></tr>
 <tr class="separator:acb025c237c2647b7e25ed7891bf906bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64e397c1fe029b2b9d108781c43ee75b" id="r_a64e397c1fe029b2b9d108781c43ee75b"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a64e397c1fe029b2b9d108781c43ee75b">compute_K_american</a> (unsigned int i)</td></tr>
-<tr class="memdesc:a64e397c1fe029b2b9d108781c43ee75b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the boundary term ( K_1 ) used for American option pricing adjustments at the lower boundary.  <br /></td></tr>
+<tr class="memdesc:a64e397c1fe029b2b9d108781c43ee75b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the boundary condition K for American options.  <br /></td></tr>
 <tr class="separator:a64e397c1fe029b2b9d108781c43ee75b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add7a189920460d9045e029b5c927ad67" id="r_add7a189920460d9045e029b5c927ad67"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add7a189920460d9045e029b5c927ad67">solve</a> ()</td></tr>
-<tr class="memdesc:add7a189920460d9045e029b5c927ad67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the option pricing problem by setting up the initial grid and performing the computation.  <br /></td></tr>
+<tr class="memdesc:add7a189920460d9045e029b5c927ad67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the option pricing problem using the grid.  <br /></td></tr>
 <tr class="separator:add7a189920460d9045e029b5c927ad67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1cc9b28343b82819ff2295ddd719984" id="r_ad1cc9b28343b82819ff2295ddd719984"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1cc9b28343b82819ff2295ddd719984">display_grid</a> ()</td></tr>
-<tr class="memdesc:ad1cc9b28343b82819ff2295ddd719984"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the pricing grid in a formatted table.  <br /></td></tr>
+<tr class="memdesc:ad1cc9b28343b82819ff2295ddd719984"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the computational grid for debugging purposes.  <br /></td></tr>
 <tr class="separator:ad1cc9b28343b82819ff2295ddd719984"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d47a9cc0250f1249df1f28b8a5368b0" id="r_a9d47a9cc0250f1249df1f28b8a5368b0"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d47a9cc0250f1249df1f28b8a5368b0">price</a> ()</td></tr>
-<tr class="memdesc:a9d47a9cc0250f1249df1f28b8a5368b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the price of the option using the finite difference method.  <br /></td></tr>
+<tr class="memdesc:a9d47a9cc0250f1249df1f28b8a5368b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes and returns the option price.  <br /></td></tr>
 <tr class="separator:a9d47a9cc0250f1249df1f28b8a5368b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab23aaadf1ad3af7a47be137a59651ab4" id="r_ab23aaadf1ad3af7a47be137a59651ab4"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab23aaadf1ad3af7a47be137a59651ab4">delta</a> (double h)</td></tr>
-<tr class="memdesc:ab23aaadf1ad3af7a47be137a59651ab4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the Delta of the option.  <br /></td></tr>
+<tr class="memdesc:ab23aaadf1ad3af7a47be137a59651ab4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the delta of the option.  <br /></td></tr>
 <tr class="separator:ab23aaadf1ad3af7a47be137a59651ab4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55c91ea60f925ed9927995d29f88c029" id="r_a55c91ea60f925ed9927995d29f88c029"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a55c91ea60f925ed9927995d29f88c029">gamma</a> (double h)</td></tr>
-<tr class="memdesc:a55c91ea60f925ed9927995d29f88c029"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the Gamma of the option.  <br /></td></tr>
+<tr class="memdesc:a55c91ea60f925ed9927995d29f88c029"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the gamma of the option.  <br /></td></tr>
 <tr class="separator:a55c91ea60f925ed9927995d29f88c029"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68af72caae1e41bd011eef0652580d68" id="r_a68af72caae1e41bd011eef0652580d68"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a68af72caae1e41bd011eef0652580d68">theta</a> (double h)</td></tr>
-<tr class="memdesc:a68af72caae1e41bd011eef0652580d68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the Theta of the option.  <br /></td></tr>
+<tr class="memdesc:a68af72caae1e41bd011eef0652580d68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the theta of the option.  <br /></td></tr>
 <tr class="separator:a68af72caae1e41bd011eef0652580d68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac13559935944ce46a3fb5b123e3a2415" id="r_ac13559935944ce46a3fb5b123e3a2415"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac13559935944ce46a3fb5b123e3a2415">vega</a> (double h)</td></tr>
-<tr class="memdesc:ac13559935944ce46a3fb5b123e3a2415"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the Vega of the option.  <br /></td></tr>
+<tr class="memdesc:ac13559935944ce46a3fb5b123e3a2415"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the vega of the option.  <br /></td></tr>
 <tr class="separator:ac13559935944ce46a3fb5b123e3a2415"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c4c93284189004f548387149fc52811" id="r_a5c4c93284189004f548387149fc52811"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c4c93284189004f548387149fc52811">rho</a> (double h)</td></tr>
-<tr class="memdesc:a5c4c93284189004f548387149fc52811"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the Rho of the option.  <br /></td></tr>
+<tr class="memdesc:a5c4c93284189004f548387149fc52811"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the rho of the option.  <br /></td></tr>
 <tr class="separator:a5c4c93284189004f548387149fc52811"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents an option contract with numerical pricing methods. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a04eaaaadb0da5ceaf51891082635b553" name="a04eaaaadb0da5ceaf51891082635b553"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a04eaaaadb0da5ceaf51891082635b553">&#9670;&#160;</a></span>Option()</h2>
 
@@ -212,7 +219,25 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Constructs an <a class="el" href="class_option.html">Option</a> object and validates input parameters. </p>
+<p>Constructs an <a class="el" href="class_option.html" title="Represents an option contract with numerical pricing methods.">Option</a> object. </p>
+<p>Constructs an <a class="el" href="class_option.html" title="Represents an option contract with numerical pricing methods.">Option</a> object and validates input parameters.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">contract_type</td><td>Type of contract (0 for call, 1 for put). </td></tr>
+    <tr><td class="paramname">exercise_type</td><td>Exercise type (0 for European, 1 for American). </td></tr>
+    <tr><td class="paramname">T</td><td>Maturity of the option. </td></tr>
+    <tr><td class="paramname">K</td><td>Strike price. </td></tr>
+    <tr><td class="paramname">T0</td><td>Initial time. </td></tr>
+    <tr><td class="paramname">time_mesh</td><td>Number of time steps in the grid. </td></tr>
+    <tr><td class="paramname">spot_mesh</td><td>Number of spot steps in the grid. </td></tr>
+    <tr><td class="paramname">S0</td><td>Initial spot price. </td></tr>
+    <tr><td class="paramname">interest_rate</td><td>Interest rate curve as pairs (time, rate). </td></tr>
+    <tr><td class="paramname">volatility</td><td>Volatility of the underlying asset. </td></tr>
+    <tr><td class="paramname">tol</td><td>Convergence tolerance (default is 0.01). </td></tr>
+    <tr><td class="paramname">w</td><td>Relaxation parameter (default is 1.2).</td></tr>
+  </table>
+  </dd>
+</dl>
 <p>Initializes the option with specified contract and exercise type, maturity, strike price, and other model parameters.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -250,7 +275,15 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Computes coefficients ( a_j ) for the tridiagonal matrix in the finite difference method. </p>
+<p>Computes the coefficients a_j for the tridiagonal matrix. </p>
+<p>Computes coefficients ( a_j ) for the tridiagonal matrix in the finite difference method.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>Time step index. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of coefficients a_j.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">i</td><td>Time step index. </td></tr>
@@ -276,7 +309,15 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Computes coefficients ( b_j ) for the tridiagonal matrix in the finite difference method. </p>
+<p>Computes the coefficients b_j for the tridiagonal matrix. </p>
+<p>Computes coefficients ( b_j ) for the tridiagonal matrix in the finite difference method.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>Time step index. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of coefficients b_j.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">i</td><td>Time step index. </td></tr>
@@ -311,7 +352,17 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Constructs the tridiagonal matrix ( C ) used in the finite difference method. </p>
+<p>Computes the tridiagonal matrix C. </p>
+<p>Constructs the tridiagonal matrix ( C ) used in the finite difference method.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>Vector of coefficients a_j. </td></tr>
+    <tr><td class="paramname">b</td><td>Vector of coefficients b_j. </td></tr>
+    <tr><td class="paramname">c</td><td>Vector of coefficients c_j. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Tridiagonal matrix C.</dd></dl>
 <p>The matrix ( C ) is defined as: [ C = \text{<a class="el" href="class_tridiag.html" title="Represents a tridiagonal matrix and provides functionality for matrix operations and solving equation...">Tridiag</a>}(-a, 1 - b, -c) ] where:</p><ul>
 <li>( a ): Subdiagonal coefficients (negative of input ( a )).</li>
 <li>( b ): Diagonal coefficients (1 minus input ( b )).</li>
@@ -344,7 +395,15 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Computes coefficients ( c_j ) for the tridiagonal matrix in the finite difference method. </p>
+<p>Computes the coefficients c_j for the tridiagonal matrix. </p>
+<p>Computes coefficients ( c_j ) for the tridiagonal matrix in the finite difference method.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>Time step index. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of coefficients c_j.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">i</td><td>Time step index. </td></tr>
@@ -379,7 +438,17 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Constructs the tridiagonal matrix ( D ) used in the finite difference method. </p>
+<p>Computes the tridiagonal matrix D. </p>
+<p>Constructs the tridiagonal matrix ( D ) used in the finite difference method.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>Vector of coefficients a_j. </td></tr>
+    <tr><td class="paramname">b</td><td>Vector of coefficients b_j. </td></tr>
+    <tr><td class="paramname">c</td><td>Vector of coefficients c_j. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Tridiagonal matrix D.</dd></dl>
 <p>The matrix ( D ) is defined as: [ D = \text{<a class="el" href="class_tridiag.html" title="Represents a tridiagonal matrix and provides functionality for matrix operations and solving equation...">Tridiag</a>}(a, 1 + b, c) ] where:</p><ul>
 <li>( a ): Subdiagonal coefficients.</li>
 <li>( b ): Diagonal coefficients (1 plus input ( b )).</li>
@@ -412,7 +481,15 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Computes the boundary terms ( K_1 ) and ( K_2 ) used for pricing adjustments at the boundaries. </p>
+<p>Computes the vector K for the boundary conditions. </p>
+<p>Computes the boundary terms ( K_1 ) and ( K_2 ) used for pricing adjustments at the boundaries.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>Time step index. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pair of boundary values for the vector K.</dd></dl>
 <p>The boundary terms are computed as: [ K_1 = a_1^{\text{prec}} F_0 e^{-\int r \, dt} + a_1^{\text{curr}} F_0 e^{-\int r \, dt} ] [ K_2 = c_m^{\text{prec}} \left(F_M - K e^{-\int r \, dt}\right) + c_m^{\text{curr}} \left(F_M - K e^{-\int r \, dt}\right) ] where:</p><ul>
 <li>( a_1 ): Coefficient for the first boundary.</li>
 <li>( c_m ): Coefficient for the last boundary.</li>
@@ -444,7 +521,15 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Computes the boundary term ( K_1 ) used for American option pricing adjustments at the lower boundary. </p>
+<p>Computes the boundary condition K for American options. </p>
+<p>Computes the boundary term ( K_1 ) used for American option pricing adjustments at the lower boundary.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>Time step index. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Boundary value for K.</dd></dl>
 <p>The boundary term ( K_1 ) for American options is computed as: [ K_1 = a_1^{\text{prec}} F_0 e^{-\int r \, dt} + a_1^{\text{curr}} F_0 e^{-\int r \, dt} ] where:</p><ul>
 <li>( a_1 ): Coefficients based on the volatility and interest rate at previous and current time steps.</li>
 <li>( F_0 ): Boundary value at the lower boundary.</li>
@@ -476,7 +561,15 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Computes the Delta of the option. </p>
+<p>Computes the delta of the option. </p>
+<p>Computes the Delta of the option.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">h</td><td>Step size for finite difference. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Delta of the option.</dd></dl>
 <p>Delta measures the sensitivity of the option price to changes in the underlying asset price ( S_0 ). It is computed using finite differences as: [ \Delta = \frac{\text{price}(S_0 + h) - \text{price}(S_0)}{h} ]</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -503,7 +596,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Displays the pricing grid in a formatted table. </p>
+<p>Displays the computational grid for debugging purposes. </p>
+<p>Displays the pricing grid in a formatted table.</p>
 <p>Outputs the grid values to the console, showing the option price at each time and spot price step. Each row corresponds to a spot price step, and each column corresponds to a time step. </p>
 
 </div>
@@ -523,7 +617,15 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Computes the Gamma of the option. </p>
+<p>Computes the gamma of the option. </p>
+<p>Computes the Gamma of the option.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">h</td><td>Step size for finite difference. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Gamma of the option.</dd></dl>
 <p>Gamma measures the sensitivity of Delta to changes in the underlying asset price ( S_0 ). It is computed using finite differences as: [ \Gamma = \frac{\Delta(S_0 + h) - \Delta(S_0)}{h} ]</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -550,7 +652,9 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Computes the price of the option using the finite difference method. </p>
+<p>Computes and returns the option price. </p>
+<p>Computes the price of the option using the finite difference method.</p>
+<dl class="section return"><dt>Returns</dt><dd>Price of the option.</dd></dl>
 <p>This method initializes the time step size ( \Delta T ) and spot price step size ( \Delta S ), creates the computational grid, and solves the problem using the <code>solve</code> method.</p>
 <dl class="section return"><dt>Returns</dt><dd>The computed option price at the initial time and spot price ( S_0 ). </dd></dl>
 
@@ -571,7 +675,15 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Computes the Rho of the option. </p>
+<p>Computes the rho of the option. </p>
+<p>Computes the Rho of the option.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">h</td><td>Step size for finite difference. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Rho of the option.</dd></dl>
 <p>Rho measures the sensitivity of the option price to changes in the interest rate ( r ). It is computed using finite differences as: [ \rho = \frac{\text{price}(r + h) - \text{price}(r)}{h} ]</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -598,7 +710,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Solves the option pricing problem by setting up the initial grid and performing the computation. </p>
+<p>Solves the option pricing problem using the grid. </p>
+<p>Solves the option pricing problem by setting up the initial grid and performing the computation.</p>
 <p>This method initializes the grid values at maturity based on the payoff function: [ F(S, T) = \max(\text{contract_type} \cdot (S - K), 0) ] Then it uses the appropriate method (<code>european_price</code> or <code>american_price</code>) to compute the option prices at earlier time steps based on the exercise type. </p>
 
 </div>
@@ -618,7 +731,15 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Computes the Theta of the option. </p>
+<p>Computes the theta of the option. </p>
+<p>Computes the Theta of the option.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">h</td><td>Step size for finite difference. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Theta of the option.</dd></dl>
 <p>Theta measures the sensitivity of the option price to changes in time to maturity ( T ). It is computed using finite differences as: [ \Theta = \frac{\text{price}(T - h) - \text{price}(T)}{h} ]</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -645,7 +766,15 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Computes the Vega of the option. </p>
+<p>Computes the vega of the option. </p>
+<p>Computes the Vega of the option.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">h</td><td>Step size for finite difference. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vega of the option.</dd></dl>
 <p>Vega measures the sensitivity of the option price to changes in volatility ( \sigma ). It is computed using finite differences as: [ \nu = \frac{\text{price}(\sigma + h) - \text{price}(\sigma)}{h} ]</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
