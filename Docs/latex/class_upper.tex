@@ -13,9 +13,9 @@ Represents an upper triangular matrix and provides functionality to solve linear
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_upper_ac6a97f6040df4558c174a64e874cf8d7}{Upper}} (std\+::vector$<$ double $>$ diag, std\+::vector$<$ double $>$ superdiag)
-\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_upper}{Upper} object. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_upper}{Upper} object with specified diagonal and superdiagonal elements. \end{DoxyCompactList}\item 
 std\+::vector$<$ double $>$ \mbox{\hyperlink{class_upper_a0455020d298314271de84a8b235655e0}{solve}} (std\+::vector$<$ double $>$ b)
-\begin{DoxyCompactList}\small\item\em Solves the system of equations for an upper triangular matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Solves a system of equations for the upper triangular matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -30,7 +30,7 @@ Upper\+::\+Upper (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$}]{d
 
 
 
-Constructs an \doxylink{class_upper}{Upper} object. 
+Constructs an \doxylink{class_upper}{Upper} object with specified diagonal and superdiagonal elements. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -50,15 +50,15 @@ std\+::vector$<$ double $>$ Upper\+::solve (\begin{DoxyParamCaption}\item[{std\+
 
 
 
-Solves the system of equations for an upper triangular matrix. 
+Solves a system of equations for the upper triangular matrix. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em b} & Right-\/hand side vector. \\
+{\em b} & The right-\/hand side vector. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Solution vector x. 
+Solution vector. 
 \end{DoxyReturn}
 
 

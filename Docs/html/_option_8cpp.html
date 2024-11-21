@@ -90,7 +90,7 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 
-<p>contains various methods to deal with the <a class="el" href="class_option.html" title="Represents an option contract with numerical pricing methods.">Option</a> object  
+<p>Contains various methods to deal with the <a class="el" href="class_option.html" title="Represents an option contract with numerical pricing methods using finite difference techniques.">Option</a> object, including pricing and Greeks computation.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_option_8h_source.html">Option.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_tridiag_8h_source.html">Tridiag.h</a>&quot;</code><br />
@@ -123,7 +123,7 @@ Functions</h2></td></tr>
 <tr class="separator:a211ad460bc1e263181a530587dce6e48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>contains various methods to deal with the <a class="el" href="class_option.html" title="Represents an option contract with numerical pricing methods.">Option</a> object </p>
+<div class="textblock"><p>Contains various methods to deal with the <a class="el" href="class_option.html" title="Represents an option contract with numerical pricing methods using finite difference techniques.">Option</a> object, including pricing and Greeks computation. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="a211ad460bc1e263181a530587dce6e48" name="a211ad460bc1e263181a530587dce6e48"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a211ad460bc1e263181a530587dce6e48">&#9670;&#160;</a></span>norm()</h2>
@@ -141,7 +141,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Computes the Euclidean norm of a vector. </p>
-<p>The norm is calculated as ( \sqrt{\sum_i v_i^2} ).</p>
+<p>The norm is calculated as: [ \text{norm} = \sqrt{\sum_i v_i^2} ]</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v1</td><td>Input vector. </td></tr>
@@ -236,6 +236,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Adds a scalar to the first element of a vector. </p>
+<p>The scalar ( p2 ) is added only to the first element of the vector.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v1</td><td>Vector to modify. </td></tr>
@@ -267,6 +268,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Adds a pair of scalars to the first and last elements of a vector. </p>
+<p>Adds the first element of the pair to the first vector element, and the second element of the pair to the last vector element.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v1</td><td>Vector to modify. </td></tr>
@@ -330,6 +332,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Subtracts two vectors element-wise. </p>
+<p>Computes the difference between corresponding elements of two vectors.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v1</td><td>First vector. </td></tr>

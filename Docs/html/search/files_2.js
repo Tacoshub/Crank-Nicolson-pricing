@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['tridiag_2ecpp_0',['Tridiag.cpp',['../_tridiag_8cpp.html',1,'']]],
-  ['tridiag_2eh_1',['Tridiag.h',['../_tridiag_8h.html',1,'']]]
+  ['option_2ecpp_0',['Option.cpp',['../_option_8cpp.html',1,'']]],
+  ['option_2eh_1',['Option.h',['../_option_8h.html',1,'']]],
+  ['optionexceptions_2eh_2',['OptionExceptions.h',['../_option_exceptions_8h.html',1,'']]]
 ];

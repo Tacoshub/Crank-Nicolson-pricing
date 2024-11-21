@@ -7,145 +7,135 @@
 \DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
 \DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <string>}}
 \DoxyCodeLine{00009\ }
-\DoxyCodeLine{00010\ \textcolor{comment}{//\ Base\ class\ for\ all\ option-\/related\ exceptions}}
-\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_option_exceptions}{OptionExceptions}}\ :\ \textcolor{keyword}{public}\ std::exception\ \{}
-\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_option_exceptions_a6e35c300bd24d172ac97aa498e66e833}{what}}()\ \textcolor{keyword}{const}\ throw()\ \{}
-\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Generic\ error"{}};}
-\DoxyCodeLine{00022\ \ \ \ \ \}}
-\DoxyCodeLine{00023\ \};}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \textcolor{comment}{//\ Derived\ exception\ class\ for\ invalid\ contract\ type\ (Call/Put)}}
-\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_invalid_contract_type}{InvalidContractType}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_option_exceptions}{OptionExceptions}}\ \{}
-\DoxyCodeLine{00032\ \ \ \ \ std::string\ msg;\ \ }
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{class_invalid_contract_type_ae722ac92280507f2d3bf11d44e5bbcb8}{InvalidContractType}}(\textcolor{keywordtype}{int}\ N)\ \{}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ msg\ =\ \textcolor{stringliteral}{"{}Invalid\ contract\ type,\ value\ must\ be\ 1\ (Call)\ or\ -\/1\ (Put),\ value\ received:\ "{}};}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ msg\ +=\ std::to\_string(N);\ \ }
-\DoxyCodeLine{00042\ \ \ \ \ \}}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_invalid_contract_type_a5dfecbaca5022f2edb9ad58716017b49}{what}}()\ \textcolor{keyword}{const}\ throw()\ \{}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ msg.c\_str();\ \ }
-\DoxyCodeLine{00050\ \ \ \ \ \}}
-\DoxyCodeLine{00051\ \};}
-\DoxyCodeLine{00052\ }
-\DoxyCodeLine{00053\ \textcolor{comment}{//\ Derived\ exception\ class\ for\ invalid\ exercise\ type\ (European/American)}}
-\DoxyCodeLine{00059\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_invalid_exercise_type}{InvalidExerciseType}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_option_exceptions}{OptionExceptions}}\ \{}
-\DoxyCodeLine{00060\ \ \ \ \ std::string\ msg;\ \ }
-\DoxyCodeLine{00061\ }
-\DoxyCodeLine{00062\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{class_invalid_exercise_type_a6253a319a419ee02e318abf8cb617808}{InvalidExerciseType}}(\textcolor{keywordtype}{int}\ N)\ \{}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ msg\ =\ \textcolor{stringliteral}{"{}Invalid\ exercise\ type,\ value\ must\ be\ 1\ (European)\ or\ 0\ (American),\ value\ received:\ "{}};}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ msg\ +=\ std::to\_string(N);\ \ }
-\DoxyCodeLine{00070\ \ \ \ \ \}}
-\DoxyCodeLine{00071\ }
-\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_invalid_exercise_type_a2e7f44f6840b61e7f518ac817a3acc0a}{what}}()\ \textcolor{keyword}{const}\ throw()\ \{}
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ msg.c\_str();\ \ }
-\DoxyCodeLine{00078\ \ \ \ \ \}}
-\DoxyCodeLine{00079\ \};}
-\DoxyCodeLine{00080\ }
-\DoxyCodeLine{00081\ \textcolor{comment}{//\ Derived\ exception\ class\ for\ invalid\ maturity\ (time\ to\ expiration)}}
-\DoxyCodeLine{00087\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_invalid_maturity}{InvalidMaturity}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_option_exceptions}{OptionExceptions}}\ \{}
-\DoxyCodeLine{00088\ \ \ \ \ std::string\ msg;\ \ }
-\DoxyCodeLine{00089\ }
-\DoxyCodeLine{00090\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00094\ \ \ \ \ \mbox{\hyperlink{class_invalid_maturity_a864d6b3b117d61e50fd536167dcca14c}{InvalidMaturity}}()\ \{}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ msg\ =\ \textcolor{stringliteral}{"{}Invalid\ maturity"{}};\ \ }
-\DoxyCodeLine{00096\ \ \ \ \ \}}
-\DoxyCodeLine{00097\ }
-\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_invalid_maturity_a2c526eb38da45b055e09fff414201dbd}{what}}()\ \textcolor{keyword}{const}\ throw()\ \{}
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ msg.c\_str();\ \ }
-\DoxyCodeLine{00104\ \ \ \ \ \}}
-\DoxyCodeLine{00105\ \};}
-\DoxyCodeLine{00106\ }
-\DoxyCodeLine{00107\ \textcolor{comment}{//\ Derived\ exception\ class\ for\ invalid\ strike\ price}}
-\DoxyCodeLine{00113\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_invalid_strike}{InvalidStrike}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_option_exceptions}{OptionExceptions}}\ \{}
-\DoxyCodeLine{00114\ \ \ \ \ std::string\ msg;\ \ }
-\DoxyCodeLine{00115\ }
-\DoxyCodeLine{00116\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00121\ \ \ \ \ \mbox{\hyperlink{class_invalid_strike_a66523a7e6bb2bec22e6674af1a57c5ce}{InvalidStrike}}(\textcolor{keywordtype}{double}\ N)\ \{}
-\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ msg\ =\ \textcolor{stringliteral}{"{}Invalid\ strike,\ value\ must\ be\ positive,\ value\ received:\ "{}};}
-\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ msg\ +=\ std::to\_string(N);\ \ }
-\DoxyCodeLine{00124\ \ \ \ \ \}}
-\DoxyCodeLine{00125\ }
-\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_invalid_strike_a7f6a7a8b453e5fff1f617b3f0aac772e}{what}}()\ \textcolor{keyword}{const}\ throw()\ \{}
-\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ msg.c\_str();\ \ }
-\DoxyCodeLine{00132\ \ \ \ \ \}}
-\DoxyCodeLine{00133\ \};}
-\DoxyCodeLine{00134\ }
-\DoxyCodeLine{00135\ \textcolor{comment}{//\ Derived\ exception\ class\ for\ invalid\ time\ mesh\ (discretization)}}
-\DoxyCodeLine{00141\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_invalid_time_mesh}{InvalidTimeMesh}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_option_exceptions}{OptionExceptions}}\ \{}
-\DoxyCodeLine{00142\ \ \ \ \ std::string\ msg;\ \ }
-\DoxyCodeLine{00143\ }
-\DoxyCodeLine{00144\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00149\ \ \ \ \ \mbox{\hyperlink{class_invalid_time_mesh_a48a873df61e876654d8268f5f1e8bfb0}{InvalidTimeMesh}}(\textcolor{keywordtype}{int}\ N)\ \{}
-\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ msg\ =\ \textcolor{stringliteral}{"{}Invalid\ value\ for\ time\ mesh,\ value\ must\ be\ positive,\ value\ received:\ "{}};}
-\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ msg\ +=\ std::to\_string(N);\ \ }
-\DoxyCodeLine{00152\ \ \ \ \ \}}
-\DoxyCodeLine{00153\ }
-\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_invalid_time_mesh_ac9060cab39cde66ab080dc76c079725e}{what}}()\ \textcolor{keyword}{const}\ throw()\ \{}
-\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ msg.c\_str();\ \ }
-\DoxyCodeLine{00160\ \ \ \ \ \}}
-\DoxyCodeLine{00161\ \};}
-\DoxyCodeLine{00162\ }
-\DoxyCodeLine{00163\ \textcolor{comment}{//\ Derived\ exception\ class\ for\ invalid\ spot\ mesh\ (discretization)}}
-\DoxyCodeLine{00169\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_invalid_spot_mesh}{InvalidSpotMesh}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_option_exceptions}{OptionExceptions}}\ \{}
-\DoxyCodeLine{00170\ \ \ \ \ std::string\ msg;\ \ }
-\DoxyCodeLine{00171\ }
-\DoxyCodeLine{00172\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00177\ \ \ \ \ \mbox{\hyperlink{class_invalid_spot_mesh_aa1c6c1636846b805f14ff992408e7ae4}{InvalidSpotMesh}}(\textcolor{keywordtype}{int}\ N)\ \{}
-\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ msg\ =\ \textcolor{stringliteral}{"{}Invalid\ value\ for\ time\ mesh,\ value\ must\ be\ positive,\ value\ received:\ "{}};}
-\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ msg\ +=\ std::to\_string(N);\ \ }
-\DoxyCodeLine{00180\ \ \ \ \ \}}
-\DoxyCodeLine{00181\ }
-\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_invalid_spot_mesh_a47632a0767602030b5a4e3569d432d98}{what}}()\ \textcolor{keyword}{const}\ throw()\ \{}
-\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ msg.c\_str();\ \ }
-\DoxyCodeLine{00188\ \ \ \ \ \}}
-\DoxyCodeLine{00189\ \};}
-\DoxyCodeLine{00190\ }
-\DoxyCodeLine{00191\ \textcolor{comment}{//\ Derived\ exception\ class\ for\ invalid\ spot\ price}}
-\DoxyCodeLine{00197\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_invalid_spot}{InvalidSpot}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_option_exceptions}{OptionExceptions}}\ \{}
-\DoxyCodeLine{00198\ \ \ \ \ std::string\ msg;\ \ }
-\DoxyCodeLine{00199\ }
-\DoxyCodeLine{00200\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00205\ \ \ \ \ \mbox{\hyperlink{class_invalid_spot_a45c1a70adebb06ddbf8e99b094b51734}{InvalidSpot}}(\textcolor{keywordtype}{double}\ N)\ \{}
-\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ msg\ =\ \textcolor{stringliteral}{"{}Invalid\ value\ for\ spot\ price,\ value\ must\ be\ positive,\ value\ received:\ "{}};}
-\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ msg\ +=\ std::to\_string(N);\ \ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_option_exceptions}{OptionExceptions}}\ :\ \textcolor{keyword}{public}\ std::exception\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_option_exceptions_a6e35c300bd24d172ac97aa498e66e833}{what}}()\ \textcolor{keyword}{const}\ throw()\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Generic\ error"{}};}
+\DoxyCodeLine{00021\ \ \ \ \ \}}
+\DoxyCodeLine{00022\ \};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_invalid_contract_type}{InvalidContractType}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_option_exceptions}{OptionExceptions}}\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ std::string\ msg;}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{class_invalid_contract_type_ae722ac92280507f2d3bf11d44e5bbcb8}{InvalidContractType}}(\textcolor{keywordtype}{int}\ N)\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ msg\ =\ \textcolor{stringliteral}{"{}Invalid\ contract\ type,\ value\ must\ be\ 1\ (Call)\ or\ -\/1\ (Put),\ value\ received:\ "{}};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ msg\ +=\ std::to\_string(N);}
+\DoxyCodeLine{00040\ \ \ \ \ \}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_invalid_contract_type_a5dfecbaca5022f2edb9ad58716017b49}{what}}()\ \textcolor{keyword}{const}\ throw()\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ msg.c\_str();}
+\DoxyCodeLine{00048\ \ \ \ \ \}}
+\DoxyCodeLine{00049\ \};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00056\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_invalid_exercise_type}{InvalidExerciseType}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_option_exceptions}{OptionExceptions}}\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ std::string\ msg;}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00064\ \ \ \ \ \mbox{\hyperlink{class_invalid_exercise_type_a6253a319a419ee02e318abf8cb617808}{InvalidExerciseType}}(\textcolor{keywordtype}{int}\ N)\ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ msg\ =\ \textcolor{stringliteral}{"{}Invalid\ exercise\ type,\ value\ must\ be\ 1\ (European)\ or\ 0\ (American),\ value\ received:\ "{}};}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ msg\ +=\ std::to\_string(N);}
+\DoxyCodeLine{00067\ \ \ \ \ \}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_invalid_exercise_type_a2e7f44f6840b61e7f518ac817a3acc0a}{what}}()\ \textcolor{keyword}{const}\ throw()\ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ msg.c\_str();}
+\DoxyCodeLine{00075\ \ \ \ \ \}}
+\DoxyCodeLine{00076\ \};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00083\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_invalid_maturity}{InvalidMaturity}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_option_exceptions}{OptionExceptions}}\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ std::string\ msg;}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00090\ \ \ \ \ \mbox{\hyperlink{class_invalid_maturity_a864d6b3b117d61e50fd536167dcca14c}{InvalidMaturity}}()\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ msg\ =\ \textcolor{stringliteral}{"{}Invalid\ maturity"{}};}
+\DoxyCodeLine{00092\ \ \ \ \ \}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_invalid_maturity_a2c526eb38da45b055e09fff414201dbd}{what}}()\ \textcolor{keyword}{const}\ throw()\ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ msg.c\_str();}
+\DoxyCodeLine{00100\ \ \ \ \ \}}
+\DoxyCodeLine{00101\ \};}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00108\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_invalid_strike}{InvalidStrike}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_option_exceptions}{OptionExceptions}}\ \{}
+\DoxyCodeLine{00109\ \ \ \ \ std::string\ msg;}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00116\ \ \ \ \ \mbox{\hyperlink{class_invalid_strike_a66523a7e6bb2bec22e6674af1a57c5ce}{InvalidStrike}}(\textcolor{keywordtype}{double}\ N)\ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ msg\ =\ \textcolor{stringliteral}{"{}Invalid\ strike,\ value\ must\ be\ positive,\ value\ received:\ "{}};}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ msg\ +=\ std::to\_string(N);}
+\DoxyCodeLine{00119\ \ \ \ \ \}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_invalid_strike_a7f6a7a8b453e5fff1f617b3f0aac772e}{what}}()\ \textcolor{keyword}{const}\ throw()\ \{}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ msg.c\_str();}
+\DoxyCodeLine{00127\ \ \ \ \ \}}
+\DoxyCodeLine{00128\ \};}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00135\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_invalid_time_mesh}{InvalidTimeMesh}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_option_exceptions}{OptionExceptions}}\ \{}
+\DoxyCodeLine{00136\ \ \ \ \ std::string\ msg;}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00143\ \ \ \ \ \mbox{\hyperlink{class_invalid_time_mesh_a48a873df61e876654d8268f5f1e8bfb0}{InvalidTimeMesh}}(\textcolor{keywordtype}{int}\ N)\ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ msg\ =\ \textcolor{stringliteral}{"{}Invalid\ value\ for\ time\ mesh,\ value\ must\ be\ positive,\ value\ received:\ "{}};}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ msg\ +=\ std::to\_string(N);}
+\DoxyCodeLine{00146\ \ \ \ \ \}}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_invalid_time_mesh_ac9060cab39cde66ab080dc76c079725e}{what}}()\ \textcolor{keyword}{const}\ throw()\ \{}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ msg.c\_str();}
+\DoxyCodeLine{00154\ \ \ \ \ \}}
+\DoxyCodeLine{00155\ \};}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00162\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_invalid_spot_mesh}{InvalidSpotMesh}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_option_exceptions}{OptionExceptions}}\ \{}
+\DoxyCodeLine{00163\ \ \ \ \ std::string\ msg;}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00170\ \ \ \ \ \mbox{\hyperlink{class_invalid_spot_mesh_aa1c6c1636846b805f14ff992408e7ae4}{InvalidSpotMesh}}(\textcolor{keywordtype}{int}\ N)\ \{}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ msg\ =\ \textcolor{stringliteral}{"{}Invalid\ value\ for\ time\ mesh,\ value\ must\ be\ positive,\ value\ received:\ "{}};}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ msg\ +=\ std::to\_string(N);}
+\DoxyCodeLine{00173\ \ \ \ \ \}}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_invalid_spot_mesh_a47632a0767602030b5a4e3569d432d98}{what}}()\ \textcolor{keyword}{const}\ throw()\ \{}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ msg.c\_str();}
+\DoxyCodeLine{00181\ \ \ \ \ \}}
+\DoxyCodeLine{00182\ \};}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00189\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_invalid_spot}{InvalidSpot}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_option_exceptions}{OptionExceptions}}\ \{}
+\DoxyCodeLine{00190\ \ \ \ \ std::string\ msg;}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00197\ \ \ \ \ \mbox{\hyperlink{class_invalid_spot_a45c1a70adebb06ddbf8e99b094b51734}{InvalidSpot}}(\textcolor{keywordtype}{double}\ N)\ \{}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ msg\ =\ \textcolor{stringliteral}{"{}Invalid\ value\ for\ spot\ price,\ value\ must\ be\ positive,\ value\ received:\ "{}};}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ msg\ +=\ std::to\_string(N);}
+\DoxyCodeLine{00200\ \ \ \ \ \}}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_invalid_spot_a39af59750cf4afd10578e434fc5ff61c}{what}}()\ \textcolor{keyword}{const}\ throw()\ \{}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ msg.c\_str();}
 \DoxyCodeLine{00208\ \ \ \ \ \}}
-\DoxyCodeLine{00209\ }
-\DoxyCodeLine{00214\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_invalid_spot_a39af59750cf4afd10578e434fc5ff61c}{what}}()\ \textcolor{keyword}{const}\ throw()\ \{}
-\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ msg.c\_str();\ \ }
-\DoxyCodeLine{00216\ \ \ \ \ \}}
-\DoxyCodeLine{00217\ \};}
+\DoxyCodeLine{00209\ \};}
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00216\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_invalid_volatility}{InvalidVolatility}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_option_exceptions}{OptionExceptions}}\ \{}
+\DoxyCodeLine{00217\ \ \ \ \ std::string\ msg;}
 \DoxyCodeLine{00218\ }
-\DoxyCodeLine{00219\ \textcolor{comment}{//\ Derived\ exception\ class\ for\ invalid\ volatility\ (a\ measure\ of\ risk)}}
-\DoxyCodeLine{00225\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_invalid_volatility}{InvalidVolatility}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_option_exceptions}{OptionExceptions}}\ \{}
-\DoxyCodeLine{00226\ \ \ \ \ std::string\ msg;\ \ }
-\DoxyCodeLine{00227\ }
-\DoxyCodeLine{00228\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00233\ \ \ \ \ \mbox{\hyperlink{class_invalid_volatility_a1a66670aea68650f54c9ab3fa14680c2}{InvalidVolatility}}(\textcolor{keywordtype}{double}\ N)\ \{}
-\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ msg\ =\ \textcolor{stringliteral}{"{}Invalid\ value\ for\ volatility,\ value\ must\ be\ positive,\ value\ received:\ "{}};}
-\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ msg\ +=\ std::to\_string(N);\ \ }
-\DoxyCodeLine{00236\ \ \ \ \ \}}
+\DoxyCodeLine{00219\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00224\ \ \ \ \ \mbox{\hyperlink{class_invalid_volatility_a1a66670aea68650f54c9ab3fa14680c2}{InvalidVolatility}}(\textcolor{keywordtype}{double}\ N)\ \{}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ msg\ =\ \textcolor{stringliteral}{"{}Invalid\ value\ for\ volatility,\ value\ must\ be\ positive,\ value\ received:\ "{}};}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ msg\ +=\ std::to\_string(N);}
+\DoxyCodeLine{00227\ \ \ \ \ \}}
+\DoxyCodeLine{00228\ }
+\DoxyCodeLine{00233\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_invalid_volatility_a36b21582cd30333e06bba24e1ce5c2c7}{what}}()\ \textcolor{keyword}{const}\ throw()\ \{}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ msg.c\_str();}
+\DoxyCodeLine{00235\ \ \ \ \ \}}
+\DoxyCodeLine{00236\ \};}
 \DoxyCodeLine{00237\ }
-\DoxyCodeLine{00242\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_invalid_volatility_a36b21582cd30333e06bba24e1ce5c2c7}{what}}()\ \textcolor{keyword}{const}\ throw()\ \{}
-\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ msg.c\_str();\ \ }
-\DoxyCodeLine{00244\ \ \ \ \ \}}
-\DoxyCodeLine{00245\ \};}
-\DoxyCodeLine{00246\ }
-\DoxyCodeLine{00247\ \textcolor{comment}{//\ Derived\ exception\ class\ for\ invalid\ time\ (typically\ refers\ to\ expiration\ time)}}
-\DoxyCodeLine{00253\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_invalid_time}{InvalidTime}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_option_exceptions}{OptionExceptions}}\ \{}
-\DoxyCodeLine{00254\ \ \ \ \ std::string\ msg;\ \ }
-\DoxyCodeLine{00255\ }
-\DoxyCodeLine{00256\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00260\ \ \ \ \ \mbox{\hyperlink{class_invalid_time_a8a982858b464e62b29ad00a91726fdf0}{InvalidTime}}()\ \{}
-\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ msg\ =\ \textcolor{stringliteral}{"{}Value\ out\ of\ bounds"{}};\ \ }
-\DoxyCodeLine{00262\ \ \ \ \ \}}
-\DoxyCodeLine{00263\ }
-\DoxyCodeLine{00268\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_invalid_time_a64f21fa79868fb93aef37a11410c9028}{what}}()\ \textcolor{keyword}{const}\ throw()\ \{}
-\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ msg.c\_str();\ \ }
-\DoxyCodeLine{00270\ \ \ \ \ \}}
-\DoxyCodeLine{00271\ \};}
+\DoxyCodeLine{00243\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_invalid_time}{InvalidTime}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_option_exceptions}{OptionExceptions}}\ \{}
+\DoxyCodeLine{00244\ \ \ \ \ std::string\ msg;}
+\DoxyCodeLine{00245\ }
+\DoxyCodeLine{00246\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00250\ \ \ \ \ \mbox{\hyperlink{class_invalid_time_a8a982858b464e62b29ad00a91726fdf0}{InvalidTime}}()\ \{}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ msg\ =\ \textcolor{stringliteral}{"{}Value\ out\ of\ bounds"{}};}
+\DoxyCodeLine{00252\ \ \ \ \ \}}
+\DoxyCodeLine{00253\ }
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_invalid_time_a64f21fa79868fb93aef37a11410c9028}{what}}()\ \textcolor{keyword}{const}\ throw()\ \{}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ msg.c\_str();}
+\DoxyCodeLine{00260\ \ \ \ \ \}}
+\DoxyCodeLine{00261\ \};}
 
 \end{DoxyCode}

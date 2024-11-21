@@ -2,7 +2,7 @@
 \hypertarget{_option_8cpp}{}\label{_option_8cpp}\index{C:/Users/Admin/OneDrive/Desktop/UNIVERSITÁ/LEZIONI/ANNO 2024-\/2025/PROJECT INFORMATIQUE/PROGETTO/Option.cpp@{C:/Users/Admin/OneDrive/Desktop/UNIVERSITÁ/LEZIONI/ANNO 2024-\/2025/PROJECT INFORMATIQUE/PROGETTO/Option.cpp}}
 
 
-contains various methods to deal with the \doxylink{class_option}{Option} object  
+Contains various methods to deal with the \doxylink{class_option}{Option} object, including pricing and Greeks computation.  
 
 
 {\ttfamily \#include "{}Option.\+h"{}}\newline
@@ -30,7 +30,7 @@ double \mbox{\hyperlink{_option_8cpp_a211ad460bc1e263181a530587dce6e48}{norm}} (
 
 
 \doxysubsection{Detailed Description}
-contains various methods to deal with the \doxylink{class_option}{Option} object 
+Contains various methods to deal with the \doxylink{class_option}{Option} object, including pricing and Greeks computation. 
 
 
 
@@ -45,7 +45,7 @@ double norm (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$}]{v1}{}\
 
 Computes the Euclidean norm of a vector. 
 
-The norm is calculated as ( \textbackslash{}sqrt\{\textbackslash{}sum\+\_\+i v\+\_\+i\texorpdfstring{$^\wedge$}{\string^}2\} ).
+The norm is calculated as\+: \mbox{[} \textbackslash{}text\{norm\} = \textbackslash{}sqrt\{\textbackslash{}sum\+\_\+i v\+\_\+i\texorpdfstring{$^\wedge$}{\string^}2\} \mbox{]}
 
 
 \begin{DoxyParams}{Parameters}
@@ -109,6 +109,8 @@ std\+::vector$<$ double $>$ operator+ (\begin{DoxyParamCaption}\item[{std\+::vec
 
 Adds a scalar to the first element of a vector. 
 
+The scalar ( p2 ) is added only to the first element of the vector.
+
 
 \begin{DoxyParams}{Parameters}
 {\em v1} & Vector to modify. \\
@@ -128,6 +130,8 @@ std\+::vector$<$ double $>$ operator+ (\begin{DoxyParamCaption}\item[{std\+::vec
 
 
 Adds a pair of scalars to the first and last elements of a vector. 
+
+Adds the first element of the pair to the first vector element, and the second element of the pair to the last vector element.
 
 
 \begin{DoxyParams}{Parameters}
@@ -170,6 +174,8 @@ std\+::vector$<$ double $>$ operator-\/ (\begin{DoxyParamCaption}\item[{std\+::v
 
 
 Subtracts two vectors element-\/wise. 
+
+Computes the difference between corresponding elements of two vectors.
 
 
 \begin{DoxyParams}{Parameters}

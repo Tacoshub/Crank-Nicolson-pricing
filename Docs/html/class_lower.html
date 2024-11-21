@@ -99,10 +99,10 @@ $(function(){ initResizable(false); });
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae446a86b8a51aee8a271a61db66670ca" id="r_ae446a86b8a51aee8a271a61db66670ca"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae446a86b8a51aee8a271a61db66670ca">Lower</a> (std::vector&lt; double &gt; subdiag, std::vector&lt; double &gt; diag)</td></tr>
-<tr class="memdesc:ae446a86b8a51aee8a271a61db66670ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="class_lower.html" title="Represents a lower triangular matrix and provides functionality to solve linear equations.">Lower</a> object.  <br /></td></tr>
+<tr class="memdesc:ae446a86b8a51aee8a271a61db66670ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="class_lower.html" title="Represents a lower triangular matrix and provides functionality to solve linear equations.">Lower</a> object with specified subdiagonal and diagonal elements.  <br /></td></tr>
 <tr class="separator:ae446a86b8a51aee8a271a61db66670ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c0b07d37bacb1c93d8a299a71a5fb6b" id="r_a5c0b07d37bacb1c93d8a299a71a5fb6b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c0b07d37bacb1c93d8a299a71a5fb6b">solve</a> (std::vector&lt; double &gt; b)</td></tr>
-<tr class="memdesc:a5c0b07d37bacb1c93d8a299a71a5fb6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the system of equations for a lower triangular matrix.  <br /></td></tr>
+<tr class="memdesc:a5c0b07d37bacb1c93d8a299a71a5fb6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves a system of equations for the lower triangular matrix.  <br /></td></tr>
 <tr class="separator:a5c0b07d37bacb1c93d8a299a71a5fb6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -135,7 +135,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Constructs a <a class="el" href="class_lower.html" title="Represents a lower triangular matrix and provides functionality to solve linear equations.">Lower</a> object. </p>
+<p>Constructs a <a class="el" href="class_lower.html" title="Represents a lower triangular matrix and provides functionality to solve linear equations.">Lower</a> object with specified subdiagonal and diagonal elements. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">subdiag</td><td>Vector containing subdiagonal elements. </td></tr>
@@ -170,14 +170,14 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Solves the system of equations for a lower triangular matrix. </p>
+<p>Solves a system of equations for the lower triangular matrix. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">b</td><td>Right-hand side vector. </td></tr>
+    <tr><td class="paramname">b</td><td>The right-hand side vector. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Solution vector x. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Solution vector. </dd></dl>
 
 </div>
 </div>

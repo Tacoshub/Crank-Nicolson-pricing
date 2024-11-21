@@ -2,7 +2,7 @@
 \hypertarget{class_option}{}\label{class_option}\index{Option@{Option}}
 
 
-Represents an option contract with numerical pricing methods.  
+Represents an option contract with numerical pricing methods using finite difference techniques.  
 
 
 
@@ -24,9 +24,9 @@ std\+::vector$<$ double $>$ \mbox{\hyperlink{class_option_ad1552eb1817162c1b286a
 \begin{DoxyCompactList}\small\item\em Computes the tridiagonal matrix C. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_tridiag}{Tridiag}} \mbox{\hyperlink{class_option_a31d3ec621b928d8622b08e6b6566c2e9}{compute\+\_\+D}} (std\+::vector$<$ double $>$ a, std\+::vector$<$ double $>$ b, std\+::vector$<$ double $>$ c)
 \begin{DoxyCompactList}\small\item\em Computes the tridiagonal matrix D. \end{DoxyCompactList}\item 
-std\+::pair$<$ double, double $>$ \mbox{\hyperlink{class_option_acb025c237c2647b7e25ed7891bf906bd}{compute\+\_\+K}} (unsigned int i)
+std\+::pair$<$ double, double $>$ \mbox{\hyperlink{class_option_a30f78027509f9ad9cf8eec26b2a89eb3}{compute\+\_\+K}} (size\+\_\+t i)
 \begin{DoxyCompactList}\small\item\em Computes the vector K for the boundary conditions. \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{class_option_a64e397c1fe029b2b9d108781c43ee75b}{compute\+\_\+\+K\+\_\+american}} (unsigned int i)
+double \mbox{\hyperlink{class_option_a486eb2873bc9019b6fcb7c088448b6b8}{compute\+\_\+\+K\+\_\+american}} (size\+\_\+t i)
 \begin{DoxyCompactList}\small\item\em Computes the boundary condition K for American options. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_option_add7a189920460d9045e029b5c927ad67}{solve}} ()
 \begin{DoxyCompactList}\small\item\em Solves the option pricing problem using the grid. \end{DoxyCompactList}\item 
@@ -53,7 +53,7 @@ std\+::vector$<$ std\+::pair$<$ double, double $>$ $>$ \mbox{\hyperlink{class_op
 
 
 \doxysubsection{Detailed Description}
-Represents an option contract with numerical pricing methods. 
+Represents an option contract with numerical pricing methods using finite difference techniques. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_option_a04eaaaadb0da5ceaf51891082635b553}\index{Option@{Option}!Option@{Option}}
@@ -70,7 +70,7 @@ Constructs an \doxylink{class_option}{Option} object and validates input paramet
 
 
 \begin{DoxyParams}{Parameters}
-{\em contract\+\_\+type} & Type of contract (0 for call, 1 for put). \\
+{\em contract\+\_\+type} & Type of contract (1 for Call, -\/1 for Put). \\
 \hline
 {\em exercise\+\_\+type} & Exercise type (0 for European, 1 for American). \\
 \hline
@@ -90,12 +90,12 @@ Constructs an \doxylink{class_option}{Option} object and validates input paramet
 \hline
 {\em volatility} & Volatility of the underlying asset. \\
 \hline
-{\em tol} & Convergence tolerance (default is 0.\+01). \\
+{\em tol} & Convergence tolerance for iterative solvers. \\
 \hline
-{\em w} & Relaxation parameter (default is 1.\+2).\\
+{\em w} & Relaxation parameter for iterative solvers.\\
 \hline
 \end{DoxyParams}
-Initializes the option with specified contract and exercise type, maturity, strike price, and other model parameters.
+Initializes the option with specified contract type, exercise type, maturity, strike price, and other parameters required for the finite difference method.
 
 
 \begin{DoxyParams}{Parameters}
@@ -147,6 +147,8 @@ Computes coefficients ( a\+\_\+j ) for the tridiagonal matrix in the finite diff
 \begin{DoxyReturn}{Returns}
 Vector of coefficients a\+\_\+j.
 \end{DoxyReturn}
+Coefficients ( a\+\_\+j ) are used for the subdiagonal elements in the tridiagonal matrix and depend on the volatility and interest rate at the current time step.
+
 
 \begin{DoxyParams}{Parameters}
 {\em i} & Time step index. \\
@@ -175,6 +177,8 @@ Computes coefficients ( b\+\_\+j ) for the tridiagonal matrix in the finite diff
 \begin{DoxyReturn}{Returns}
 Vector of coefficients b\+\_\+j.
 \end{DoxyReturn}
+Coefficients ( b\+\_\+j ) are used for the diagonal elements in the tridiagonal matrix and depend on the volatility and interest rate at the current time step.
+
 
 \begin{DoxyParams}{Parameters}
 {\em i} & Time step index. \\
@@ -207,20 +211,15 @@ Constructs the tridiagonal matrix ( C ) used in the finite difference method.
 \begin{DoxyReturn}{Returns}
 Tridiagonal matrix C.
 \end{DoxyReturn}
-The matrix ( C ) is defined as\+: \mbox{[} C = \textbackslash{}text\{\doxylink{class_tridiag}{Tridiag}\}(-\/a, 1 -\/ b, -\/c) \mbox{]} where\+:
-\begin{DoxyItemize}
-\item ( a )\+: Subdiagonal coefficients (negative of input ( a )).
-\item ( b )\+: Diagonal coefficients (1 minus input ( b )).
-\item ( c )\+: Superdiagonal coefficients (negative of input ( c )).
-\end{DoxyItemize}
+The matrix ( C ) is defined as\+: \mbox{[} C = \textbackslash{}text\{\doxylink{class_tridiag}{Tridiag}\}(-\/a, 1 -\/ b, -\/c) \mbox{]} where ( a, b, c ) are vectors of coefficients.
 
 
 \begin{DoxyParams}{Parameters}
-{\em a} & Vector of subdiagonal coefficients. \\
+{\em a} & Vector of subdiagonal coefficients ( a\+\_\+j ). \\
 \hline
-{\em b} & Vector of diagonal coefficients. \\
+{\em b} & Vector of diagonal coefficients ( b\+\_\+j ). \\
 \hline
-{\em c} & Vector of superdiagonal coefficients. \\
+{\em c} & Vector of superdiagonal coefficients ( c\+\_\+j ). \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -246,6 +245,8 @@ Computes coefficients ( c\+\_\+j ) for the tridiagonal matrix in the finite diff
 \begin{DoxyReturn}{Returns}
 Vector of coefficients c\+\_\+j.
 \end{DoxyReturn}
+Coefficients ( c\+\_\+j ) are used for the superdiagonal elements in the tridiagonal matrix and depend on the volatility and interest rate at the current time step.
+
 
 \begin{DoxyParams}{Parameters}
 {\em i} & Time step index. \\
@@ -278,30 +279,25 @@ Constructs the tridiagonal matrix ( D ) used in the finite difference method.
 \begin{DoxyReturn}{Returns}
 Tridiagonal matrix D.
 \end{DoxyReturn}
-The matrix ( D ) is defined as\+: \mbox{[} D = \textbackslash{}text\{\doxylink{class_tridiag}{Tridiag}\}(a, 1 + b, c) \mbox{]} where\+:
-\begin{DoxyItemize}
-\item ( a )\+: Subdiagonal coefficients.
-\item ( b )\+: Diagonal coefficients (1 plus input ( b )).
-\item ( c )\+: Superdiagonal coefficients.
-\end{DoxyItemize}
+The matrix ( D ) is defined as\+: \mbox{[} D = \textbackslash{}text\{\doxylink{class_tridiag}{Tridiag}\}(a, 1 + b, c) \mbox{]} where ( a, b, c ) are vectors of coefficients.
 
 
 \begin{DoxyParams}{Parameters}
-{\em a} & Vector of subdiagonal coefficients. \\
+{\em a} & Vector of subdiagonal coefficients ( a\+\_\+j ). \\
 \hline
-{\em b} & Vector of diagonal coefficients. \\
+{\em b} & Vector of diagonal coefficients ( b\+\_\+j ). \\
 \hline
-{\em c} & Vector of superdiagonal coefficients. \\
+{\em c} & Vector of superdiagonal coefficients ( c\+\_\+j ). \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 \doxylink{class_tridiag}{Tridiag} object representing the matrix ( D ). 
 \end{DoxyReturn}
-\Hypertarget{class_option_acb025c237c2647b7e25ed7891bf906bd}\index{Option@{Option}!compute\_K@{compute\_K}}
+\Hypertarget{class_option_a30f78027509f9ad9cf8eec26b2a89eb3}\index{Option@{Option}!compute\_K@{compute\_K}}
 \index{compute\_K@{compute\_K}!Option@{Option}}
 \doxysubsubsection{\texorpdfstring{compute\_K()}{compute\_K()}}
-{\footnotesize\ttfamily \label{class_option_acb025c237c2647b7e25ed7891bf906bd} 
-std\+::pair$<$ double, double $>$ Option\+::compute\+\_\+K (\begin{DoxyParamCaption}\item[{unsigned int}]{i}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{class_option_a30f78027509f9ad9cf8eec26b2a89eb3} 
+std\+::pair$<$ double, double $>$ Option\+::compute\+\_\+K (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i}{}\end{DoxyParamCaption})}
 
 
 
@@ -317,13 +313,7 @@ Computes the boundary terms ( K\+\_\+1 ) and ( K\+\_\+2 ) used for pricing adjus
 \begin{DoxyReturn}{Returns}
 Pair of boundary values for the vector K.
 \end{DoxyReturn}
-The boundary terms are computed as\+: \mbox{[} K\+\_\+1 = a\+\_\+1\texorpdfstring{$^\wedge$}{\string^}\{\textbackslash{}text\{prec\}\} F\+\_\+0 e\texorpdfstring{$^\wedge$}{\string^}\{-\/\textbackslash{}int r \textbackslash{}, dt\} + a\+\_\+1\texorpdfstring{$^\wedge$}{\string^}\{\textbackslash{}text\{curr\}\} F\+\_\+0 e\texorpdfstring{$^\wedge$}{\string^}\{-\/\textbackslash{}int r \textbackslash{}, dt\} \mbox{]} \mbox{[} K\+\_\+2 = c\+\_\+m\texorpdfstring{$^\wedge$}{\string^}\{\textbackslash{}text\{prec\}\} \textbackslash{}left(F\+\_\+M -\/ K e\texorpdfstring{$^\wedge$}{\string^}\{-\/\textbackslash{}int r \textbackslash{}, dt\}\textbackslash{}right) + c\+\_\+m\texorpdfstring{$^\wedge$}{\string^}\{\textbackslash{}text\{curr\}\} \textbackslash{}left(F\+\_\+M -\/ K e\texorpdfstring{$^\wedge$}{\string^}\{-\/\textbackslash{}int r \textbackslash{}, dt\}\textbackslash{}right) \mbox{]} where\+:
-\begin{DoxyItemize}
-\item ( a\+\_\+1 )\+: Coefficient for the first boundary.
-\item ( c\+\_\+m )\+: Coefficient for the last boundary.
-\item ( F\+\_\+0 ), ( F\+\_\+M )\+: Boundary values of the grid.
-\item ( r )\+: Interest rate.
-\end{DoxyItemize}
+These terms represent the contributions of the boundary conditions to the finite difference system.
 
 
 \begin{DoxyParams}{Parameters}
@@ -333,17 +323,17 @@ The boundary terms are computed as\+: \mbox{[} K\+\_\+1 = a\+\_\+1\texorpdfstrin
 \begin{DoxyReturn}{Returns}
 A pair of boundary terms ( (K\+\_\+1, K\+\_\+2) ). 
 \end{DoxyReturn}
-\Hypertarget{class_option_a64e397c1fe029b2b9d108781c43ee75b}\index{Option@{Option}!compute\_K\_american@{compute\_K\_american}}
+\Hypertarget{class_option_a486eb2873bc9019b6fcb7c088448b6b8}\index{Option@{Option}!compute\_K\_american@{compute\_K\_american}}
 \index{compute\_K\_american@{compute\_K\_american}!Option@{Option}}
 \doxysubsubsection{\texorpdfstring{compute\_K\_american()}{compute\_K\_american()}}
-{\footnotesize\ttfamily \label{class_option_a64e397c1fe029b2b9d108781c43ee75b} 
-double Option\+::compute\+\_\+\+K\+\_\+american (\begin{DoxyParamCaption}\item[{unsigned int}]{i}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{class_option_a486eb2873bc9019b6fcb7c088448b6b8} 
+double Option\+::compute\+\_\+\+K\+\_\+american (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i}{}\end{DoxyParamCaption})}
 
 
 
 Computes the boundary condition K for American options. 
 
-Computes the boundary term ( K\+\_\+1 ) used for American option pricing adjustments at the lower boundary.
+Computes the boundary term ( K\+\_\+1 ) for American option pricing.
 
 
 \begin{DoxyParams}{Parameters}
@@ -353,22 +343,15 @@ Computes the boundary term ( K\+\_\+1 ) used for American option pricing adjustm
 \begin{DoxyReturn}{Returns}
 Boundary value for K.
 \end{DoxyReturn}
-The boundary term ( K\+\_\+1 ) for American options is computed as\+: \mbox{[} K\+\_\+1 = a\+\_\+1\texorpdfstring{$^\wedge$}{\string^}\{\textbackslash{}text\{prec\}\} F\+\_\+0 e\texorpdfstring{$^\wedge$}{\string^}\{-\/\textbackslash{}int r \textbackslash{}, dt\} + a\+\_\+1\texorpdfstring{$^\wedge$}{\string^}\{\textbackslash{}text\{curr\}\} F\+\_\+0 e\texorpdfstring{$^\wedge$}{\string^}\{-\/\textbackslash{}int r \textbackslash{}, dt\} \mbox{]} where\+:
-\begin{DoxyItemize}
-\item ( a\+\_\+1 )\+: Coefficients based on the volatility and interest rate at previous and current time steps.
-\item ( F\+\_\+0 )\+: Boundary value at the lower boundary.
-\item ( r )\+: Interest rate.
-\end{DoxyItemize}
-
-This term is specific to American options and applies only to the lower boundary of the pricing grid.
+The boundary term is specific to American options and accounts for the early exercise condition at the lower boundary of the grid. It is computed using coefficients derived from the volatility, interest rate, and boundary values.
 
 
 \begin{DoxyParams}{Parameters}
-{\em i} & Time step index. \\
+{\em i} & The time step index. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The computed boundary term ( K\+\_\+1 ) for the American option. 
+The computed boundary term ( K\+\_\+1 ). 
 \end{DoxyReturn}
 \Hypertarget{class_option_ab23aaadf1ad3af7a47be137a59651ab4}\index{Option@{Option}!delta@{delta}}
 \index{delta@{delta}!Option@{Option}}
@@ -410,7 +393,7 @@ std\+::vector$<$ std\+::pair$<$ double, double $>$ $>$ Option\+::delta\+\_\+plot
 
 Generates a plot of the option\textquotesingle{}s delta as a function of the spot price. 
 
-This function computes the delta (rate of change of the option price with respect to the spot price) at various spot prices and stores the results in a vector.
+Generates a plot of the delta values for a range of spot prices.
 
 
 \begin{DoxyParams}{Parameters}
@@ -418,7 +401,21 @@ This function computes the delta (rate of change of the option price with respec
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A vector of pairs, where each pair contains a spot price and the corresponding delta. 
+A vector of pairs where each pair contains a spot price and the corresponding delta.
+\end{DoxyReturn}
+This function computes the delta for a series of spot prices within a specified range and returns a vector of pairs. Each pair contains a spot price and the corresponding delta value. The step size for incrementing the spot price is calculated as a fraction of the minimum spot price.
+
+
+\begin{DoxyParams}{Parameters}
+{\em h} & A small parameter affecting the computation of delta. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of pairs, where each pair contains\+:
+\begin{DoxyItemize}
+\item The spot price as the first element.
+\item The corresponding delta value as the second element. 
+\end{DoxyItemize}
 \end{DoxyReturn}
 \Hypertarget{class_option_ad1cc9b28343b82819ff2295ddd719984}\index{Option@{Option}!display\_grid@{display\_grid}}
 \index{display\_grid@{display\_grid}!Option@{Option}}
@@ -430,9 +427,9 @@ void Option\+::display\+\_\+grid (\begin{DoxyParamCaption}{}{}\end{DoxyParamCapt
 
 Displays the computational grid for debugging purposes. 
 
-Displays the pricing grid in a formatted table.
+Displays the grid values for the option price.
 
-Outputs the grid values to the console, showing the option price at each time and spot price step. Each row corresponds to a spot price step, and each column corresponds to a time step. \Hypertarget{class_option_afc1a9c444d2a0fbf41733a2a1b2afbd7}\index{Option@{Option}!exercise\_boundary@{exercise\_boundary}}
+Outputs the values of the grid to the console in a tabular format, with each row corresponding to a spot price and each column to a time step. \Hypertarget{class_option_afc1a9c444d2a0fbf41733a2a1b2afbd7}\index{Option@{Option}!exercise\_boundary@{exercise\_boundary}}
 \index{exercise\_boundary@{exercise\_boundary}!Option@{Option}}
 \doxysubsubsection{\texorpdfstring{exercise\_boundary()}{exercise\_boundary()}}
 {\footnotesize\ttfamily \label{class_option_afc1a9c444d2a0fbf41733a2a1b2afbd7} 
@@ -442,10 +439,13 @@ std\+::vector$<$ std\+::pair$<$ double, double $>$ $>$ Option\+::exercise\+\_\+b
 
 Computes the exercise boundary for the option. 
 
-This function determines the boundary separating the exercise and hold regions for the option over time. The boundary is identified by finding the spot price at each time step where the difference between the option value and the payoff is minimal.
+\begin{DoxyReturn}{Returns}
+A vector of pairs where each pair contains a time step and the corresponding exercise boundary spot price.
+\end{DoxyReturn}
+Determines the boundary separating the exercise and continuation regions for an American option.
 
 \begin{DoxyReturn}{Returns}
-A vector of pairs, where each pair contains a time step and the corresponding exercise boundary spot price. 
+Vector of (time, exercise boundary spot price) pairs. 
 \end{DoxyReturn}
 \Hypertarget{class_option_a55c91ea60f925ed9927995d29f88c029}\index{Option@{Option}!gamma@{gamma}}
 \index{gamma@{gamma}!Option@{Option}}
@@ -492,10 +492,10 @@ Computes the price of the option using the finite difference method.
 \begin{DoxyReturn}{Returns}
 Price of the option.
 \end{DoxyReturn}
-This method initializes the time step size ( \textbackslash{}\+Delta T ) and spot price step size ( \textbackslash{}\+Delta S ), creates the computational grid, and solves the problem using the {\ttfamily solve} method.
+Initializes the time and spot price step sizes, creates the grid, and solves the problem.
 
 \begin{DoxyReturn}{Returns}
-The computed option price at the initial time and spot price ( S\+\_\+0 ). 
+The computed option price at ( S\+\_\+0 ) and ( T\+\_\+0 ). 
 \end{DoxyReturn}
 \Hypertarget{class_option_af6a48a8de9a8bd77f43f20165ef8b7b6}\index{Option@{Option}!price\_plot@{price\_plot}}
 \index{price\_plot@{price\_plot}!Option@{Option}}
@@ -507,10 +507,13 @@ std\+::vector$<$ std\+::pair$<$ double, double $>$ $>$ Option\+::price\+\_\+plot
 
 Generates a plot of the option price as a function of the spot price. 
 
-This function computes a grid of option prices and extracts the values for a fixed time slice to create a plot of option prices against spot prices.
+\begin{DoxyReturn}{Returns}
+A vector of pairs where each pair contains a spot price and the corresponding option price.
+\end{DoxyReturn}
+Returns a vector of pairs where each pair consists of a spot price and the corresponding option price.
 
 \begin{DoxyReturn}{Returns}
-A vector of pairs, where each pair contains a spot price and the corresponding option price. 
+Vector of (spot price, option price) pairs. 
 \end{DoxyReturn}
 \Hypertarget{class_option_a5c4c93284189004f548387149fc52811}\index{Option@{Option}!rho@{rho}}
 \index{rho@{rho}!Option@{Option}}
@@ -552,9 +555,9 @@ void Option\+::solve (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 Solves the option pricing problem using the grid. 
 
-Solves the option pricing problem by setting up the initial grid and performing the computation.
+Solves the option pricing problem.
 
-This method initializes the grid values at maturity based on the payoff function\+: \mbox{[} F(\+S, T) = \textbackslash{}max(\textbackslash{}text\{contract\+\_\+type\} \textbackslash{}cdot (S -\/ K), 0) \mbox{]} Then it uses the appropriate method ({\ttfamily european\+\_\+price} or {\ttfamily american\+\_\+price}) to compute the option prices at earlier time steps based on the exercise type. \Hypertarget{class_option_a68af72caae1e41bd011eef0652580d68}\index{Option@{Option}!theta@{theta}}
+Initializes the pricing grid and determines the option price at earlier time steps using either the {\ttfamily european\+\_\+price} or {\ttfamily american\+\_\+price} method. \Hypertarget{class_option_a68af72caae1e41bd011eef0652580d68}\index{Option@{Option}!theta@{theta}}
 \index{theta@{theta}!Option@{Option}}
 \doxysubsubsection{\texorpdfstring{theta()}{theta()}}
 {\footnotesize\ttfamily \label{class_option_a68af72caae1e41bd011eef0652580d68} 

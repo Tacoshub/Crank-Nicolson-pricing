@@ -90,19 +90,18 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 
-<p>contains various methods to deal with the interest rate curve  
+<p>Contains various methods to handle the interest rate curve, including evaluation, integration, and modification.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_interest_rate_8h_source.html">InterestRate.h</a>&quot;</code><br />
-<code>#include &lt;iostream&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ac4edf9807c01d726c9c2b526196fc82e" id="r_ac4edf9807c01d726c9c2b526196fc82e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac4edf9807c01d726c9c2b526196fc82e">support_integral</a> (double r1, double r2, double t1, double t2)</td></tr>
-<tr class="memdesc:ac4edf9807c01d726c9c2b526196fc82e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the area under a line segment in the interest rate curve between two time points.  <br /></td></tr>
+<tr class="memdesc:ac4edf9807c01d726c9c2b526196fc82e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the area under a line segment of the interest rate curve.  <br /></td></tr>
 <tr class="separator:ac4edf9807c01d726c9c2b526196fc82e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>contains various methods to deal with the interest rate curve </p>
+<div class="textblock"><p>Contains various methods to handle the interest rate curve, including evaluation, integration, and modification. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="ac4edf9807c01d726c9c2b526196fc82e" name="ac4edf9807c01d726c9c2b526196fc82e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac4edf9807c01d726c9c2b526196fc82e">&#9670;&#160;</a></span>support_integral()</h2>
@@ -133,14 +132,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Computes the area under a line segment in the interest rate curve between two time points. </p>
-<p>Handles cases where the rates ( r_1 ) and ( r_2 ) have opposite signs by splitting the integral at the zero crossing.</p>
+<p>Computes the area under a line segment of the interest rate curve. </p>
+<p>Handles both positive and negative rates and computes the area under the curve for a segment defined by two points ((t_1, r_1)) and ((t_2, r_2)). If the rates have opposite signs, splits the area at the zero crossing.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">r1</td><td>Interest rate at ( t_1 ). </td></tr>
-    <tr><td class="paramname">r2</td><td>Interest rate at ( t_2 ). </td></tr>
-    <tr><td class="paramname">t1</td><td>Starting time of the segment. </td></tr>
-    <tr><td class="paramname">t2</td><td>Ending time of the segment. </td></tr>
+    <tr><td class="paramname">r1</td><td>Interest rate at the starting point ( t_1 ). </td></tr>
+    <tr><td class="paramname">r2</td><td>Interest rate at the ending point ( t_2 ). </td></tr>
+    <tr><td class="paramname">t1</td><td>The starting time of the segment. </td></tr>
+    <tr><td class="paramname">t2</td><td>The ending time of the segment. </td></tr>
   </table>
   </dd>
 </dl>

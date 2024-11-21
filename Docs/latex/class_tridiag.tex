@@ -14,13 +14,13 @@ Represents a tridiagonal matrix and provides functionality for matrix operations
 \item 
 \Hypertarget{class_tridiag_a3f03616b7a055e94b06e2926d568b151}\label{class_tridiag_a3f03616b7a055e94b06e2926d568b151} 
 {\bfseries Tridiag} ()
-\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Default constructor for an empty tridiagonal matrix. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_tridiag_a16bd586f5dc861522cc436fed3bb5bad}{Tridiag}} (std\+::vector$<$ double $>$ subdiag, std\+::vector$<$ double $>$ diag, std\+::vector$<$ double $>$ superdiag)
-\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_tridiag}{Tridiag} object. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_tridiag}{Tridiag} object with specified subdiagonal, diagonal, and superdiagonal elements. \end{DoxyCompactList}\item 
 std\+::vector$<$ double $>$ \mbox{\hyperlink{class_tridiag_afb1af67e1fd5da91f900b91d77ebec81}{operator\texorpdfstring{$\ast$}{*}}} (std\+::vector$<$ double $>$ x)
 \begin{DoxyCompactList}\small\item\em Multiplies the tridiagonal matrix by a vector. \end{DoxyCompactList}\item 
 std\+::vector$<$ double $>$ \mbox{\hyperlink{class_tridiag_a912fa781039d5cb3eb969b62f7f3ad7e}{solve}} (std\+::vector$<$ double $>$ b)
-\begin{DoxyCompactList}\small\item\em Solves the system of equations for the tridiagonal matrix. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Solves a system of equations for the tridiagonal matrix. \end{DoxyCompactList}\item 
 size\+\_\+t \mbox{\hyperlink{class_tridiag_a3e50988bd98cc7d7dfdd0b8040584732}{size}} ()
 \begin{DoxyCompactList}\small\item\em Returns the size of the tridiagonal matrix. \end{DoxyCompactList}\item 
 \Hypertarget{class_tridiag_ac988fc77f8bb198f967611f78c08239c}\label{class_tridiag_ac988fc77f8bb198f967611f78c08239c} 
@@ -40,9 +40,7 @@ Tridiag\+::\+Tridiag (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$
 
 
 
-Constructs a \doxylink{class_tridiag}{Tridiag} object. 
-
-Constructs a \doxylink{class_tridiag}{Tridiag} object by initializing the subdiagonal, diagonal, and superdiagonal elements.
+Constructs a \doxylink{class_tridiag}{Tridiag} object with specified subdiagonal, diagonal, and superdiagonal elements. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -50,7 +48,13 @@ Constructs a \doxylink{class_tridiag}{Tridiag} object by initializing the subdia
 \hline
 {\em diag} & Vector containing diagonal elements. \\
 \hline
-{\em superdiag} & Vector containing superdiagonal elements. \\
+{\em superdiag} & Vector containing superdiagonal elements.\\
+\hline
+{\em subdiag} & Vector containing the subdiagonal elements. \\
+\hline
+{\em diag} & Vector containing the diagonal elements. \\
+\hline
+{\em superdiag} & Vector containing the superdiagonal elements. \\
 \hline
 \end{DoxyParams}
 
@@ -74,11 +78,11 @@ Multiplies the tridiagonal matrix by a vector.
 \begin{DoxyReturn}{Returns}
 Resulting vector after multiplication.
 \end{DoxyReturn}
-Computes the matrix-\/vector product ( b = A \textbackslash{}cdot x ), where ( A ) is the tridiagonal matrix.
+This method computes the matrix-\/vector product ( b = A \textbackslash{}cdot x ), where ( A ) is the tridiagonal matrix. The matrix is represented by its subdiagonal, diagonal, and superdiagonal elements.
 
 
 \begin{DoxyParams}{Parameters}
-{\em x} & Input vector to multiply. \\
+{\em x} & The vector to multiply. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -95,7 +99,7 @@ size\+\_\+t Tridiag\+::size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})
 Returns the size of the tridiagonal matrix. 
 
 \begin{DoxyReturn}{Returns}
-Size of the matrix. 
+The number of rows or columns in the matrix. 
 \end{DoxyReturn}
 \Hypertarget{class_tridiag_a912fa781039d5cb3eb969b62f7f3ad7e}\index{Tridiag@{Tridiag}!solve@{solve}}
 \index{solve@{solve}!Tridiag@{Tridiag}}
@@ -105,19 +109,19 @@ std\+::vector$<$ double $>$ Tridiag\+::solve (\begin{DoxyParamCaption}\item[{std
 
 
 
-Solves the system of equations for the tridiagonal matrix. 
+Solves a system of equations for the tridiagonal matrix. 
 
-Solves the system of linear equations ( A \textbackslash{}cdot x = b ), where ( A ) is the tridiagonal matrix.
+Solves the system of linear equations ( A \textbackslash{}cdot x = b ), where ( A ) is a tridiagonal matrix.
 
 
 \begin{DoxyParams}{Parameters}
-{\em b} & Right-\/hand side vector. \\
+{\em b} & The right-\/hand side vector. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Solution vector x.
+Solution vector.
 \end{DoxyReturn}
-This method uses LU decomposition to split the tridiagonal matrix into a lower triangular matrix ( L ) and an upper triangular matrix ( U ). It then solves the system in two steps\+:
+This method uses LU decomposition to split ( A ) into a lower triangular matrix ( L ) and an upper triangular matrix ( U ). The solution is obtained in two steps\+:
 \begin{DoxyEnumerate}
 \item Forward substitution to solve ( L \textbackslash{}cdot y = b ).
 \item Backward substitution to solve ( U \textbackslash{}cdot x = y ).
@@ -125,15 +129,13 @@ This method uses LU decomposition to split the tridiagonal matrix into a lower t
 
 
 \begin{DoxyParams}{Parameters}
-{\em b} & Right-\/hand side vector. \\
+{\em b} & Right-\/hand side vector of the system. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Solution vector ( x ). 
 \end{DoxyReturn}
-\texorpdfstring{$<$}{<} \doxylink{class_lower}{Lower} triangular matrix with unit diagonal.
 
-\texorpdfstring{$<$}{<} \doxylink{class_upper}{Upper} triangular matrix.
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

@@ -13,9 +13,9 @@ Represents a lower triangular matrix and provides functionality to solve linear 
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_lower_ae446a86b8a51aee8a271a61db66670ca}{Lower}} (std\+::vector$<$ double $>$ subdiag, std\+::vector$<$ double $>$ diag)
-\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_lower}{Lower} object. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_lower}{Lower} object with specified subdiagonal and diagonal elements. \end{DoxyCompactList}\item 
 std\+::vector$<$ double $>$ \mbox{\hyperlink{class_lower_a5c0b07d37bacb1c93d8a299a71a5fb6b}{solve}} (std\+::vector$<$ double $>$ b)
-\begin{DoxyCompactList}\small\item\em Solves the system of equations for a lower triangular matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Solves a system of equations for the lower triangular matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -30,7 +30,7 @@ Lower\+::\+Lower (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$}]{s
 
 
 
-Constructs a \doxylink{class_lower}{Lower} object. 
+Constructs a \doxylink{class_lower}{Lower} object with specified subdiagonal and diagonal elements. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -50,15 +50,15 @@ std\+::vector$<$ double $>$ Lower\+::solve (\begin{DoxyParamCaption}\item[{std\+
 
 
 
-Solves the system of equations for a lower triangular matrix. 
+Solves a system of equations for the lower triangular matrix. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em b} & Right-\/hand side vector. \\
+{\em b} & The right-\/hand side vector. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Solution vector x. 
+Solution vector. 
 \end{DoxyReturn}
 
 

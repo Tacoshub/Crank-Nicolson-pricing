@@ -111,15 +111,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a07373758742090d58f97adb9690f07a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the integral of the interest rate curve from 0 to a given time ( t_0 ).  <br /></td></tr>
 <tr class="separator:a07373758742090d58f97adb9690f07a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a585073f03da291630cee96801f3b0261" id="r_a585073f03da291630cee96801f3b0261"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a585073f03da291630cee96801f3b0261">operator+=</a> (double h)</td></tr>
-<tr class="memdesc:a585073f03da291630cee96801f3b0261"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increments all interest rates by a given value.  <br /></td></tr>
+<tr class="memdesc:a585073f03da291630cee96801f3b0261"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increments all interest rates in the curve by a specified value.  <br /></td></tr>
 <tr class="separator:a585073f03da291630cee96801f3b0261"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9fee4e94dbf39d7079911e20fbd1ba3" id="r_ab9fee4e94dbf39d7079911e20fbd1ba3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab9fee4e94dbf39d7079911e20fbd1ba3">operator-=</a> (double h)</td></tr>
-<tr class="memdesc:ab9fee4e94dbf39d7079911e20fbd1ba3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrements all interest rates by a given value.  <br /></td></tr>
+<tr class="memdesc:ab9fee4e94dbf39d7079911e20fbd1ba3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrements all interest rates in the curve by a specified value.  <br /></td></tr>
 <tr class="separator:ab9fee4e94dbf39d7079911e20fbd1ba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents an interest rate model with time-dependent rates. </p>
-<p>This class provides functionality to evaluate interest rates, compute integrals, and modify rates. </p>
+<p>This class encapsulates the representation of an interest rate curve, providing functionality to evaluate interest rates at specific times, compute integrals over the curve, and modify rates.</p>
+<p>The interest rate curve is stored as a vector of (time, rate) pairs, where the time points are assumed to be ordered. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a9d5fc5b93ddf0d8d635793dc4b9ef310" name="a9d5fc5b93ddf0d8d635793dc4b9ef310"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9d5fc5b93ddf0d8d635793dc4b9ef310">&#9670;&#160;</a></span>InterestRate() <span class="overload">[1/2]</span></h2>
@@ -145,7 +146,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Default constructor. </p>
-<p>Creates an empty interest rate object. </p>
+<p>Constructs an empty interest rate object with no data. </p>
 
 </div>
 </div>
@@ -173,9 +174,10 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Constructs an <a class="el" href="class_interest_rate.html" title="Represents an interest rate model with time-dependent rates.">InterestRate</a> object with a given interest rate curve. </p>
+<p>The interest rate curve is provided as a vector of time-rate pairs. The time points should be ordered for correct interpolation.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">interest_rate</td><td>Vector of (time, rate) pairs. </td></tr>
+    <tr><td class="paramname">interest_rate</td><td>Vector of (time, rate) pairs representing the interest rate curve. </td></tr>
   </table>
   </dd>
 </dl>
@@ -199,15 +201,21 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Computes the integral of the interest rate curve from 0 to a given time ( t_0 ). </p>
-<p>Uses numerical integration to approximate the integral of the interest rate function over the specified interval.</p>
+<p>Approximates the integral of the interest rate function using numerical methods. Assumes the interest rate curve is defined for all values up to ( t_0 ).</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">t0</td><td>The upper limit of integration. </td></tr>
+    <tr><td class="paramname">t0</td><td>The upper limit of integration (time). </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The integral value from 0 to ( t_0 ).</dd></dl>
-<p>Uses the <code>support_integral</code> function to compute the area under each line segment of the curve. Handles cases where ( t_0 ) lies within an interval by partially integrating that segment.</p>
+<dl class="section return"><dt>Returns</dt><dd>The computed integral value from ( 0 ) to ( t_0 ). </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">OptionException</td><td>If ( t_0 ) is outside the range of the interest rate curve.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Calculates the integral of the interest rate curve by summing up the areas under each line segment. Uses <code>support_integral</code> to handle each segment. If ( t_0 ) lies within a segment, computes the partial area for that segment.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">t0</td><td>The upper limit of integration. </td></tr>
@@ -215,6 +223,12 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The integral value from 0 to ( t_0 ). </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="class_invalid_time.html" title="Exception thrown when an invalid time value is encountered.">InvalidTime</a></td><td>If ( t_0 ) is outside the range of the interest rate curve. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -235,15 +249,21 @@ Public Member Functions</h2></td></tr>
 
 <p>Evaluates the interest rate at a given time. </p>
 <p>Evaluates the interest rate at a given time using linear interpolation.</p>
-<p>This operator interpolates the interest rate based on the provided time, ( t ).</p>
+<p>This operator interpolates the interest rate at the specified time ( t ) using linear interpolation. If ( t ) is outside the range of the curve, an exception may be thrown.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">t</td><td>The time at which to evaluate the interest rate. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The interest rate at time ( t ).</dd></dl>
-<p>Finds the interval ([t_i, t_{i+1}]) where ( t ) lies and performs linear interpolation between the corresponding rates.</p>
+<dl class="section return"><dt>Returns</dt><dd>The interpolated interest rate at time ( t ). </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">OptionException</td><td>If ( t ) is outside the defined range of the interest rate curve.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Locates the interval ([t_i, t_{i+1}]) where ( t ) lies and performs linear interpolation between the corresponding interest rates ( r_i ) and ( r_{i+1} ).</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">t</td><td>The time at which to evaluate the interest rate. </td></tr>
@@ -275,12 +295,19 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Increments all interest rates by a given value. </p>
+<p>Increments all interest rates in the curve by a specified value. </p>
 <p>Increments all interest rates in the curve by a constant value.</p>
-<p>Adds ( h ) to the rates of all time points in the interest rate curve.</p>
+<p>This operator adds a constant ( h ) to the rates of all time points in the curve.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">h</td><td>The value to increment the rates by.</td></tr>
+    <tr><td class="paramname">h</td><td>The value to increment the rates by. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This operation modifies the original interest rate curve.</dd></dl>
+<p>Adds a constant value ( h ) to each rate in the interest rate curve.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
     <tr><td class="paramname">h</td><td>The value to add to all interest rates. </td></tr>
   </table>
   </dd>
@@ -303,12 +330,19 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Decrements all interest rates by a given value. </p>
+<p>Decrements all interest rates in the curve by a specified value. </p>
 <p>Decrements all interest rates in the curve by a constant value.</p>
-<p>Subtracts ( h ) from the rates of all time points in the interest rate curve.</p>
+<p>This operator subtracts a constant ( h ) from the rates of all time points in the curve.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">h</td><td>The value to decrement the rates by.</td></tr>
+    <tr><td class="paramname">h</td><td>The value to decrement the rates by. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This operation modifies the original interest rate curve.</dd></dl>
+<p>Subtracts a constant value ( h ) from each rate in the interest rate curve.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
     <tr><td class="paramname">h</td><td>The value to subtract from all interest rates. </td></tr>
   </table>
   </dd>

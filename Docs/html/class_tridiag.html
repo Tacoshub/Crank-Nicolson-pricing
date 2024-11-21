@@ -100,16 +100,16 @@ $(function(){ initResizable(false); });
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3f03616b7a055e94b06e2926d568b151" id="r_a3f03616b7a055e94b06e2926d568b151"><td class="memItemLeft" align="right" valign="top"><a id="a3f03616b7a055e94b06e2926d568b151" name="a3f03616b7a055e94b06e2926d568b151"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Tridiag</b> ()</td></tr>
-<tr class="memdesc:a3f03616b7a055e94b06e2926d568b151"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor. <br /></td></tr>
+<tr class="memdesc:a3f03616b7a055e94b06e2926d568b151"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor for an empty tridiagonal matrix. <br /></td></tr>
 <tr class="separator:a3f03616b7a055e94b06e2926d568b151"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16bd586f5dc861522cc436fed3bb5bad" id="r_a16bd586f5dc861522cc436fed3bb5bad"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a16bd586f5dc861522cc436fed3bb5bad">Tridiag</a> (std::vector&lt; double &gt; subdiag, std::vector&lt; double &gt; diag, std::vector&lt; double &gt; superdiag)</td></tr>
-<tr class="memdesc:a16bd586f5dc861522cc436fed3bb5bad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="class_tridiag.html" title="Represents a tridiagonal matrix and provides functionality for matrix operations and solving equation...">Tridiag</a> object.  <br /></td></tr>
+<tr class="memdesc:a16bd586f5dc861522cc436fed3bb5bad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="class_tridiag.html" title="Represents a tridiagonal matrix and provides functionality for matrix operations and solving equation...">Tridiag</a> object with specified subdiagonal, diagonal, and superdiagonal elements.  <br /></td></tr>
 <tr class="separator:a16bd586f5dc861522cc436fed3bb5bad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb1af67e1fd5da91f900b91d77ebec81" id="r_afb1af67e1fd5da91f900b91d77ebec81"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb1af67e1fd5da91f900b91d77ebec81">operator*</a> (std::vector&lt; double &gt; x)</td></tr>
 <tr class="memdesc:afb1af67e1fd5da91f900b91d77ebec81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplies the tridiagonal matrix by a vector.  <br /></td></tr>
 <tr class="separator:afb1af67e1fd5da91f900b91d77ebec81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a912fa781039d5cb3eb969b62f7f3ad7e" id="r_a912fa781039d5cb3eb969b62f7f3ad7e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a912fa781039d5cb3eb969b62f7f3ad7e">solve</a> (std::vector&lt; double &gt; b)</td></tr>
-<tr class="memdesc:a912fa781039d5cb3eb969b62f7f3ad7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the system of equations for the tridiagonal matrix.  <br /></td></tr>
+<tr class="memdesc:a912fa781039d5cb3eb969b62f7f3ad7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves a system of equations for the tridiagonal matrix.  <br /></td></tr>
 <tr class="separator:a912fa781039d5cb3eb969b62f7f3ad7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e50988bd98cc7d7dfdd0b8040584732" id="r_a3e50988bd98cc7d7dfdd0b8040584732"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e50988bd98cc7d7dfdd0b8040584732">size</a> ()</td></tr>
 <tr class="memdesc:a3e50988bd98cc7d7dfdd0b8040584732"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the size of the tridiagonal matrix.  <br /></td></tr>
@@ -146,13 +146,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>display</b> ()</td></
       </table>
 </div><div class="memdoc">
 
-<p>Constructs a <a class="el" href="class_tridiag.html" title="Represents a tridiagonal matrix and provides functionality for matrix operations and solving equation...">Tridiag</a> object. </p>
-<p>Constructs a <a class="el" href="class_tridiag.html" title="Represents a tridiagonal matrix and provides functionality for matrix operations and solving equation...">Tridiag</a> object by initializing the subdiagonal, diagonal, and superdiagonal elements.</p>
+<p>Constructs a <a class="el" href="class_tridiag.html" title="Represents a tridiagonal matrix and provides functionality for matrix operations and solving equation...">Tridiag</a> object with specified subdiagonal, diagonal, and superdiagonal elements. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">subdiag</td><td>Vector containing subdiagonal elements. </td></tr>
     <tr><td class="paramname">diag</td><td>Vector containing diagonal elements. </td></tr>
-    <tr><td class="paramname">superdiag</td><td>Vector containing superdiagonal elements. </td></tr>
+    <tr><td class="paramname">superdiag</td><td>Vector containing superdiagonal elements.</td></tr>
+    <tr><td class="paramname">subdiag</td><td>Vector containing the subdiagonal elements. </td></tr>
+    <tr><td class="paramname">diag</td><td>Vector containing the diagonal elements. </td></tr>
+    <tr><td class="paramname">superdiag</td><td>Vector containing the superdiagonal elements. </td></tr>
   </table>
   </dd>
 </dl>
@@ -183,10 +185,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>display</b> ()</td></
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Resulting vector after multiplication.</dd></dl>
-<p>Computes the matrix-vector product ( b = A \cdot x ), where ( A ) is the tridiagonal matrix.</p>
+<p>This method computes the matrix-vector product ( b = A \cdot x ), where ( A ) is the tridiagonal matrix. The matrix is represented by its subdiagonal, diagonal, and superdiagonal elements.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>Input vector to multiply. </td></tr>
+    <tr><td class="paramname">x</td><td>The vector to multiply. </td></tr>
   </table>
   </dd>
 </dl>
@@ -218,7 +220,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>display</b> ()</td></
 </div><div class="memdoc">
 
 <p>Returns the size of the tridiagonal matrix. </p>
-<dl class="section return"><dt>Returns</dt><dd>Size of the matrix. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of rows or columns in the matrix. </dd></dl>
 
 </div>
 </div>
@@ -237,28 +239,26 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>display</b> ()</td></
       </table>
 </div><div class="memdoc">
 
-<p>Solves the system of equations for the tridiagonal matrix. </p>
-<p>Solves the system of linear equations ( A \cdot x = b ), where ( A ) is the tridiagonal matrix.</p>
+<p>Solves a system of equations for the tridiagonal matrix. </p>
+<p>Solves the system of linear equations ( A \cdot x = b ), where ( A ) is a tridiagonal matrix.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">b</td><td>Right-hand side vector. </td></tr>
+    <tr><td class="paramname">b</td><td>The right-hand side vector. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Solution vector x.</dd></dl>
-<p>This method uses LU decomposition to split the tridiagonal matrix into a lower triangular matrix ( L ) and an upper triangular matrix ( U ). It then solves the system in two steps:</p><ol type="1">
+<dl class="section return"><dt>Returns</dt><dd>Solution vector.</dd></dl>
+<p>This method uses LU decomposition to split ( A ) into a lower triangular matrix ( L ) and an upper triangular matrix ( U ). The solution is obtained in two steps:</p><ol type="1">
 <li>Forward substitution to solve ( L \cdot y = b ).</li>
 <li>Backward substitution to solve ( U \cdot x = y ).</li>
 </ol>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">b</td><td>Right-hand side vector. </td></tr>
+    <tr><td class="paramname">b</td><td>Right-hand side vector of the system. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Solution vector ( x ). </dd></dl>
-<p>&lt; <a class="el" href="class_lower.html" title="Represents a lower triangular matrix and provides functionality to solve linear equations.">Lower</a> triangular matrix with unit diagonal.</p>
-<p>&lt; <a class="el" href="class_upper.html" title="Represents an upper triangular matrix and provides functionality to solve linear equations.">Upper</a> triangular matrix.</p>
 
 </div>
 </div>

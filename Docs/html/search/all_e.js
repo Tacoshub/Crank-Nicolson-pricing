@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['upper_0',['Upper',['../class_upper.html',1,'Upper'],['../class_upper.html#ac6a97f6040df4558c174a64e874cf8d7',1,'Upper::Upper()']]],
-  ['usage_1',['Usage',['../index.html#usage_sec',1,'Usage'],['../md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c.html#autotoc_md2',1,'Usage']]]
+  ['theta_0',['theta',['../class_option.html#a68af72caae1e41bd011eef0652580d68',1,'Option']]],
+  ['tridiag_1',['Tridiag',['../class_tridiag.html',1,'Tridiag'],['../class_tridiag.html#a3f03616b7a055e94b06e2926d568b151',1,'Tridiag::Tridiag()'],['../class_tridiag.html#a16bd586f5dc861522cc436fed3bb5bad',1,'Tridiag::Tridiag(std::vector&lt; double &gt; subdiag, std::vector&lt; double &gt; diag, std::vector&lt; double &gt; superdiag)']]],
+  ['tridiag_2ecpp_2',['Tridiag.cpp',['../_tridiag_8cpp.html',1,'']]],
+  ['tridiag_2eh_3',['Tridiag.h',['../_tridiag_8h.html',1,'']]]
 ];
