@@ -24,9 +24,12 @@ A comprehensive numerical framework for pricing European and American options us
 ## Usage
 
 - **Example:**
+
 #include "Option.h"
 
 int main() {
+
+    // Variables
     int contract_type = 1; // Call option
     int exercise_type = 0; // American option
     double T = 1.0;        // Maturity (1 year)
