@@ -129,7 +129,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
 <div class="foldopen" id="foldopen00067" data-start="{" data-end="}">
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="class_upper.html#a0455020d298314271de84a8b235655e0">   67</a></span>    std::vector&lt;double&gt; <a class="code hl_function" href="class_upper.html#a0455020d298314271de84a8b235655e0">solve</a>(std::vector&lt;double&gt; b) {</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keywordtype">int</span> n = b.size();</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keywordtype">int</span> n = int(b.size());</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        std::vector&lt;double&gt; x(n);</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        x[n - 1] = b[n - 1] / diag_[n - 1];</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> ii = n - 2; ii &gt;= 0; ii--) {</div>

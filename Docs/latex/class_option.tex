@@ -14,11 +14,11 @@ Represents an option contract with numerical pricing methods.
 \item 
 \mbox{\hyperlink{class_option_a04eaaaadb0da5ceaf51891082635b553}{Option}} (int contract\+\_\+type, int exercise\+\_\+type, double T, double K, double T0, unsigned int time\+\_\+mesh, unsigned int spot\+\_\+mesh, double S0, std\+::vector$<$ std\+::pair$<$ double, double $>$ $>$ interest\+\_\+rate, double volatility, double tol=0.\+01, double w=1.\+2)
 \begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_option}{Option} object. \end{DoxyCompactList}\item 
-std\+::vector$<$ double $>$ \mbox{\hyperlink{class_option_aa5ccd65508c22ccd79124236c95199aa}{compute\+\_\+aj}} (unsigned int i)
+std\+::vector$<$ double $>$ \mbox{\hyperlink{class_option_a85dba1c4ebe2fcbb5094c855180f1a73}{compute\+\_\+aj}} (size\+\_\+t i)
 \begin{DoxyCompactList}\small\item\em Computes the coefficients a\+\_\+j for the tridiagonal matrix. \end{DoxyCompactList}\item 
-std\+::vector$<$ double $>$ \mbox{\hyperlink{class_option_a2be21b8c072ecf70057f0bec43e3ae1b}{compute\+\_\+bj}} (unsigned int i)
+std\+::vector$<$ double $>$ \mbox{\hyperlink{class_option_a79dfc3e94a076d76155e1d7389bb81fd}{compute\+\_\+bj}} (size\+\_\+t i)
 \begin{DoxyCompactList}\small\item\em Computes the coefficients b\+\_\+j for the tridiagonal matrix. \end{DoxyCompactList}\item 
-std\+::vector$<$ double $>$ \mbox{\hyperlink{class_option_aa5fdc0678bd77ed9fa280f6e3b16a3b4}{compute\+\_\+cj}} (unsigned int i)
+std\+::vector$<$ double $>$ \mbox{\hyperlink{class_option_ad1552eb1817162c1b286aa5302f51d75}{compute\+\_\+cj}} (size\+\_\+t i)
 \begin{DoxyCompactList}\small\item\em Computes the coefficients c\+\_\+j for the tridiagonal matrix. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_tridiag}{Tridiag}} \mbox{\hyperlink{class_option_acad158c98fe682566ba48cddb8572bec}{compute\+\_\+C}} (std\+::vector$<$ double $>$ a, std\+::vector$<$ double $>$ b, std\+::vector$<$ double $>$ c)
 \begin{DoxyCompactList}\small\item\em Computes the tridiagonal matrix C. \end{DoxyCompactList}\item 
@@ -121,11 +121,11 @@ Initializes the option with specified contract and exercise type, maturity, stri
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{class_option_aa5ccd65508c22ccd79124236c95199aa}\index{Option@{Option}!compute\_aj@{compute\_aj}}
+\Hypertarget{class_option_a85dba1c4ebe2fcbb5094c855180f1a73}\index{Option@{Option}!compute\_aj@{compute\_aj}}
 \index{compute\_aj@{compute\_aj}!Option@{Option}}
 \doxysubsubsection{\texorpdfstring{compute\_aj()}{compute\_aj()}}
-{\footnotesize\ttfamily \label{class_option_aa5ccd65508c22ccd79124236c95199aa} 
-std\+::vector$<$ double $>$ Option\+::compute\+\_\+aj (\begin{DoxyParamCaption}\item[{unsigned int}]{i}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{class_option_a85dba1c4ebe2fcbb5094c855180f1a73} 
+std\+::vector$<$ double $>$ Option\+::compute\+\_\+aj (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i}{}\end{DoxyParamCaption})}
 
 
 
@@ -149,11 +149,11 @@ Vector of coefficients a\+\_\+j.
 \begin{DoxyReturn}{Returns}
 Vector of coefficients ( a\+\_\+j ). 
 \end{DoxyReturn}
-\Hypertarget{class_option_a2be21b8c072ecf70057f0bec43e3ae1b}\index{Option@{Option}!compute\_bj@{compute\_bj}}
+\Hypertarget{class_option_a79dfc3e94a076d76155e1d7389bb81fd}\index{Option@{Option}!compute\_bj@{compute\_bj}}
 \index{compute\_bj@{compute\_bj}!Option@{Option}}
 \doxysubsubsection{\texorpdfstring{compute\_bj()}{compute\_bj()}}
-{\footnotesize\ttfamily \label{class_option_a2be21b8c072ecf70057f0bec43e3ae1b} 
-std\+::vector$<$ double $>$ Option\+::compute\+\_\+bj (\begin{DoxyParamCaption}\item[{unsigned int}]{i}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{class_option_a79dfc3e94a076d76155e1d7389bb81fd} 
+std\+::vector$<$ double $>$ Option\+::compute\+\_\+bj (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i}{}\end{DoxyParamCaption})}
 
 
 
@@ -220,11 +220,11 @@ The matrix ( C ) is defined as\+: \mbox{[} C = \textbackslash{}text\{\doxylink{c
 \begin{DoxyReturn}{Returns}
 \doxylink{class_tridiag}{Tridiag} object representing the matrix ( C ). 
 \end{DoxyReturn}
-\Hypertarget{class_option_aa5fdc0678bd77ed9fa280f6e3b16a3b4}\index{Option@{Option}!compute\_cj@{compute\_cj}}
+\Hypertarget{class_option_ad1552eb1817162c1b286aa5302f51d75}\index{Option@{Option}!compute\_cj@{compute\_cj}}
 \index{compute\_cj@{compute\_cj}!Option@{Option}}
 \doxysubsubsection{\texorpdfstring{compute\_cj()}{compute\_cj()}}
-{\footnotesize\ttfamily \label{class_option_aa5fdc0678bd77ed9fa280f6e3b16a3b4} 
-std\+::vector$<$ double $>$ Option\+::compute\+\_\+cj (\begin{DoxyParamCaption}\item[{unsigned int}]{i}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{class_option_ad1552eb1817162c1b286aa5302f51d75} 
+std\+::vector$<$ double $>$ Option\+::compute\+\_\+cj (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i}{}\end{DoxyParamCaption})}
 
 
 

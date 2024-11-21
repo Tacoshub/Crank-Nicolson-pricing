@@ -7,9 +7,10 @@ var searchData=
   ['operator_2d_4',['operator-',['../_option_8cpp.html#a97418ec5713d3215a69ea9d580620107',1,'operator-(double k, std::vector&lt; double &gt; v):&#160;Option.cpp'],['../_option_8cpp.html#a5f93ad274312d5118db8b1bcec086e72',1,'operator-(std::vector&lt; double &gt; v1, std::vector&lt; double &gt; v2):&#160;Option.cpp']]],
   ['operator_2d_3d_5',['operator-=',['../class_interest_rate.html#ab9fee4e94dbf39d7079911e20fbd1ba3',1,'InterestRate']]],
   ['option_6',['Option',['../class_option.html',1,'Option'],['../class_option.html#a04eaaaadb0da5ceaf51891082635b553',1,'Option::Option()']]],
-  ['option_20pricing_20framework_7',['Advanced Option Pricing Framework',['../index.html',1,'']]],
-  ['option_2ecpp_8',['Option.cpp',['../_option_8cpp.html',1,'']]],
-  ['option_2eh_9',['Option.h',['../_option_8h.html',1,'']]],
-  ['optionexceptions_10',['OptionExceptions',['../class_option_exceptions.html',1,'']]],
-  ['optionexceptions_2eh_11',['OptionExceptions.h',['../_option_exceptions_8h.html',1,'']]]
+  ['option_20pricer_7',['Crank-Nicolson Option Pricer',['../md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c.html',1,'']]],
+  ['option_20pricing_20framework_8',['Advanced Option Pricing Framework',['../index.html',1,'']]],
+  ['option_2ecpp_9',['Option.cpp',['../_option_8cpp.html',1,'']]],
+  ['option_2eh_10',['Option.h',['../_option_8h.html',1,'']]],
+  ['optionexceptions_11',['OptionExceptions',['../class_option_exceptions.html',1,'']]],
+  ['optionexceptions_2eh_12',['OptionExceptions.h',['../_option_exceptions_8h.html',1,'']]]
 ];

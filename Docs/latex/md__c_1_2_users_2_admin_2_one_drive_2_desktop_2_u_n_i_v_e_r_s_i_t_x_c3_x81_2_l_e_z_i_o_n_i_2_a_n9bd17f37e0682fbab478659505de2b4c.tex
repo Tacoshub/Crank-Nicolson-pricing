@@ -1,0 +1,87 @@
+\chapter{Crank-\/\+Nicolson Option Pricer}
+\hypertarget{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c}{}\label{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c}\index{Crank-\/Nicolson Option Pricer@{Crank-\/Nicolson Option Pricer}}
+\label{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md0}%
+\Hypertarget{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md0}%
+
+
+A comprehensive numerical framework for pricing European and American options using the Crank-\/\+Nicolson finite difference method. This pricer is designed for educational purposes and supports advanced features like dynamic interest rates, iterative methods, and sensitivity analysis (the Greeks).\hypertarget{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md1}{}\doxysection{\texorpdfstring{Features}{Features}}\label{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md1}
+
+\begin{DoxyItemize}
+\item {\bfseries{\doxylink{class_option}{Option} Types\+:}}
+\begin{DoxyItemize}
+\item European options (no early exercise).
+\item American options (with early exercise feature).
+\end{DoxyItemize}
+\item {\bfseries{Finite Difference Method\+:}}
+\begin{DoxyItemize}
+\item Crank-\/\+Nicolson scheme for numerical stability and accuracy.
+\item Successive Over-\/\+Relaxation (SOR) for handling non-\/linearity in American options.
+\end{DoxyItemize}
+\item {\bfseries{Greeks Computation\+:}}
+\begin{DoxyItemize}
+\item Delta, Gamma, Theta, Vega, Rho.
+\end{DoxyItemize}
+\item {\bfseries{Dynamic Interest Rates\+:}}
+\begin{DoxyItemize}
+\item Supports time-\/dependent interest rate curves.
+\end{DoxyItemize}
+\item {\bfseries{Grid-\/\+Based Visualization\+:}}
+\begin{DoxyItemize}
+\item Computational grid to observe option price evolution over time and asset prices.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md2}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md2}
+
+\begin{DoxyItemize}
+\item {\bfseries{Example\+:}}
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_option_8h}{Option.h}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main()\ \{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ct\ =\ 1;\ \textcolor{comment}{//call\ -\/>\ 1,\ put\ -\/>\ -\/1}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ et\ =\ 1;\ \textcolor{comment}{//european\ -\/>\ 1,\ american\ -\/>\ 0}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ T\ =\ 1.0;\ \textcolor{comment}{//maturity}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ K\ =\ 180;\ \textcolor{comment}{//strike\ price}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ T0\ =\ 0.0;\ \textcolor{comment}{//starting\ time}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ S0\ =\ 200;\ \textcolor{comment}{//starting\ value\ of\ underlying}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::vector<std::pair<double,\ double>>\ ir\ =\ \{\ \{0.0,\ 0.10\},\ \{1.0,\ 0.10\}\ \};\ \textcolor{comment}{//discrete\ interest\ rate\ curve}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{class_interest_rate}{InterestRate}}\ IR(ir);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ sigma\ =\ 0.20;\ \textcolor{comment}{//volatility}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ N\ =\ 1000;\ \textcolor{comment}{//time\ mesh}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ M\ =\ 1000;\ \textcolor{comment}{//spot\ mesh}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ h\ =\ 0.01;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{class_option}{Option}}\ call(ct,\ et,\ T,\ K,\ T0,\ N,\ M,\ S0,\ ir,\ sigma);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Price:\ "{}}\ <<\ call.price()\ \ \ \ \ \ \ \ \ <<\ std::endl}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Delta:\ "{}}\ <<\ call.delta(S0\ *\ h)\ \ \ <<\ std::endl}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Gamma:\ "{}}\ <<\ call.gamma(S0\ *\ h)\ \ \ <<\ std::endl}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Theta:\ "{}}\ <<\ call.theta(T\ *\ h)\ \ \ \ <<\ std::endl}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Vega:\ "{}}\ \ <<\ call.vega(sigma\ *\ h)\ <<\ std::endl}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Rho:\ "{}}\ \ \ <<\ call.rho(h);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{class_option_exceptions}{OptionExceptions}}\&\ e)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Exception\ -\/>\ "{}}\ <<\ e.\mbox{\hyperlink{class_option_exceptions_a6e35c300bd24d172ac97aa498e66e833}{what}}();}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\&\ e)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}General\ exception"{}};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{catch}\ (...)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Unknown\ exception"{}};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md3}{}\doxysection{\texorpdfstring{Authors\+:}{Authors\+:}}\label{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md3}
+
+\begin{DoxyItemize}
+\item Boccia Flavio
+\item Costa Ludovico 
+\end{DoxyItemize}

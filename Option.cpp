@@ -611,3 +611,96 @@ void Option::display_grid() {
 		std::cout << '\n'; // Newline after each row
 	}
 }
+
+
+
+
+
+/**
+ * @brief Generates a plot of the option price as a function of the spot price.
+ *
+ * This function computes a grid of option prices and extracts the values
+ * for a fixed time slice to create a plot of option prices against spot prices.
+ *
+ * @return A vector of pairs, where each pair contains a spot price and the corresponding option price.
+ */
+std::vector<std::pair<double, double>> Option::price_plot() {
+	dT = (T_ - T0_) / (time_mesh_); // Time step size
+	dS = (5 * S0_) / (spot_mesh_);  // Spot price step size
+	create_grid(); // Create the grid for the numerical method
+	solve();       // Solve the option pricing problem
+
+	std::vector<std::pair<double, double>> graph(spot_mesh_ - 1); // Store the results
+	double S = dS; // Initial spot price
+	std::pair<double, double> tmp; // Temporary variable for storing (spot price, option price)
+
+	for (size_t ii = 1; ii < spot_mesh_; ii++) {
+		tmp = std::make_pair(S, grid[ii][0]); // Extract the option price at the first time slice
+		graph[ii - 1] = tmp; // Save the result
+		S += dS; // Increment the spot price
+	}
+
+	return graph; // Return the price plot
+}
+
+/**
+ * @brief Generates a plot of the option's delta as a function of the spot price.
+ *
+ * This function computes the delta (rate of change of the option price with respect
+ * to the spot price) at various spot prices and stores the results in a vector.
+ *
+ * @param h A small perturbation used for numerical differentiation.
+ * @return A vector of pairs, where each pair contains a spot price and the corresponding delta.
+ */
+std::vector<std::pair<double, double>> Option::delta_plot(double h) {
+	std::vector<std::pair<double, double>> graph; // Store the results
+	double S_min = S0_, S_max = 4 * S0_; // Range of spot prices
+	double S = S_min; // Starting spot price
+	std::pair<double, double> tmp; // Temporary variable for storing (spot price, delta)
+
+	while (S <= S_max) {
+		S0_ = S; // Set the current spot price
+		tmp = std::make_pair(S, delta(S * h)); // Compute delta and store the result
+		graph.push_back(tmp); // Save the result
+		S += 0.1 * S_min; // Increment the spot price
+	}
+	S0_ = S_min; // Reset the spot price to its original value
+
+	return graph; // Return the delta plot
+}
+
+/**
+ * @brief Computes the exercise boundary for the option.
+ *
+ * This function determines the boundary separating the exercise and hold regions
+ * for the option over time. The boundary is identified by finding the spot price
+ * at each time step where the difference between the option value and the payoff is minimal.
+ *
+ * @return A vector of pairs, where each pair contains a time step and the corresponding exercise boundary spot price.
+ */
+std::vector<std::pair<double, double>> Option::exercise_boundary() {
+	dT = (T_ - T0_) / (time_mesh_); // Time step size
+	dS = (5 * S0_) / (spot_mesh_);  // Spot price step size
+	create_grid(); // Create the grid for the numerical method
+	solve();       // Solve the option pricing problem
+
+	std::vector<std::pair<double, double>> graph; // Store the results
+	double min, dist, S = 0; // Variables for tracking the minimum difference and corresponding spot price
+
+	// Iterate over the time steps (excluding a small fraction of the end to avoid artifacts)
+	for (size_t ii = 0; ii < time_mesh_ - 1; ii++) {
+		min = 10000000; // Initialize the minimum distance to a large value
+
+		// Iterate over the spot prices
+		for (size_t jj = 1; jj < spot_mesh_; jj++) {
+			dist = abs(grid[jj][ii] - contract_type_ * (dS * jj - K_)); // Compute the distance to the payoff
+			if (dist < min) { // Update the minimum distance and corresponding spot price
+				min = dist;
+				S = dS * jj;
+			}
+		}
+		graph.push_back(std::make_pair(ii * dT, S)); // Save the result
+	}
+
+	return graph; // Return the exercise boundary
+}

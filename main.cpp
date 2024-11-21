@@ -3,12 +3,12 @@
 int main() {
 
 	try {
-		int ct = 1; //call -> 1, put -> -1
+		int ct = -1; //call -> 1, put -> -1
 		bool et = 1; //european -> 1, american -> 0
 		double T = 1.0; //maturity
 		double K = 180; //strike price
 		double T0 = 0.0; //starting time
-		double S0 = 200; //starting value of underlying
+		double S0 = 263; //starting value of underlying
 		std::vector<std::pair<double, double>> ir = { {0.0, 0.10}, {1.0, 0.10} }; //discrete interest rate curve
 
 		InterestRate IR(ir);
@@ -24,7 +24,8 @@ int main() {
 			      << "Gamma: " << call.gamma(S0 * h)   << std::endl
 			      << "Theta: " << call.theta(T * h)    << std::endl
 			      << "Vega: "  << call.vega(sigma * h) << std::endl
-			      << "Rho: "   << call.rho(h);
+			      << "Rho: "   << call.rho(h)          << std::endl;
+
 	}
 	catch (const OptionExceptions& e) {
 		std::cout << "Exception -> " << e.what();
