@@ -3,7 +3,7 @@ var indexSectionsWithContent =
   0: "acdefgilnoprstuvw",
   1: "cilotu",
   2: "iot",
-  3: "cdgilnoprstuvw",
+  3: "cdegilnoprstuvw",
   4: "acfnop"
 };
 

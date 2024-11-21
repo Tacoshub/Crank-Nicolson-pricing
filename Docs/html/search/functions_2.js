@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['gamma_0',['gamma',['../class_option.html#a55c91ea60f925ed9927995d29f88c029',1,'Option']]]
+  ['exercise_5fboundary_0',['exercise_boundary',['../class_option.html#afc1a9c444d2a0fbf41733a2a1b2afbd7',1,'Option']]]
 ];

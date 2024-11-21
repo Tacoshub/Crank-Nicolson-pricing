@@ -1,19 +1,20 @@
 /**
  * @file InterestRate.cpp
- * @brief contains various methods to deal with the interest rate curve
+ * @brief Contains various methods to handle the interest rate curve, including evaluation, integration, and modification.
  */
-#include "InterestRate.h"
-#include <iostream>
 
-/**
- * @brief Evaluates the interest rate at a given time using linear interpolation.
- *
- * Finds the interval \([t_i, t_{i+1}]\) where \( t \) lies and performs linear interpolation between the corresponding rates.
- *
- * @param t The time at which to evaluate the interest rate.
- * @return The interpolated interest rate at time \( t \).
- * @throw InvalidTime If \( t \) is outside the bounds of the interest rate curve.
- */
+#include "InterestRate.h"
+
+ /**
+  * @brief Evaluates the interest rate at a given time using linear interpolation.
+  *
+  * Locates the interval \([t_i, t_{i+1}]\) where \( t \) lies and performs linear interpolation
+  * between the corresponding interest rates \( r_i \) and \( r_{i+1} \).
+  *
+  * @param t The time at which to evaluate the interest rate.
+  * @return The interpolated interest rate at time \( t \).
+  * @throw InvalidTime If \( t \) is outside the bounds of the interest rate curve.
+  */
 double InterestRate::operator()(double t) const {
     for (auto it = interest_rate_.begin(); it != std::prev(interest_rate_.end(), 1); ++it) {
         auto current = *it;
@@ -27,14 +28,16 @@ double InterestRate::operator()(double t) const {
 }
 
 /**
- * @brief Computes the area under a line segment in the interest rate curve between two time points.
+ * @brief Computes the area under a line segment of the interest rate curve.
  *
- * Handles cases where the rates \( r_1 \) and \( r_2 \) have opposite signs by splitting the integral at the zero crossing.
+ * Handles both positive and negative rates and computes the area under the curve
+ * for a segment defined by two points \((t_1, r_1)\) and \((t_2, r_2)\).
+ * If the rates have opposite signs, splits the area at the zero crossing.
  *
- * @param r1 Interest rate at \( t_1 \).
- * @param r2 Interest rate at \( t_2 \).
- * @param t1 Starting time of the segment.
- * @param t2 Ending time of the segment.
+ * @param r1 Interest rate at the starting point \( t_1 \).
+ * @param r2 Interest rate at the ending point \( t_2 \).
+ * @param t1 The starting time of the segment.
+ * @param t2 The ending time of the segment.
  * @return The computed area under the curve between \( t_1 \) and \( t_2 \).
  */
 double support_integral(double r1, double r2, double t1, double t2) {
@@ -52,11 +55,13 @@ double support_integral(double r1, double r2, double t1, double t2) {
 /**
  * @brief Computes the integral of the interest rate curve from 0 to a given time \( t_0 \).
  *
- * Uses the `support_integral` function to compute the area under each line segment of the curve.
- * Handles cases where \( t_0 \) lies within an interval by partially integrating that segment.
+ * Calculates the integral of the interest rate curve by summing up the areas
+ * under each line segment. Uses `support_integral` to handle each segment.
+ * If \( t_0 \) lies within a segment, computes the partial area for that segment.
  *
  * @param t0 The upper limit of integration.
  * @return The integral value from 0 to \( t_0 \).
+ * @throw InvalidTime If \( t_0 \) is outside the range of the interest rate curve.
  */
 double InterestRate::integral(double t0) const {
     double res = 0;
@@ -76,6 +81,8 @@ double InterestRate::integral(double t0) const {
 /**
  * @brief Increments all interest rates in the curve by a constant value.
  *
+ * Adds a constant value \( h \) to each rate in the interest rate curve.
+ *
  * @param h The value to add to all interest rates.
  */
 void InterestRate::operator+=(double h) {
@@ -87,6 +94,8 @@ void InterestRate::operator+=(double h) {
 
 /**
  * @brief Decrements all interest rates in the curve by a constant value.
+ *
+ * Subtracts a constant value \( h \) from each rate in the interest rate curve.
  *
  * @param h The value to subtract from all interest rates.
  */
