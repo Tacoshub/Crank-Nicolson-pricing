@@ -112,6 +112,5 @@ int main() {
  * purposes and as a foundation for further research in option pricing techniques.
  *
  * Authors:
- * Boccia Flavio
- * Costa Ludovico
+ * Boccia Flavio, Costa Ludovico
  */
