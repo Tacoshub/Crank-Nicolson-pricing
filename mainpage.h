@@ -39,34 +39,46 @@
  *
  * Example:
  * ```cpp
- * #include "Option.h"
- *
- * int main() {
- *     // Parameters
- *     int contract_type = 1; // Call option
- *     int exercise_type = 0; // American option
- *     double T = 1.0;        // Maturity (1 year)
- *     double K = 100.0;      // Strike price
- *     double T0 = 0.0;       // Start time
- *     unsigned int time_mesh = 50; // Time steps
- *     unsigned int spot_mesh = 100; // Spot price steps
- *     double S0 = 100.0;     // Current spot price
- *     std::vector<std::pair<double, double>> interest_rate = {{0.0, 0.05}, {1.0, 0.05}};
- *     double volatility = 0.2; // Volatility (20%)
- *     double tol = 1e-6;       // Tolerance for iterative methods
- *     double w = 1.5;          // Relaxation parameter
- *
- *     // Create Option object
- *     Option opt(contract_type, exercise_type, T, K, T0, time_mesh, spot_mesh, S0, interest_rate, volatility, tol, w);
- *
- *     // Compute price
- *     double price = opt.price();
- *
- *     // Display results
- *     std::cout << "Option Price: " << price << std::endl;
- *     opt.display_grid(); // Show the pricing grid
- *     return 0;
- * }
+#include "Option.h"
+
+int main() {
+
+	try {
+		int ct = 1; //call -> 1, put -> -1
+		bool et = 1; //european -> 1, american -> 0
+		double T = 1.0; //maturity
+		double K = 180; //strike price
+		double T0 = 0.0; //starting time
+		double S0 = 200; //starting value of underlying
+		std::vector<std::pair<double, double>> ir = { {0.0, 0.10}, {1.0, 0.10} }; //discrete interest rate curve
+
+		InterestRate IR(ir);
+
+		double sigma = 0.20; //volatility
+		unsigned int N = 1000; //time mesh
+		unsigned int M = 1000; //spot mesh
+		double h = 0.01;
+
+		Option call(ct, et, T, K, T0, N, M, S0, ir, sigma);
+		std::cout << "Price: " << call.price()         << std::endl
+				  << "Delta: " << call.delta(S0 * h)   << std::endl
+				  << "Gamma: " << call.gamma(S0 * h)   << std::endl
+				  << "Theta: " << call.theta(T * h)    << std::endl
+				  << "Vega: "  << call.vega(sigma * h) << std::endl
+				  << "Rho: "   << call.rho(h);
+	}
+	catch (const OptionExceptions& e) {
+		std::cout << "Exception -> " << e.what();
+	}
+	catch (const std::exception& e) {
+		std::cout << "General exception";
+	}
+	catch (...) {
+		std::cout << "Unknown exception";
+	}
+
+	return 0;
+}
  * ```
  *
  * \section impl_sec Implementation Details
