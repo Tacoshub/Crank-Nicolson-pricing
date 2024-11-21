@@ -25,10 +25,10 @@ A comprehensive numerical framework for pricing European and American options us
 
 - **Example:**
 
+```cpp
 #include "Option.h"
 
 int main() {
-
     // Variables
     int contract_type = 1; // Call option
     int exercise_type = 0; // American option
@@ -54,6 +54,7 @@ int main() {
     opt.display_grid(); // Show the pricing grid
     return 0;
 }
+```
 
 ## Authors:
 - Boccia Flavio
