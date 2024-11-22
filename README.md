@@ -72,6 +72,8 @@ int main() {
     return 0;
 }
 
+```cpp
+
 ## Implementation Details
 
 - **Finite Difference Grid:** A 2D grid of option values is created, with rows representing spot prices and columns representing time steps.
