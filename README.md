@@ -72,7 +72,7 @@ int main() {
     return 0;
 }
 
-```cpp
+```
 
 ## Implementation Details
 
