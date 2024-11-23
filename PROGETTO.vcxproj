@@ -142,6 +142,7 @@
     <ClCompile Include="InterestRate.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Option.cpp" />
+    <ClCompile Include="OptionDLL.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="Tridiag.cpp" />
   </ItemGroup>

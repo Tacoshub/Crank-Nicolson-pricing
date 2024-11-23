@@ -128,45 +128,39 @@ Usage</h1>
 <p>Example: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="_option_8h.html">Option.h</a>&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main() {</div>
-<div class="line"> </div>
 <div class="line">    <span class="keywordflow">try</span> {</div>
-<div class="line">        <span class="keywordtype">int</span> ct = 1; <span class="comment">//call -&gt; 1, put -&gt; -1</span></div>
-<div class="line">        <span class="keywordtype">bool</span> et = 1; <span class="comment">//european -&gt; 1, american -&gt; 0</span></div>
-<div class="line">        <span class="keywordtype">double</span> T = 1.0; <span class="comment">//maturity</span></div>
-<div class="line">        <span class="keywordtype">double</span> K = 180; <span class="comment">//strike price</span></div>
-<div class="line">        <span class="keywordtype">double</span> T0 = 0.0; <span class="comment">//starting time</span></div>
-<div class="line">        <span class="keywordtype">double</span> S0 = 200; <span class="comment">//starting value of underlying</span></div>
-<div class="line">        std::vector&lt;std::pair&lt;double, double&gt;&gt; ir = { {0.0, 0.10}, {1.0, 0.10} }; <span class="comment">//discrete interest rate curve</span></div>
+<div class="line">        <span class="keywordtype">int</span> ct = -1; <span class="comment">// Call -&gt; 1, Put -&gt; -1</span></div>
+<div class="line">        <span class="keywordtype">bool</span> et = 1; <span class="comment">// European -&gt; 1, American -&gt; 0</span></div>
+<div class="line">        <span class="keywordtype">double</span> T = 1.0; <span class="comment">// Maturity</span></div>
+<div class="line">        <span class="keywordtype">double</span> K = 180; <span class="comment">// Strike price</span></div>
+<div class="line">        <span class="keywordtype">double</span> T0 = 0.0; <span class="comment">// Starting time</span></div>
+<div class="line">        <span class="keywordtype">double</span> S0 = 190; <span class="comment">// Starting value of underlying</span></div>
+<div class="line">        std::vector&lt;std::pair&lt;double, double&gt;&gt; ir = { {0.0, 0.10}, {1.0, 0.10} }; <span class="comment">// Discrete interest rate curve</span></div>
 <div class="line"> </div>
-<div class="line">        <a class="code hl_class" href="class_interest_rate.html">InterestRate</a> IR(ir);</div>
-<div class="line"> </div>
-<div class="line">        <span class="keywordtype">double</span> sigma = 0.20; <span class="comment">//volatility</span></div>
-<div class="line">        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> N = 1000; <span class="comment">//time mesh</span></div>
-<div class="line">        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> M = 1000; <span class="comment">//spot mesh</span></div>
+<div class="line">        <span class="keywordtype">double</span> sigma = 0.20; <span class="comment">// Volatility</span></div>
+<div class="line">        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> N = 1000; <span class="comment">// Time mesh</span></div>
+<div class="line">        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> M = 1000; <span class="comment">// Spot mesh</span></div>
 <div class="line">        <span class="keywordtype">double</span> h = 0.01;</div>
 <div class="line"> </div>
 <div class="line">        <a class="code hl_class" href="class_option.html">Option</a> call(ct, et, T, K, T0, N, M, S0, ir, sigma);</div>
-<div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;Price: &quot;</span> &lt;&lt; call.price()         &lt;&lt; std::endl</div>
-<div class="line">                  &lt;&lt; <span class="stringliteral">&quot;Delta: &quot;</span> &lt;&lt; call.delta(S0 * h)   &lt;&lt; std::endl</div>
-<div class="line">                  &lt;&lt; <span class="stringliteral">&quot;Gamma: &quot;</span> &lt;&lt; call.gamma(S0 * h)   &lt;&lt; std::endl</div>
-<div class="line">                  &lt;&lt; <span class="stringliteral">&quot;Theta: &quot;</span> &lt;&lt; call.theta(T * h)    &lt;&lt; std::endl</div>
-<div class="line">                  &lt;&lt; <span class="stringliteral">&quot;Vega: &quot;</span>  &lt;&lt; call.vega(sigma * h) &lt;&lt; std::endl</div>
-<div class="line">                  &lt;&lt; <span class="stringliteral">&quot;Rho: &quot;</span>   &lt;&lt; call.rho(h);</div>
-<div class="line">    }</div>
-<div class="line">    <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code hl_class" href="class_option_exceptions.html">OptionExceptions</a>&amp; e) {</div>
+<div class="line">        std::cout &lt;&lt; std::fixed &lt;&lt; std::setprecision(5);</div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;Price: &quot;</span> &lt;&lt; std::setw(5) &lt;&lt; call.price()         &lt;&lt; std::endl</div>
+<div class="line">                  &lt;&lt; <span class="stringliteral">&quot;Delta: &quot;</span> &lt;&lt; std::setw(5) &lt;&lt; call.delta(S0 * h)   &lt;&lt; std::endl</div>
+<div class="line">                  &lt;&lt; <span class="stringliteral">&quot;Gamma: &quot;</span> &lt;&lt; std::setw(5) &lt;&lt; call.gamma(S0 * h)   &lt;&lt; std::endl</div>
+<div class="line">                  &lt;&lt; <span class="stringliteral">&quot;Theta: &quot;</span> &lt;&lt; std::setw(5) &lt;&lt; call.theta(T * h)    &lt;&lt; std::endl</div>
+<div class="line">                  &lt;&lt; <span class="stringliteral">&quot;Vega:  &quot;</span> &lt;&lt; std::setw(5) &lt;&lt; call.vega(sigma * h) &lt;&lt; std::endl</div>
+<div class="line">                  &lt;&lt; <span class="stringliteral">&quot;Rho:   &quot;</span> &lt;&lt; std::setw(5) &lt;&lt; call.rho(h)          &lt;&lt; std::endl;</div>
+<div class="line">    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code hl_class" href="class_option_exceptions.html">OptionExceptions</a>&amp; e) {</div>
 <div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;Exception -&gt; &quot;</span> &lt;&lt; e.<a class="code hl_function" href="class_option_exceptions.html#a6e35c300bd24d172ac97aa498e66e833">what</a>();</div>
-<div class="line">    }</div>
-<div class="line">    <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
-<div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;General exception&quot;</span>;</div>
-<div class="line">    }</div>
-<div class="line">    <span class="keywordflow">catch</span> (...) {</div>
+<div class="line">    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;General exception: &quot;</span> &lt;&lt; e.what();</div>
+<div class="line">    } <span class="keywordflow">catch</span> (...) {</div>
 <div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;Unknown exception&quot;</span>;</div>
 <div class="line">    }</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 <div class="ttc" id="a_option_8h_html"><div class="ttname"><a href="_option_8h.html">Option.h</a></div><div class="ttdoc">Class to create and manage an Option object with numerical pricing methods.</div></div>
-<div class="ttc" id="aclass_interest_rate_html"><div class="ttname"><a href="class_interest_rate.html">InterestRate</a></div><div class="ttdoc">Represents an interest rate model with time-dependent rates.</div><div class="ttdef"><b>Definition</b> InterestRate.h:22</div></div>
 <div class="ttc" id="aclass_option_exceptions_html"><div class="ttname"><a href="class_option_exceptions.html">OptionExceptions</a></div><div class="ttdoc">Base class for handling errors related to option processing.</div><div class="ttdef"><b>Definition</b> OptionExceptions.h:13</div></div>
 <div class="ttc" id="aclass_option_exceptions_html_a6e35c300bd24d172ac97aa498e66e833"><div class="ttname"><a href="class_option_exceptions.html#a6e35c300bd24d172ac97aa498e66e833">OptionExceptions::what</a></div><div class="ttdeci">virtual const char * what() const</div><div class="ttdoc">Default error message for generic errors.</div><div class="ttdef"><b>Definition</b> OptionExceptions.h:19</div></div>
 <div class="ttc" id="aclass_option_html"><div class="ttname"><a href="class_option.html">Option</a></div><div class="ttdoc">Represents an option contract with numerical pricing methods using finite difference techniques.</div><div class="ttdef"><b>Definition</b> Option.h:18</div></div>
