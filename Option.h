@@ -17,7 +17,7 @@
   */
 class Option {
     int contract_type_;
-    bool exercise_type_;
+    int exercise_type_;
     double T_;
     double K_;
     double T0_;

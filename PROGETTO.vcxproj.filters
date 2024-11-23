@@ -53,8 +53,5 @@
     <ClCompile Include="Boost.cpp">
       <Filter>File di risorse</Filter>
     </ClCompile>
-    <ClCompile Include="OptionDLL.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>
