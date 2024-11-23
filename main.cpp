@@ -8,7 +8,7 @@ int main() {
 		double T = 1.0; //maturity
 		double K = 100; //strike price
 		double T0 = 0.0; //starting time
-		double S0 = 105; //starting value of underlying
+		double S0 = 150; //starting value of underlying
 		std::vector<std::pair<double, double>> ir = { {0.0, 0.10}, {1.0, 0.10} }; //discrete interest rate curve
 		
 		double sigma = 0.20; //volatility
