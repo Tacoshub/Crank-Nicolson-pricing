@@ -24,7 +24,7 @@ double InterestRate::operator()(double t) const {
             return ((t - current.first) * next.second + (next.first - t) * current.second) / (next.first - current.first);
         }
     }
-    throw InvalidTime();
+    return interest_rate_.back().second;
 }
 
 /**
