@@ -76,6 +76,31 @@ public:
 };
 
 /**
+ * @brief Exception thrown when an invalid maturity is encountered.
+ *
+ * Maturity refers to the expiration time of the option.
+ */
+class InvalidMaturity : public OptionExceptions {
+    std::string msg;
+
+public:
+    /**
+     * @brief Constructor to set the default error message for invalid maturity.
+     */
+    InvalidMaturity() {
+        msg = "Invalid maturity";
+    }
+
+    /**
+     * @brief Override the 'what()' method to return the custom error message.
+     * @return The error message as a C-string.
+     */
+    virtual const char* what() const throw() {
+        return msg.c_str();
+    }
+};
+
+/**
  * @brief Exception thrown when an invalid strike price is encountered.
  *
  * Strike price must be positive.
@@ -199,31 +224,6 @@ public:
     InvalidVolatility(double N) {
         msg = "Invalid value for volatility, value must be positive, value received: ";
         msg += std::to_string(N);
-    }
-
-    /**
-     * @brief Override the 'what()' method to return the custom error message.
-     * @return The error message as a C-string.
-     */
-    virtual const char* what() const throw() {
-        return msg.c_str();
-    }
-};
-
-/**
- * @brief Exception thrown when an invalid time value is encountered.
- *
- * Time values are expected to be within valid bounds.
- */
-class InvalidTime : public OptionExceptions {
-    std::string msg;
-
-public:
-    /**
-     * @brief Constructor to set the default error message for invalid time.
-     */
-    InvalidTime() {
-        msg = "Value out of bounds";
     }
 
     /**
