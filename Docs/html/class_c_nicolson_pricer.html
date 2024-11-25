@@ -90,16 +90,159 @@ $(function(){ initResizable(false); });
   <div class="headertitle"><div class="title">CNicolsonPricer Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class to price American put options using the Crank-Nicolson method with SOR iteration.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_imperial_american_put_8h_source.html">ImperialAmericanPut.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2a75bc702b8e01f4b87086666b47f30a" id="r_a2a75bc702b8e01f4b87086666b47f30a"><td class="memItemLeft" align="right" valign="top"><a id="a2a75bc702b8e01f4b87086666b47f30a" name="a2a75bc702b8e01f4b87086666b47f30a"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CNicolsonPricer</b> (double S_now, double K, double T, double Vol, double r, int I, double delta_t)</td></tr>
+<tr class="memitem:a2a75bc702b8e01f4b87086666b47f30a" id="r_a2a75bc702b8e01f4b87086666b47f30a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a75bc702b8e01f4b87086666b47f30a">CNicolsonPricer</a> (double S_now, double K, double T, double Vol, double r, int I, double delta_t)</td></tr>
+<tr class="memdesc:a2a75bc702b8e01f4b87086666b47f30a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="class_c_nicolson_pricer.html" title="Class to price American put options using the Crank-Nicolson method with SOR iteration.">CNicolsonPricer</a> class.  <br /></td></tr>
 <tr class="separator:a2a75bc702b8e01f4b87086666b47f30a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37446b6b43d772b22405e8475805f43f" id="r_a37446b6b43d772b22405e8475805f43f"><td class="memItemLeft" align="right" valign="top"><a id="a37446b6b43d772b22405e8475805f43f" name="a37446b6b43d772b22405e8475805f43f"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>Value</b> ()</td></tr>
+<tr class="memitem:a37446b6b43d772b22405e8475805f43f" id="r_a37446b6b43d772b22405e8475805f43f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37446b6b43d772b22405e8475805f43f">Value</a> ()</td></tr>
+<tr class="memdesc:a37446b6b43d772b22405e8475805f43f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the computed option price.  <br /></td></tr>
 <tr class="separator:a37446b6b43d772b22405e8475805f43f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a287b2c85539a548981808af2c58ac452" id="r_a287b2c85539a548981808af2c58ac452"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a287b2c85539a548981808af2c58ac452">~CNicolsonPricer</a> ()</td></tr>
+<tr class="memdesc:a287b2c85539a548981808af2c58ac452"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for the <a class="el" href="class_c_nicolson_pricer.html" title="Class to price American put options using the Crank-Nicolson method with SOR iteration.">CNicolsonPricer</a> class.  <br /></td></tr>
+<tr class="separator:a287b2c85539a548981808af2c58ac452"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class to price American put options using the Crank-Nicolson method with SOR iteration. </p>
+<p>This class uses a finite difference method with the Crank-Nicolson scheme, along with the SOR method for solving the linear system. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a2a75bc702b8e01f4b87086666b47f30a" name="a2a75bc702b8e01f4b87086666b47f30a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a75bc702b8e01f4b87086666b47f30a">&#9670;&#160;</a></span>CNicolsonPricer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CNicolsonPricer::CNicolsonPricer </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>S_now</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>K</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>T</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>Vol</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>r</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>I</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>delta_t</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor for the <a class="el" href="class_c_nicolson_pricer.html" title="Class to price American put options using the Crank-Nicolson method with SOR iteration.">CNicolsonPricer</a> class. </p>
+<p>Initializes the pricer with the necessary parameters and performs the pricing calculation.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">S_now</td><td>Current spot price of the underlying asset. </td></tr>
+    <tr><td class="paramname">K</td><td>Strike price of the option. </td></tr>
+    <tr><td class="paramname">T</td><td>Time to maturity. </td></tr>
+    <tr><td class="paramname">Vol</td><td>Volatility of the underlying asset. </td></tr>
+    <tr><td class="paramname">r</td><td>Risk-free interest rate. </td></tr>
+    <tr><td class="paramname">I</td><td>Number of space steps for the finite difference grid. </td></tr>
+    <tr><td class="paramname">delta_t</td><td>Time step for the finite difference grid.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function initializes the pricer with the given parameters and calculates the price of the option using the Crank-Nicolson method.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">S_now</td><td>Current spot price of the underlying asset. </td></tr>
+    <tr><td class="paramname">K</td><td>Strike price of the option. </td></tr>
+    <tr><td class="paramname">T</td><td>Time to maturity. </td></tr>
+    <tr><td class="paramname">Vol</td><td>Volatility of the underlying asset. </td></tr>
+    <tr><td class="paramname">r</td><td>Risk-free interest rate. </td></tr>
+    <tr><td class="paramname">I</td><td>Number of space steps for the finite difference grid. </td></tr>
+    <tr><td class="paramname">delta_t</td><td>Time step for the finite difference grid. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a287b2c85539a548981808af2c58ac452" name="a287b2c85539a548981808af2c58ac452"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a287b2c85539a548981808af2c58ac452">&#9670;&#160;</a></span>~CNicolsonPricer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CNicolsonPricer::~CNicolsonPricer </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Destructor for the <a class="el" href="class_c_nicolson_pricer.html" title="Class to price American put options using the Crank-Nicolson method with SOR iteration.">CNicolsonPricer</a> class. </p>
+<p>Cleans up any dynamically allocated memory (if any). </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a37446b6b43d772b22405e8475805f43f" name="a37446b6b43d772b22405e8475805f43f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37446b6b43d772b22405e8475805f43f">&#9670;&#160;</a></span>Value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CNicolsonPricer::Value </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the computed option price. </p>
+<dl class="section return"><dt>Returns</dt><dd>The computed price of the option. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>C:/Users/Admin/OneDrive/Desktop/UNIVERSITÁ/LEZIONI/ANNO 2024-2025/PROJECT INFORMATIQUE/PROGETTO/<a class="el" href="_imperial_american_put_8h_source.html">ImperialAmericanPut.h</a></li>
 </ul>

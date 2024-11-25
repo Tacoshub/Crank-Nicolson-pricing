@@ -161,23 +161,4 @@ public:
      * @return Rho of the option.
      */
     double rho(double h);
-
-    /**
-     * @brief Generates a plot of the option price as a function of the spot price.
-     * @return A vector of pairs where each pair contains a spot price and the corresponding option price.
-     */
-    std::vector<std::pair<double, double>> price_plot();
-
-    /**
-     * @brief Generates a plot of the option's delta as a function of the spot price.
-     * @param h A small perturbation used for numerical differentiation.
-     * @return A vector of pairs where each pair contains a spot price and the corresponding delta.
-     */
-    std::vector<std::pair<double, double>> delta_plot(double h);
-
-    /**
-     * @brief Computes the exercise boundary for the option.
-     * @return A vector of pairs where each pair contains a time step and the corresponding exercise boundary spot price.
-     */
-    std::vector<std::pair<double, double>> exercise_boundary();
 };

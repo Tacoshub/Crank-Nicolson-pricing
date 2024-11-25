@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['what_0',['what',['../class_option_exceptions.html#a6e35c300bd24d172ac97aa498e66e833',1,'OptionExceptions::what()'],['../class_invalid_contract_type.html#a5dfecbaca5022f2edb9ad58716017b49',1,'InvalidContractType::what()'],['../class_invalid_exercise_type.html#a2e7f44f6840b61e7f518ac817a3acc0a',1,'InvalidExerciseType::what()'],['../class_invalid_maturity.html#a2c526eb38da45b055e09fff414201dbd',1,'InvalidMaturity::what()'],['../class_invalid_strike.html#a7f6a7a8b453e5fff1f617b3f0aac772e',1,'InvalidStrike::what()'],['../class_invalid_time_mesh.html#ac9060cab39cde66ab080dc76c079725e',1,'InvalidTimeMesh::what()'],['../class_invalid_spot_mesh.html#a47632a0767602030b5a4e3569d432d98',1,'InvalidSpotMesh::what()'],['../class_invalid_spot.html#a39af59750cf4afd10578e434fc5ff61c',1,'InvalidSpot::what()'],['../class_invalid_volatility.html#a36b21582cd30333e06bba24e1ce5c2c7',1,'InvalidVolatility::what()'],['../class_invalid_time.html#a64f21fa79868fb93aef37a11410c9028',1,'InvalidTime::what()']]]
+  ['value_0',['Value',['../class_c_nicolson_pricer.html#a37446b6b43d772b22405e8475805f43f',1,'CNicolsonPricer']]],
+  ['vega_1',['vega',['../class_option.html#ac13559935944ce46a3fb5b123e3a2415',1,'Option']]]
 ];

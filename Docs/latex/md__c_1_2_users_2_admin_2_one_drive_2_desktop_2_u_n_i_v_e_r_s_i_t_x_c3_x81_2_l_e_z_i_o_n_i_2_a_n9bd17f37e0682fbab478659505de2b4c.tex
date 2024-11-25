@@ -1,76 +1,76 @@
-\chapter{Crank-\/\+Nicolson Option Pricer}
-\hypertarget{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c}{}\label{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c}\index{Crank-\/Nicolson Option Pricer@{Crank-\/Nicolson Option Pricer}}
+\chapter{Advanced Option Pricing Framework}
+\hypertarget{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c}{}\label{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c}\index{Advanced Option Pricing Framework@{Advanced Option Pricing Framework}}
 \label{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md0}%
 \Hypertarget{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md0}%
+\hypertarget{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md1}{}\doxysection{\texorpdfstring{Introduction}{Introduction}}\label{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md1}
+This project implements a comprehensive framework for pricing financial options using numerical methods. It supports both European and American options, employing finite difference methods for solving the partial differential equations governing option prices. The framework is designed to handle various scenarios, including dynamic interest rates and early exercise features.\hypertarget{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md2}{}\doxysection{\texorpdfstring{Features}{Features}}\label{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md2}
+The key features of this framework include\+:
 
-
-A comprehensive numerical framework for pricing European and American options using the Crank-\/\+Nicolson finite difference method. This pricer is designed for educational purposes and supports advanced features like dynamic interest rates, iterative methods, and sensitivity analysis (the Greeks).\hypertarget{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md1}{}\doxysection{\texorpdfstring{Features}{Features}}\label{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md1}
 
 \begin{DoxyItemize}
-\item {\bfseries{\doxylink{class_option}{Option} Types\+:}}
+\item {\bfseries{Support for Multiple \doxylink{class_option}{Option} Types\+:}}
 \begin{DoxyItemize}
-\item European options (no early exercise).
-\item American options (with early exercise feature).
+\item European and American options.
+\item Call and Put contracts.
 \end{DoxyItemize}
-\item {\bfseries{Finite Difference Method\+:}}
+\item {\bfseries{Finite Difference Methods\+:}}
 \begin{DoxyItemize}
-\item Crank-\/\+Nicolson scheme for numerical stability and accuracy.
-\item Successive Over-\/\+Relaxation (SOR) for handling non-\/linearity in American options.
+\item Tridiagonal matrix computations for efficient numerical solutions.
+\item Iterative methods with penalty adjustments for American options.
 \end{DoxyItemize}
-\item {\bfseries{Greeks Computation\+:}}
+\item {\bfseries{Sensitivity Analysis (the Greeks)\+:}}
 \begin{DoxyItemize}
-\item Delta, Gamma, Theta, Vega, Rho.
+\item Delta, Gamma, Vega, Theta, and Rho are computed using finite differences.
 \end{DoxyItemize}
 \item {\bfseries{Dynamic Interest Rates\+:}}
 \begin{DoxyItemize}
-\item Supports time-\/dependent interest rate curves.
+\item Flexible handling of interest rate curves.
 \end{DoxyItemize}
-\item {\bfseries{Grid-\/\+Based Visualization\+:}}
+\item {\bfseries{Grid-\/\+Based Pricing\+:}}
 \begin{DoxyItemize}
-\item Computational grid to observe option price evolution over time and asset prices.
+\item A detailed computational grid for visualizing option price evolution over time and spot prices.
 \end{DoxyItemize}
-\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md2}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md2}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md3}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md3}
+To price an option, create an instance of the {\ttfamily \doxylink{class_option}{Option}} class with appropriate parameters\+:
+
 
 \begin{DoxyItemize}
-\item {\bfseries{Example\+:}}
-\end{DoxyItemize}
-
+\item {\bfseries{Contract and Exercise Types\+:}} Use {\ttfamily 1} for Call and {\ttfamily -\/1} for Put, {\ttfamily 1} for European, and {\ttfamily 0} for American.
+\item {\bfseries{Model Parameters\+:}} Provide maturity ( T ), strike price ( K ), interest rate curve, and volatility.
+\item {\bfseries{Grid Resolution\+:}} Set the number of time and spot price steps for the finite difference grid.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md4}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md4}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_option_8h}{Option.h}}"{}}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{keywordtype}{int}\ main()\ \{}
-\DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{try}\ \{}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ct\ =\ -\/1;\ \textcolor{comment}{//call\ -\/>\ 1,\ put\ -\/>\ -\/1}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ et\ =\ 1;\ \textcolor{comment}{//european\ -\/>\ 1,\ american\ -\/>\ 0}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ T\ =\ 1.0;\ \textcolor{comment}{//maturity}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ K\ =\ 180;\ \textcolor{comment}{//strike\ price}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ T0\ =\ 0.0;\ \textcolor{comment}{//starting\ time}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ S0\ =\ 190;\ \textcolor{comment}{//starting\ value\ of\ underlying}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ std::vector<std::pair<double,\ double>>\ ir\ =\ \{\ \{0.0,\ 0.10\},\ \{1.0,\ 0.10\}\ \};\ \textcolor{comment}{//discrete\ interest\ rate\ curve}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ sigma\ =\ 0.20;\ \textcolor{comment}{//volatility}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ N\ =\ 1000;\ \textcolor{comment}{//time\ mesh}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ M\ =\ 1000;\ \textcolor{comment}{//spot\ mesh}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ct\ =\ -\/1;\ \textcolor{comment}{//\ Call\ -\/>\ 1,\ Put\ -\/>\ -\/1}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ et\ =\ 1;\ \textcolor{comment}{//\ European\ -\/>\ 1,\ American\ -\/>\ 0}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ T\ =\ 1.0;\ \textcolor{comment}{//\ Maturity}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ K\ =\ 180;\ \textcolor{comment}{//\ Strike\ price}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ T0\ =\ 0.0;\ \textcolor{comment}{//\ Starting\ time}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ S0\ =\ 190;\ \textcolor{comment}{//\ Starting\ value\ of\ underlying}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::vector<std::pair<double,\ double>>\ ir\ =\ \{\ \{0.0,\ 0.10\},\ \{1.0,\ 0.10\}\ \};\ \textcolor{comment}{//\ Discrete\ interest\ rate\ curve}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ sigma\ =\ 0.20;\ \textcolor{comment}{//\ Volatility}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ N\ =\ 1000;\ \textcolor{comment}{//\ Time\ mesh}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ M\ =\ 1000;\ \textcolor{comment}{//\ Spot\ mesh}}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ h\ =\ 0.01;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{class_option}{Option}}\ call(ct,\ et,\ T,\ K,\ T0,\ N,\ M,\ S0,\ ir,\ sigma);}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ std::fixed\ <<\ std::setprecision(5);}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Price:\ "{}}\ <<\ std::setw(5)\ <<\ call.price()\ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::endl}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Price:\ "{}}\ <<\ std::setw(5)\ <<\ call.price()\ \ \ \ \ \ \ \ \ <<\ std::endl}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Delta:\ "{}}\ <<\ std::setw(5)\ <<\ call.delta(S0\ *\ h)\ \ \ <<\ std::endl}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Gamma:\ "{}}\ <<\ std::setw(5)\ <<\ call.gamma(S0\ *\ h)\ \ \ <<\ std::endl}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Theta:\ "{}}\ <<\ std::setw(5)\ <<\ call.theta(T\ *\ h)\ \ \ \ <<\ std::endl}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Vega:\ \ "{}}\ <<\ std::setw(5)\ <<\ call.vega(sigma\ *\ h)\ <<\ std::endl}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Rho:\ \ \ "{}}\ <<\ std::setw(5)\ <<\ call.rho(h)\ \ \ \ \ \ \ \ \ \ <<\ std::endl;}
-\DoxyCodeLine{\ \ \ \ \}}
-\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{class_option_exceptions}{OptionExceptions}}\&\ e)\ \{}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{class_option_exceptions}{OptionExceptions}}\&\ e)\ \{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Exception\ -\/>\ "{}}\ <<\ e.\mbox{\hyperlink{class_option_exceptions_a6e35c300bd24d172ac97aa498e66e833}{what}}();}
-\DoxyCodeLine{\ \ \ \ \}}
-\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\&\ e)\ \{}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\&\ e)\ \{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}General\ exception:\ "{}}\ <<\ e.what();}
-\DoxyCodeLine{\ \ \ \ \}}
-\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{catch}\ (...)\ \{}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Unknown\ exception"{}};}
 \DoxyCodeLine{\ \ \ \ \}}
 \DoxyCodeLine{}
@@ -78,9 +78,33 @@ A comprehensive numerical framework for pricing European and American options us
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
-\hypertarget{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md3}{}\doxysection{\texorpdfstring{Authors\+:}{Authors\+:}}\label{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md3}
+\hypertarget{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md5}{}\doxysection{\texorpdfstring{Implementation Details}{Implementation Details}}\label{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md5}
 
 \begin{DoxyItemize}
-\item Boccia Flavio
-\item Costa Ludovico 
-\end{DoxyItemize}
+\item {\bfseries{Finite Difference Grid\+:}} A 2D grid of option values is created, with rows representing spot prices and columns representing time steps.
+\item {\bfseries{Boundary Conditions\+:}} Applied to enforce realistic option values at extreme spot prices.
+\item {\bfseries{Tridiagonal Matrix Operations\+:}} Efficiently solve the linear systems arising in finite difference methods.
+\item {\bfseries{Penalty Method\+:}} Handles the early exercise feature of American options.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md6}{}\doxysection{\texorpdfstring{Sensitivity Analysis}{Sensitivity Analysis}}\label{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md6}
+The framework provides methods to compute the following option sensitivities (Greeks)\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Delta\+:}} Sensitivity to changes in the underlying asset price.
+\item {\bfseries{Gamma\+:}} Sensitivity of Delta to changes in the underlying asset price.
+\item {\bfseries{Theta\+:}} Sensitivity to the passage of time.
+\item {\bfseries{Vega\+:}} Sensitivity to changes in volatility.
+\item {\bfseries{Rho\+:}} Sensitivity to changes in the interest rate.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md7}{}\doxysection{\texorpdfstring{Future Enhancements}{Future Enhancements}}\label{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md7}
+Suggestions for future development\+:
+
+
+\begin{DoxyItemize}
+\item Extend support for multi-\/asset options.
+\item Implement Monte Carlo simulations for validation.
+\item Add functionality for barrier and Asian options.
+\item Improve performance with GPU-\/based parallelism.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md8}{}\doxysection{\texorpdfstring{Author}{Author}}\label{md__c_1_2_users_2_admin_2_one_drive_2_desktop_2_u_n_i_v_e_r_s_i_t_x_c3_x81_2_l_e_z_i_o_n_i_2_a_n9bd17f37e0682fbab478659505de2b4c_autotoc_md8}
+Developed as part of an advanced computational finance project. This framework is intended for educational purposes and as a foundation for further research in option pricing techniques.
+
+Authors\+: Boccia Flavio, Costa Ludovico 

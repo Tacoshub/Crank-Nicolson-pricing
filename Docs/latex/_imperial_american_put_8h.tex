@@ -2,7 +2,7 @@
 \hypertarget{_imperial_american_put_8h}{}\label{_imperial_american_put_8h}\index{C:/Users/Admin/OneDrive/Desktop/UNIVERSITÁ/LEZIONI/ANNO 2024-\/2025/PROJECT INFORMATIQUE/PROGETTO/ImperialAmericanPut.h@{C:/Users/Admin/OneDrive/Desktop/UNIVERSITÁ/LEZIONI/ANNO 2024-\/2025/PROJECT INFORMATIQUE/PROGETTO/ImperialAmericanPut.h}}
 
 
-Imperial College pricer for American puts.  
+Imperial College pricer for American puts, used for test cases.  
 
 
 {\ttfamily \#include $<$iostream$>$}\newline
@@ -11,15 +11,39 @@ Imperial College pricer for American puts.
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{class_c_nicolson_pricer}{CNicolson\+Pricer}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Class to price American put options using the Crank-\/\+Nicolson method with SOR iteration. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{_imperial_american_put_8h_ab50e426b92a0bc8e7dbaeddc4d61caeb}\label{_imperial_american_put_8h_ab50e426b92a0bc8e7dbaeddc4d61caeb} 
-double {\bfseries maxx} (double a, double b)
-\end{DoxyCompactItemize}
+double \mbox{\hyperlink{_imperial_american_put_8h_ab50e426b92a0bc8e7dbaeddc4d61caeb}{maxx}} (double a, double b)
+\begin{DoxyCompactList}\small\item\em Returns the maximum of two values. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Imperial College pricer for American puts. 
+Imperial College pricer for American puts, used for test cases. 
 
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_imperial_american_put_8h_ab50e426b92a0bc8e7dbaeddc4d61caeb}\index{ImperialAmericanPut.h@{ImperialAmericanPut.h}!maxx@{maxx}}
+\index{maxx@{maxx}!ImperialAmericanPut.h@{ImperialAmericanPut.h}}
+\doxysubsubsection{\texorpdfstring{maxx()}{maxx()}}
+{\footnotesize\ttfamily \label{_imperial_american_put_8h_ab50e426b92a0bc8e7dbaeddc4d61caeb} 
+double maxx (\begin{DoxyParamCaption}\item[{double}]{a}{, }\item[{double}]{b}{}\end{DoxyParamCaption})}
+
+
+
+Returns the maximum of two values. 
+
+This helper function is used to ensure that the value is non-\/negative, as is the case for options\textquotesingle{} intrinsic values.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & First value to compare. \\
+\hline
+{\em b} & Second value to compare. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The greater of the two values. 
+\end{DoxyReturn}
