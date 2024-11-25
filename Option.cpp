@@ -161,13 +161,16 @@ Option::Option(int contract_type, int exercise_type, double T, double K, double 
     if (S0_ <= 0) throw InvalidSpot(S0_);
     if (volatility_ <= 0) throw InvalidVolatility(volatility_);
 
-    dT = 0;
-    dS = 0;
+    dT = (T_ - T0_) / time_mesh_;
+    dS = (5 * S0_) / spot_mesh_;
 
     curve = InterestRate(interest_rate_);
 
     if (contract_type == 1) { F0 = 0, FM = 5 * S0; }
     else { F0 = K, FM = 0; }
+
+    create_grid();
+    solve();
 }
 
 /**
@@ -409,7 +412,7 @@ void Option::american_price() {
  * using either the `european_price` or `american_price` method.
  */
 void Option::solve() {
-    double Sk = 0; // Underlying asset price
+    double Sk = 0;
     size_t ii = 0;
 
     F.resize(spot_mesh_ - 1);
@@ -438,10 +441,6 @@ void Option::solve() {
  * @return The computed option price at \( S_0 \) and \( T_0 \).
  */
 double Option::price() {
-    dT = (T_ - T0_) / time_mesh_;
-    dS = (5 * S0_) / spot_mesh_;
-    create_grid();
-    solve();
     return grid[S0_ / dS][0];
 }
 
@@ -473,13 +472,12 @@ void Option::display_grid() {
  * @param h Small increment for the underlying asset price.
  * @return The computed Delta value.
  */
-double Option::delta(double h) {
-    double price1 = price();
-    S0_ += h;
-    double price2 = price();
-    S0_ -= h;
+double Option::delta(double S) {
 
-    return (price2 - price1) / h;
+    double d1 = grid[S / dS + 1][0];
+    double d2 = grid[S / dS - 1][0];
+
+    return (d1 - d2) / (2*dS);
 }
 
 /**
@@ -494,13 +492,11 @@ double Option::delta(double h) {
  * @param h Small increment for the underlying asset price.
  * @return The computed Gamma value.
  */
-double Option::gamma(double h) {
-    double delta1 = delta(h);
-    S0_ += h;
-    double delta2 = delta(h);
-    S0_ -= h;
+double Option::gamma() {
+    double g1 = delta(S0_ + dS);
+    double g2 = delta(S0_ - dS);
 
-    return (delta2 - delta1) / h;
+    return (g1 - g2) / (2*dS);
 }
 
 /**
@@ -515,13 +511,11 @@ double Option::gamma(double h) {
  * @param h Small decrement for the time to maturity.
  * @return The computed Theta value.
  */
-double Option::theta(double h) {
-    double price1 = price();
-    T_ -= h;
-    double price2 = price();
-    T_ += h;
+double Option::theta() {
+    double t1 = grid[S0_ / dS][1];
+    double t2 = grid[S0_ / dS][0];
 
-    return (price2 - price1) / h;
+    return (t1 - t2) / (dT);
 }
 
 /**
@@ -537,12 +531,9 @@ double Option::theta(double h) {
  * @return The computed Vega value.
  */
 double Option::vega(double h) {
-    double price1 = price();
-    volatility_ += h;
-    double price2 = price();
-    volatility_ -= h;
+    Option tmp(contract_type_, exercise_type_, T_, K_, T0_, time_mesh_, spot_mesh_, S0_, interest_rate_, volatility_ + h);
 
-    return (price2 - price1) / h;
+    return (tmp.price() - price()) / h;
 }
 
 /**
@@ -557,11 +548,13 @@ double Option::vega(double h) {
  * @param h Small increment for the interest rate.
  * @return The computed Rho value.
  */
-double Option::rho(double h) {
-    double price1 = price();
-    curve += h;
-    double price2 = price();
-    curve -= h;
 
-    return (price2 - price1) / h;
+double Option::rho(double h) {
+    std::vector<std::pair<double, double>> ir_tmp = interest_rate_;
+    for (std::pair<double, double>& elem : ir_tmp) {
+        elem.second += h;
+    }
+    Option tmp(contract_type_, exercise_type_, T_, K_, T0_, time_mesh_, spot_mesh_, S0_, ir_tmp, volatility_);
+
+    return (tmp.price() - price()) / h;
 }

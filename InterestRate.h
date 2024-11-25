@@ -21,7 +21,7 @@
   */
 class InterestRate {
 
-    std::vector<std::pair<double, double>> interest_rate_; ///< Vector of (time, rate) pairs representing the interest rate curve.
+    std::vector<std::pair<double, double>> interest_rate_;
 
 public:
 
@@ -66,24 +66,4 @@ public:
      * @throws OptionException If \( t_0 \) is outside the range of the interest rate curve.
      */
     double integral(double t0) const;
-
-    /**
-     * @brief Increments all interest rates in the curve by a specified value.
-     *
-     * This operator adds a constant \( h \) to the rates of all time points in the curve.
-     *
-     * @param h The value to increment the rates by.
-     * @note This operation modifies the original interest rate curve.
-     */
-    void operator+=(double h);
-
-    /**
-     * @brief Decrements all interest rates in the curve by a specified value.
-     *
-     * This operator subtracts a constant \( h \) from the rates of all time points in the curve.
-     *
-     * @param h The value to decrement the rates by.
-     * @note This operation modifies the original interest rate curve.
-     */
-    void operator-=(double h);
 };

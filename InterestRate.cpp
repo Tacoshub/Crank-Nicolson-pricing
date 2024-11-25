@@ -77,31 +77,3 @@ double InterestRate::integral(double t0) const {
     }
     return res;
 }
-
-/**
- * @brief Increments all interest rates in the curve by a constant value.
- *
- * Adds a constant value \( h \) to each rate in the interest rate curve.
- *
- * @param h The value to add to all interest rates.
- */
-void InterestRate::operator+=(double h) {
-    size_t n = interest_rate_.size();
-    for (size_t ii = 0; ii < n; ii++) {
-        interest_rate_[ii].second += h;
-    }
-}
-
-/**
- * @brief Decrements all interest rates in the curve by a constant value.
- *
- * Subtracts a constant value \( h \) from each rate in the interest rate curve.
- *
- * @param h The value to subtract from all interest rates.
- */
-void InterestRate::operator-=(double h) {
-    size_t n = interest_rate_.size();
-    for (size_t ii = 0; ii < n; ii++) {
-        interest_rate_[ii].second -= h;
-    }
-}

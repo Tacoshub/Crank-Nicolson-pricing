@@ -132,21 +132,21 @@ public:
      * @param h Step size for finite difference.
      * @return Delta of the option.
      */
-    double delta(double h);
+    double delta(double S);
 
     /**
      * @brief Computes the gamma of the option.
      * @param h Step size for finite difference.
      * @return Gamma of the option.
      */
-    double gamma(double h);
+    double gamma();
 
     /**
      * @brief Computes the theta of the option.
      * @param h Step size for finite difference.
      * @return Theta of the option.
      */
-    double theta(double h);
+    double theta();
 
     /**
      * @brief Computes the vega of the option.
