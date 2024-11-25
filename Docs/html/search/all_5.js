@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['gamma_0',['gamma',['../class_option.html#a55c91ea60f925ed9927995d29f88c029',1,'Option']]]
+  ['gamma_0',['gamma',['../class_option.html#a665596a4ff57c3fc160652bf7554a59c',1,'Option']]]
 ];

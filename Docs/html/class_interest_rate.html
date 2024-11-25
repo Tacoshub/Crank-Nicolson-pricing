@@ -110,12 +110,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a07373758742090d58f97adb9690f07a7" id="r_a07373758742090d58f97adb9690f07a7"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a07373758742090d58f97adb9690f07a7">integral</a> (double t0) const</td></tr>
 <tr class="memdesc:a07373758742090d58f97adb9690f07a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the integral of the interest rate curve from 0 to a given time ( t_0 ).  <br /></td></tr>
 <tr class="separator:a07373758742090d58f97adb9690f07a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a585073f03da291630cee96801f3b0261" id="r_a585073f03da291630cee96801f3b0261"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a585073f03da291630cee96801f3b0261">operator+=</a> (double h)</td></tr>
-<tr class="memdesc:a585073f03da291630cee96801f3b0261"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increments all interest rates in the curve by a specified value.  <br /></td></tr>
-<tr class="separator:a585073f03da291630cee96801f3b0261"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab9fee4e94dbf39d7079911e20fbd1ba3" id="r_ab9fee4e94dbf39d7079911e20fbd1ba3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab9fee4e94dbf39d7079911e20fbd1ba3">operator-=</a> (double h)</td></tr>
-<tr class="memdesc:ab9fee4e94dbf39d7079911e20fbd1ba3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrements all interest rates in the curve by a specified value.  <br /></td></tr>
-<tr class="separator:ab9fee4e94dbf39d7079911e20fbd1ba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents an interest rate model with time-dependent rates. </p>
@@ -274,76 +268,6 @@ Public Member Functions</h2></td></tr>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">InvalidTime</td><td>If ( t ) is outside the bounds of the interest rate curve. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a585073f03da291630cee96801f3b0261" name="a585073f03da291630cee96801f3b0261"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a585073f03da291630cee96801f3b0261">&#9670;&#160;</a></span>operator+=()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void InterestRate::operator+= </td>
-          <td>(</td>
-          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>h</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Increments all interest rates in the curve by a specified value. </p>
-<p>Increments all interest rates in the curve by a constant value.</p>
-<p>This operator adds a constant ( h ) to the rates of all time points in the curve.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">h</td><td>The value to increment the rates by. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section note"><dt>Note</dt><dd>This operation modifies the original interest rate curve.</dd></dl>
-<p>Adds a constant value ( h ) to each rate in the interest rate curve.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">h</td><td>The value to add to all interest rates. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ab9fee4e94dbf39d7079911e20fbd1ba3" name="ab9fee4e94dbf39d7079911e20fbd1ba3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab9fee4e94dbf39d7079911e20fbd1ba3">&#9670;&#160;</a></span>operator-=()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void InterestRate::operator-= </td>
-          <td>(</td>
-          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>h</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Decrements all interest rates in the curve by a specified value. </p>
-<p>Decrements all interest rates in the curve by a constant value.</p>
-<p>This operator subtracts a constant ( h ) from the rates of all time points in the curve.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">h</td><td>The value to decrement the rates by. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section note"><dt>Note</dt><dd>This operation modifies the original interest rate curve.</dd></dl>
-<p>Subtracts a constant value ( h ) from each rate in the interest rate curve.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">h</td><td>The value to subtract from all interest rates. </td></tr>
   </table>
   </dd>
 </dl>
