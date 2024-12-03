@@ -286,29 +286,9 @@ std::pair<double, double> Option::compute_K(size_t i) {
 
     double cm_prec = (dT / 4) * (volatility_ * volatility_ * (spot_mesh_ - 1) * (spot_mesh_ - 1) - curve(dT * (i - 1)) * (spot_mesh_ - 1));
     double cm_curr = (dT / 4) * (volatility_ * volatility_ * (spot_mesh_ - 1) * (spot_mesh_ - 1) - curve(dT * i) * (spot_mesh_ - 1));
-    double K2 = cm_prec * (FM - K_ * std::exp(-curve.integral(dT * (i - 1)))) +
-        cm_curr * (FM - K_ * std::exp(-curve.integral(dT * i)));
+    double K2 = cm_prec * (FM - K_ * std::exp(-curve.integral(dT * (i - 1)))) + cm_curr * (FM - K_ * std::exp(-curve.integral(dT * i)));
 
     return std::make_pair(K1, K2);
-}
-
-/**
- * @brief Computes the boundary term \( K_1 \) for American option pricing.
- *
- * The boundary term is specific to American options and accounts for the early exercise condition
- * at the lower boundary of the grid. It is computed using coefficients derived from the volatility,
- * interest rate, and boundary values.
- *
- * @param i The time step index.
- * @return The computed boundary term \( K_1 \).
- */
-double Option::compute_K_american(size_t i) {
-    double a1_prec = (dT / 4) * (volatility_ * volatility_ * 1 * 1 - curve(dT * (i - 1)) * 1);
-    double a1_curr = (dT / 4) * (volatility_ * volatility_ * 1 * 1 - curve(dT * i) * 1);
-    double K1 = a1_prec * F0 * std::exp(-curve.integral(dT * (i - 1))) +
-        a1_curr * F0 * std::exp(-curve.integral(dT * i));
-
-    return K1;
 }
 
 /**
@@ -398,11 +378,11 @@ void Option::american_price() {
             F = F_tmp;
         }
 
-        grid[0][jj - 1] = F0 * std::exp(-curve.integral(dT * (jj - 1)));
+        grid[0][jj - 1] = F0;
         for (zz = 1; zz < spot_mesh_; zz++) {
             grid[zz][jj - 1] = F[zz - 1];
         }
-        grid[zz][jj - 1] = (FM - K_ * std::exp(-curve.integral(dT * (jj - 1)))) * (contract_type_ == 1);
+        grid[zz][jj - 1] = (FM - K_) * (contract_type_ == 1);
     }
 }
 
@@ -550,7 +530,6 @@ double Option::vega(double h) {
  * @param h Small increment for the interest rate.
  * @return The computed Rho value.
  */
-
 double Option::rho(double h) {
     std::vector<std::pair<double, double>> ir_tmp = interest_rate_;
     for (std::pair<double, double>& elem : ir_tmp) {

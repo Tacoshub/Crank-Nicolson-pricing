@@ -105,13 +105,6 @@ public:
     std::pair<double, double> compute_K(size_t i);
 
     /**
-     * @brief Computes the boundary condition K for American options.
-     * @param i Time step index.
-     * @return Boundary value for K.
-     */
-    double compute_K_american(size_t i);
-
-    /**
      * @brief Solves the option pricing problem using the grid.
      */
     void solve();

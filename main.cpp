@@ -6,15 +6,15 @@ int main() {
 		int ct = 1; //call -> 1, put -> -1
 		int et = 1; //european -> 1, american -> 0
 		double T = 1.0; //maturity
-		double K = 1; //strike price
+		double K = 1.0; //strike price
 		double T0 = 0.0; //starting time
 		double S0 = 1; //starting value of underlying
-		std::vector<std::pair<double, double>> ir = { {0.0, 0.0212}, {1.0, 0.0212}}; //discrete interest rate curve
+		std::vector<std::pair<double, double>> ir = { {0.0, 0.0212}, {1.0, 0.0212} }; //discrete interest rate curve
 		
-		double sigma = 0.10; //volatility
-		unsigned int N = 1000; //time mesh
-		unsigned int M = 1000; //spot mesh
-		double h = 0.01;
+		double sigma = 1; //volatility
+		unsigned int N = 400; //time mesh
+		unsigned int M = 400; //spot mesh
+		double h = 0.01; //discretization parameter
 
 		Option opt(ct, et, T, K, T0, N, M, S0, ir, sigma);
 		std::cout << std::fixed << std::setprecision(5);
