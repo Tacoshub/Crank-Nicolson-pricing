@@ -12,7 +12,7 @@ Represents an option contract with numerical pricing methods using finite differ
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_option_a04eaaaadb0da5ceaf51891082635b553}{Option}} (int contract\+\_\+type, int exercise\+\_\+type, double T, double K, double T0, unsigned int time\+\_\+mesh, unsigned int spot\+\_\+mesh, double S0, std\+::vector$<$ std\+::pair$<$ double, double $>$ $>$ interest\+\_\+rate, double volatility, double tol=0.\+01, double w=1.\+2)
+\mbox{\hyperlink{class_option_a6ede4954288e70ebd63b0ce52d12b5ce}{Option}} (int contract\+\_\+type, int exercise\+\_\+type, double T, double K, double T0, unsigned int time\+\_\+mesh, unsigned int spot\+\_\+mesh, double S0, std\+::vector$<$ std\+::pair$<$ double, double $>$ $>$ interest\+\_\+rate, double volatility, double tol=1e-\/12, double w=1.\+2)
 \begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_option}{Option} object. \end{DoxyCompactList}\item 
 std\+::vector$<$ double $>$ \mbox{\hyperlink{class_option_a85dba1c4ebe2fcbb5094c855180f1a73}{compute\+\_\+aj}} (size\+\_\+t i)
 \begin{DoxyCompactList}\small\item\em Computes the coefficients a\+\_\+j for the tridiagonal matrix. \end{DoxyCompactList}\item 
@@ -26,8 +26,6 @@ std\+::vector$<$ double $>$ \mbox{\hyperlink{class_option_ad1552eb1817162c1b286a
 \begin{DoxyCompactList}\small\item\em Computes the tridiagonal matrix D. \end{DoxyCompactList}\item 
 std\+::pair$<$ double, double $>$ \mbox{\hyperlink{class_option_a30f78027509f9ad9cf8eec26b2a89eb3}{compute\+\_\+K}} (size\+\_\+t i)
 \begin{DoxyCompactList}\small\item\em Computes the vector K for the boundary conditions. \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{class_option_a486eb2873bc9019b6fcb7c088448b6b8}{compute\+\_\+\+K\+\_\+american}} (size\+\_\+t i)
-\begin{DoxyCompactList}\small\item\em Computes the boundary condition K for American options. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_option_add7a189920460d9045e029b5c927ad67}{solve}} ()
 \begin{DoxyCompactList}\small\item\em Solves the option pricing problem using the grid. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_option_ad1cc9b28343b82819ff2295ddd719984}{display\+\_\+grid}} ()
@@ -50,11 +48,11 @@ double \mbox{\hyperlink{class_option_a5c4c93284189004f548387149fc52811}{rho}} (d
 Represents an option contract with numerical pricing methods using finite difference techniques. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{class_option_a04eaaaadb0da5ceaf51891082635b553}\index{Option@{Option}!Option@{Option}}
+\Hypertarget{class_option_a6ede4954288e70ebd63b0ce52d12b5ce}\index{Option@{Option}!Option@{Option}}
 \index{Option@{Option}!Option@{Option}}
 \doxysubsubsection{\texorpdfstring{Option()}{Option()}}
-{\footnotesize\ttfamily \label{class_option_a04eaaaadb0da5ceaf51891082635b553} 
-Option\+::\+Option (\begin{DoxyParamCaption}\item[{int}]{contract\+\_\+type}{, }\item[{int}]{exercise\+\_\+type}{, }\item[{double}]{T}{, }\item[{double}]{K}{, }\item[{double}]{T0}{, }\item[{unsigned int}]{time\+\_\+mesh}{, }\item[{unsigned int}]{spot\+\_\+mesh}{, }\item[{double}]{S0}{, }\item[{std\+::vector$<$ std\+::pair$<$ double, double $>$ $>$}]{interest\+\_\+rate}{, }\item[{double}]{volatility}{, }\item[{double}]{tol}{ = {\ttfamily 0.01}, }\item[{double}]{w}{ = {\ttfamily 1.2}}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{class_option_a6ede4954288e70ebd63b0ce52d12b5ce} 
+Option\+::\+Option (\begin{DoxyParamCaption}\item[{int}]{contract\+\_\+type}{, }\item[{int}]{exercise\+\_\+type}{, }\item[{double}]{T}{, }\item[{double}]{K}{, }\item[{double}]{T0}{, }\item[{unsigned int}]{time\+\_\+mesh}{, }\item[{unsigned int}]{spot\+\_\+mesh}{, }\item[{double}]{S0}{, }\item[{std\+::vector$<$ std\+::pair$<$ double, double $>$ $>$}]{interest\+\_\+rate}{, }\item[{double}]{volatility}{, }\item[{double}]{tol}{ = {\ttfamily 1e-\/12}, }\item[{double}]{w}{ = {\ttfamily 1.2}}\end{DoxyParamCaption})}
 
 
 
@@ -316,36 +314,6 @@ These terms represent the contributions of the boundary conditions to the finite
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 A pair of boundary terms ( (K\+\_\+1, K\+\_\+2) ). 
-\end{DoxyReturn}
-\Hypertarget{class_option_a486eb2873bc9019b6fcb7c088448b6b8}\index{Option@{Option}!compute\_K\_american@{compute\_K\_american}}
-\index{compute\_K\_american@{compute\_K\_american}!Option@{Option}}
-\doxysubsubsection{\texorpdfstring{compute\_K\_american()}{compute\_K\_american()}}
-{\footnotesize\ttfamily \label{class_option_a486eb2873bc9019b6fcb7c088448b6b8} 
-double Option\+::compute\+\_\+\+K\+\_\+american (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i}{}\end{DoxyParamCaption})}
-
-
-
-Computes the boundary condition K for American options. 
-
-Computes the boundary term ( K\+\_\+1 ) for American option pricing.
-
-
-\begin{DoxyParams}{Parameters}
-{\em i} & Time step index. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Boundary value for K.
-\end{DoxyReturn}
-The boundary term is specific to American options and accounts for the early exercise condition at the lower boundary of the grid. It is computed using coefficients derived from the volatility, interest rate, and boundary values.
-
-
-\begin{DoxyParams}{Parameters}
-{\em i} & The time step index. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-The computed boundary term ( K\+\_\+1 ). 
 \end{DoxyReturn}
 \Hypertarget{class_option_a93f54e9da91e83501bfa10f3d9256183}\index{Option@{Option}!delta@{delta}}
 \index{delta@{delta}!Option@{Option}}

@@ -11,7 +11,7 @@ int main() {
 		double S0 = 1; //starting value of underlying
 		std::vector<std::pair<double, double>> ir = { {0.0, 0.0212}, {1.0, 0.0212} }; //discrete interest rate curve
 		
-		double sigma = 1; //volatility
+		double sigma = 0.1; //volatility
 		unsigned int N = 400; //time mesh
 		unsigned int M = 400; //spot mesh
 		double h = 0.01; //discretization parameter
