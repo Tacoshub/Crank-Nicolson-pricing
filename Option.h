@@ -56,7 +56,7 @@ public:
      * @param tol Convergence tolerance for iterative solvers.
      * @param w Relaxation parameter for iterative solvers.
      */
-    Option(int contract_type, int exercise_type, double T, double K, double T0, unsigned int time_mesh, unsigned int spot_mesh, double S0, std::vector<std::pair<double, double>> interest_rate, double volatility, double tol = 0.01, double w = 1.2);
+    Option(int contract_type, int exercise_type, double T, double K, double T0, unsigned int time_mesh, unsigned int spot_mesh, double S0, std::vector<std::pair<double, double>> interest_rate, double volatility, double tol = 1e-12, double w = 1.2);
 
     /**
      * @brief Computes the coefficients a_j for the tridiagonal matrix.

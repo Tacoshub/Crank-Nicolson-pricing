@@ -359,7 +359,8 @@ void Option::european_price() {
 void Option::american_price() {
     std::vector<double> a, b, c;
     Tridiag D;
-    double K, Sk;
+    std::pair<double, double> K;
+    double Sk;
     std::vector<double> RHS;
     size_t ii, zz;
 
@@ -369,7 +370,7 @@ void Option::american_price() {
         c = compute_cj(jj);
 
         D = compute_D(a, b, c);
-        K = compute_K_american(jj);
+        K = compute_K(jj);
 
         RHS = D * F + K;
 
@@ -454,7 +455,7 @@ void Option::display_grid() {
     std::cout << std::fixed << std::setprecision(3);
     for (size_t ii = 0; ii <= spot_mesh_; ii++) {
         for (size_t jj = 0; jj < time_mesh_; jj++) {
-            std::cout << std::setw(8) << grid[ii][jj] << " ";
+            std::cout << std::setw(7) << grid[ii][jj] << " ";
         }
         std::cout << '\n';
     }
@@ -493,10 +494,11 @@ double Option::delta(double S) {
  * @return The computed Gamma value.
  */
 double Option::gamma() {
-    double g1 = delta(S0_ + dS);
-    double g2 = delta(S0_ - dS);
+    double g1 = grid[S0_ / dS + 1][0];
+    double g2 = grid[S0_ / dS - 1][0];
+    double g3 = grid[S0_ / dS][0];
 
-    return (g1 - g2) / (2*dS);
+    return (g1 + g2 - 2 * g3) / dS / dS;
 }
 
 /**
