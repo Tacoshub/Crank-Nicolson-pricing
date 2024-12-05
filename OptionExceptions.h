@@ -140,7 +140,7 @@ public:
      * @brief Constructor to initialize the error message with the invalid time mesh value.
      * @param N The invalid time mesh value received.
      */
-    InvalidTimeMesh(int N) {
+    InvalidTimeMesh(unsigned int N) {
         msg = "Invalid value for time mesh, value must be positive, value received: ";
         msg += std::to_string(N);
     }
@@ -167,7 +167,7 @@ public:
      * @brief Constructor to initialize the error message with the invalid spot mesh value.
      * @param N The invalid spot mesh value received.
      */
-    InvalidSpotMesh(int N) {
+    InvalidSpotMesh(unsigned int N) {
         msg = "Invalid value for time mesh, value must be positive, value received: ";
         msg += std::to_string(N);
     }

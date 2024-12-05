@@ -146,12 +146,12 @@ public:
      * @param h Step size for finite difference.
      * @return Vega of the option.
      */
-    double vega(double h);
+    double vega(double h = 0.01);
 
     /**
      * @brief Computes the rho of the option.
      * @param h Step size for finite difference.
      * @return Rho of the option.
      */
-    double rho(double h);
+    double rho(double h = 0.01);
 };

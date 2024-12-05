@@ -64,12 +64,14 @@ public:
      * @return Solution vector.
      */
     std::vector<double> solve(std::vector<double> b) {
-        int n = int(b.size());
+        size_t n = b.size();
         std::vector<double> x(n);
         x[n - 1] = b[n - 1] / diag_[n - 1];
-        for (int ii = n - 2; ii >= 0; ii--) {
+        size_t ii;
+        for (ii = n - 2; ii >= 1; ii--) {
             x[ii] = (b[ii] - superdiag_[ii] * x[ii + 1]) / diag_[ii];
         }
+        x[ii] = (b[ii] - superdiag_[ii] * x[ii + 1]) / diag_[ii];
         return x;
     }
 };

@@ -51,15 +51,14 @@
   *         int ct = 1; // Call -> 1, Put -> -1
   *         int et = 1; // European -> 1, American -> 0
   *         double T = 1.0; // Maturity
-  *         double K = 1.0; // Strike price
+  *         double K = 40.0; // Strike price
   *         double T0 = 0.0; // Starting time
-  *         double S0 = 1; // Starting value of underlying
+  *         double S0 = 50.0; // Starting value of underlying
   *         std::vector<std::pair<double, double>> ir = { {0.0, 0.0212}, {1.0, 0.0212} }; // Discrete interest rate curve
   *
   *         double sigma = 0.1; // Volatility
-  *         unsigned int N = 400; // Time mesh
-  *         unsigned int M = 400; // Spot mesh
-  *         double h = 0.01; // Discretization parameter
+  *         unsigned int N = 500; // Time mesh
+  *         unsigned int M = 500; // Spot mesh
   *
   *         Option opt(ct, et, T, K, T0, N, M, S0, ir, sigma);
   *         std::cout << std::fixed << std::setprecision(5);

@@ -80,20 +80,6 @@ std::vector<double> operator-(std::vector<double> v1, std::vector<double> v2) {
 }
 
 /**
- * @brief Adds a scalar to the first element of a vector.
- *
- * The scalar \( p2 \) is added only to the first element of the vector.
- *
- * @param v1 Vector to modify.
- * @param p2 Scalar to add.
- * @return Modified vector.
- */
-std::vector<double> operator+(std::vector<double> v1, double p2) {
-    v1[0] += p2;
-    return v1;
-}
-
-/**
  * @brief Adds a pair of scalars to the first and last elements of a vector.
  *
  * Adds the first element of the pair to the first vector element, and the second
@@ -149,9 +135,8 @@ double norm(std::vector<double> v1) {
  * @param w Relaxation parameter for iterative methods.
  */
 Option::Option(int contract_type, int exercise_type, double T, double K, double T0, unsigned int time_mesh, unsigned int spot_mesh, double S0, std::vector<std::pair<double, double>> interest_rate, double volatility, double tol, double w)
-    : contract_type_(contract_type), exercise_type_(exercise_type), T_(T), K_(K), T0_(T0),
-    time_mesh_(time_mesh), spot_mesh_(spot_mesh), S0_(S0), interest_rate_(interest_rate),
-    volatility_(volatility), tol_(tol), w_(w) {
+    : contract_type_(contract_type), exercise_type_(exercise_type), T_(T), K_(K), T0_(T0), S0_(S0), volatility_(volatility),
+    time_mesh_(time_mesh), spot_mesh_(spot_mesh), interest_rate_(interest_rate), tol_(tol), w_(w) {
     if (contract_type_ != 1 && contract_type_ != -1) throw InvalidContractType(contract_type_);
     if (exercise_type_ != 1 && exercise_type_ != 0) throw InvalidExerciseType(exercise_type_);
     if (T_ < T0 || T < 0) throw InvalidMaturity();
@@ -422,7 +407,7 @@ void Option::solve() {
  * @return The computed option price at \( S_0 \) and \( T_0 \).
  */
 double Option::price() {
-    return grid[S0_ / dS][0];
+    return grid[std::round(S0_ / dS)][0];
 }
 
 /**
@@ -455,8 +440,8 @@ void Option::display_grid() {
  */
 double Option::delta(double S) {
 
-    double d1 = grid[S / dS + 1][0];
-    double d2 = grid[S / dS - 1][0];
+    double d1 = grid[std::round(S / dS) + 1][0];
+    double d2 = grid[std::round(S / dS) - 1][0];
 
     return (d1 - d2) / (2*dS);
 }
@@ -474,9 +459,9 @@ double Option::delta(double S) {
  * @return The computed Gamma value.
  */
 double Option::gamma() {
-    double g1 = grid[S0_ / dS + 1][0];
-    double g2 = grid[S0_ / dS - 1][0];
-    double g3 = grid[S0_ / dS][0];
+    double g1 = grid[std::round(S0_ / dS) + 1][0];
+    double g2 = grid[std::round(S0_ / dS) - 1][0];
+    double g3 = grid[std::round(S0_ / dS)][0];
 
     return (g1 + g2 - 2 * g3) / dS / dS;
 }
@@ -494,8 +479,8 @@ double Option::gamma() {
  * @return The computed Theta value.
  */
 double Option::theta() {
-    double t1 = grid[S0_ / dS][1];
-    double t2 = grid[S0_ / dS][0];
+    double t1 = grid[std::round(S0_ / dS)][1];
+    double t2 = grid[std::round(S0_ / dS)][0];
 
     return (t1 - t2) / (dT);
 }
@@ -513,9 +498,10 @@ double Option::theta() {
  * @return The computed Vega value.
  */
 double Option::vega(double h) {
-    Option tmp(contract_type_, exercise_type_, T_, K_, T0_, time_mesh_, spot_mesh_, S0_, interest_rate_, volatility_ + h);
+    double shift = volatility_ * h;
+    Option tmp(contract_type_, exercise_type_, T_, K_, T0_, time_mesh_, spot_mesh_, S0_, interest_rate_, volatility_ + shift);
 
-    return (tmp.price() - price()) / h;
+    return (tmp.price() - price()) / shift;
 }
 
 /**
@@ -532,10 +518,11 @@ double Option::vega(double h) {
  */
 double Option::rho(double h) {
     std::vector<std::pair<double, double>> ir_tmp = interest_rate_;
+    double shift = h * ir_tmp[0].second;
     for (std::pair<double, double>& elem : ir_tmp) {
-        elem.second += h;
+        elem.second += shift;
     }
     Option tmp(contract_type_, exercise_type_, T_, K_, T0_, time_mesh_, spot_mesh_, S0_, ir_tmp, volatility_);
 
-    return (tmp.price() - price()) / h;
+    return (tmp.price() - price()) / shift;
 }
