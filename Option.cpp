@@ -288,16 +288,16 @@ std::pair<double, double> Option::compute_K(size_t i) {
 void Option::european_price() {
     Tridiag C, D;
     std::pair<double, double> K;
-    std::vector<double> a, b, c, RHS;
+    std::vector<double> a_c, b_c, c_c, a_d, b_d, c_d, RHS;
     size_t zz;
 
     for (size_t jj = time_mesh_ - 1; jj > 0; jj--) {
-        a = compute_aj(jj);
-        b = compute_bj(jj);
-        c = compute_cj(jj);
+        a_c = compute_aj(jj - 1), a_d = compute_aj(jj);
+        b_c = compute_bj(jj - 1), b_d = compute_bj(jj);
+        c_c = compute_cj(jj - 1), c_d = compute_cj(jj);
 
-        C = compute_C(a, b, c);
-        D = compute_D(a, b, c);
+        C = compute_C(a_c, b_c, c_c);
+        D = compute_D(a_d, b_d, c_d);
         K = compute_K(jj);
 
         RHS = D * F + K;

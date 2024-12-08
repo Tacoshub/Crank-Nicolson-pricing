@@ -47,15 +47,14 @@ Example\+:
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ct\ =\ 1;\ \textcolor{comment}{//\ Call\ -\/>\ 1,\ Put\ -\/>\ -\/1}}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ et\ =\ 1;\ \textcolor{comment}{//\ European\ -\/>\ 1,\ American\ -\/>\ 0}}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ T\ =\ 1.0;\ \textcolor{comment}{//\ Maturity}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ K\ =\ 1.0;\ \textcolor{comment}{//\ Strike\ price}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ K\ =\ 40.0;\ \textcolor{comment}{//\ Strike\ price}}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ T0\ =\ 0.0;\ \textcolor{comment}{//\ Starting\ time}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ S0\ =\ 1;\ \textcolor{comment}{//\ Starting\ value\ of\ underlying}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ S0\ =\ 50.0;\ \textcolor{comment}{//\ Starting\ value\ of\ underlying}}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ std::vector<std::pair<double,\ double>>\ ir\ =\ \{\ \{0.0,\ 0.0212\},\ \{1.0,\ 0.0212\}\ \};\ \textcolor{comment}{//\ Discrete\ interest\ rate\ curve}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ sigma\ =\ 0.1;\ \textcolor{comment}{//\ Volatility}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ N\ =\ 400;\ \textcolor{comment}{//\ Time\ mesh}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ M\ =\ 400;\ \textcolor{comment}{//\ Spot\ mesh}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ h\ =\ 0.01;\ \textcolor{comment}{//\ Discretization\ parameter}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ N\ =\ 500;\ \textcolor{comment}{//\ Time\ mesh}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ M\ =\ 500;\ \textcolor{comment}{//\ Spot\ mesh}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{class_option}{Option}}\ opt(ct,\ et,\ T,\ K,\ T0,\ N,\ M,\ S0,\ ir,\ sigma);}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ std::fixed\ <<\ std::setprecision(5);}

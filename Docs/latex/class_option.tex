@@ -38,9 +38,9 @@ double \mbox{\hyperlink{class_option_a665596a4ff57c3fc160652bf7554a59c}{gamma}} 
 \begin{DoxyCompactList}\small\item\em Computes the gamma of the option. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{class_option_af742c82d29b6bbfdd99347dde0e41da3}{theta}} ()
 \begin{DoxyCompactList}\small\item\em Computes the theta of the option. \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{class_option_ac13559935944ce46a3fb5b123e3a2415}{vega}} (double h)
+double \mbox{\hyperlink{class_option_a5df55816cd00ff7c6f6b0d5dc548a2cb}{vega}} (double h=0.\+01)
 \begin{DoxyCompactList}\small\item\em Computes the vega of the option. \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{class_option_a5c4c93284189004f548387149fc52811}{rho}} (double h)
+double \mbox{\hyperlink{class_option_ac6fa14927a7d747daf5fc69940d4312d}{rho}} (double h=0.\+01)
 \begin{DoxyCompactList}\small\item\em Computes the rho of the option. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -407,11 +407,11 @@ Initializes the time and spot price step sizes, creates the grid, and solves the
 \begin{DoxyReturn}{Returns}
 The computed option price at ( S\+\_\+0 ) and ( T\+\_\+0 ). 
 \end{DoxyReturn}
-\Hypertarget{class_option_a5c4c93284189004f548387149fc52811}\index{Option@{Option}!rho@{rho}}
+\Hypertarget{class_option_ac6fa14927a7d747daf5fc69940d4312d}\index{Option@{Option}!rho@{rho}}
 \index{rho@{rho}!Option@{Option}}
 \doxysubsubsection{\texorpdfstring{rho()}{rho()}}
-{\footnotesize\ttfamily \label{class_option_a5c4c93284189004f548387149fc52811} 
-double Option\+::rho (\begin{DoxyParamCaption}\item[{double}]{h}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{class_option_ac6fa14927a7d747daf5fc69940d4312d} 
+double Option\+::rho (\begin{DoxyParamCaption}\item[{double}]{h}{ = {\ttfamily 0.01}}\end{DoxyParamCaption})}
 
 
 
@@ -479,11 +479,11 @@ Theta measures the sensitivity of the option price to changes in time to maturit
 \begin{DoxyReturn}{Returns}
 The computed Theta value. 
 \end{DoxyReturn}
-\Hypertarget{class_option_ac13559935944ce46a3fb5b123e3a2415}\index{Option@{Option}!vega@{vega}}
+\Hypertarget{class_option_a5df55816cd00ff7c6f6b0d5dc548a2cb}\index{Option@{Option}!vega@{vega}}
 \index{vega@{vega}!Option@{Option}}
 \doxysubsubsection{\texorpdfstring{vega()}{vega()}}
-{\footnotesize\ttfamily \label{class_option_ac13559935944ce46a3fb5b123e3a2415} 
-double Option\+::vega (\begin{DoxyParamCaption}\item[{double}]{h}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{class_option_a5df55816cd00ff7c6f6b0d5dc548a2cb} 
+double Option\+::vega (\begin{DoxyParamCaption}\item[{double}]{h}{ = {\ttfamily 0.01}}\end{DoxyParamCaption})}
 
 
 

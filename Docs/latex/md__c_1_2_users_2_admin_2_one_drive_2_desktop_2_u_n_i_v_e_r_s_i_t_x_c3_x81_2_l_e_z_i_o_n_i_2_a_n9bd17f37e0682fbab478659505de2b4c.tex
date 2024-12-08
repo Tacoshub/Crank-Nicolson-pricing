@@ -43,34 +43,40 @@ To price an option, create an instance of the {\ttfamily \doxylink{class_option}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_option_8h}{Option.h}}"{}}}
 \DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_option_8h}{Option.h}}"{}}}
+\DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{keywordtype}{int}\ main()\ \{}
+\DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{try}\ \{}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ct\ =\ -\/1;\ \textcolor{comment}{//\ Call\ -\/>\ 1,\ Put\ -\/>\ -\/1}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ et\ =\ 1;\ \textcolor{comment}{//\ European\ -\/>\ 1,\ American\ -\/>\ 0}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ T\ =\ 1.0;\ \textcolor{comment}{//\ Maturity}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ K\ =\ 180;\ \textcolor{comment}{//\ Strike\ price}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ T0\ =\ 0.0;\ \textcolor{comment}{//\ Starting\ time}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ S0\ =\ 190;\ \textcolor{comment}{//\ Starting\ value\ of\ underlying}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ std::vector<std::pair<double,\ double>>\ ir\ =\ \{\ \{0.0,\ 0.10\},\ \{1.0,\ 0.10\}\ \};\ \textcolor{comment}{//\ Discrete\ interest\ rate\ curve}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ct\ =\ 1;\ \textcolor{comment}{//call\ -\/>\ 1,\ put\ -\/>\ -\/1}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ et\ =\ 1;\ \textcolor{comment}{//european\ -\/>\ 1,\ american\ -\/>\ 0}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ T\ =\ 1.0;\ \textcolor{comment}{//maturity}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ K\ =\ 1.0;\ \textcolor{comment}{//strike\ price}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ T0\ =\ 0.0;\ \textcolor{comment}{//starting\ time}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ S0\ =\ 1;\ \textcolor{comment}{//starting\ value\ of\ underlying}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::vector<std::pair<double,\ double>>\ ir\ =\ \{\ \{0.0,\ 0.0212\},\ \{1.0,\ 0.0212\}\ \};\ \textcolor{comment}{//discrete\ interest\ rate\ curve}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ sigma\ =\ 0.1;\ \textcolor{comment}{//volatility}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ N\ =\ 400;\ \textcolor{comment}{//time\ mesh}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ M\ =\ 400;\ \textcolor{comment}{//spot\ mesh}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ h\ =\ 0.01;\ \textcolor{comment}{//discretization\ parameter}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ sigma\ =\ 0.20;\ \textcolor{comment}{//\ Volatility}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ N\ =\ 1000;\ \textcolor{comment}{//\ Time\ mesh}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ M\ =\ 1000;\ \textcolor{comment}{//\ Spot\ mesh}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ h\ =\ 0.01;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{class_option}{Option}}\ call(ct,\ et,\ T,\ K,\ T0,\ N,\ M,\ S0,\ ir,\ sigma);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{class_option}{Option}}\ opt(ct,\ et,\ T,\ K,\ T0,\ N,\ M,\ S0,\ ir,\ sigma);}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ std::fixed\ <<\ std::setprecision(5);}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Price:\ "{}}\ <<\ std::setw(5)\ <<\ call.price()\ \ \ \ \ \ \ \ \ <<\ std::endl}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Delta:\ "{}}\ <<\ std::setw(5)\ <<\ call.delta(S0\ *\ h)\ \ \ <<\ std::endl}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Gamma:\ "{}}\ <<\ std::setw(5)\ <<\ call.gamma(S0\ *\ h)\ \ \ <<\ std::endl}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Theta:\ "{}}\ <<\ std::setw(5)\ <<\ call.theta(T\ *\ h)\ \ \ \ <<\ std::endl}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Vega:\ \ "{}}\ <<\ std::setw(5)\ <<\ call.vega(sigma\ *\ h)\ <<\ std::endl}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Rho:\ \ \ "{}}\ <<\ std::setw(5)\ <<\ call.rho(h)\ \ \ \ \ \ \ \ \ \ <<\ std::endl;}
-\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{class_option_exceptions}{OptionExceptions}}\&\ e)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Price:\ "{}}\ <<\ std::setw(5)\ <<\ opt.price()\ \ \ \ \ \ \ \ \ <<\ std::endl}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Delta:\ "{}}\ <<\ std::setw(5)\ <<\ opt.delta(S0)\ \ \ \ \ \ \ <<\ std::endl}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Gamma:\ "{}}\ <<\ std::setw(5)\ <<\ opt.gamma()\ \ \ \ \ \ \ \ \ <<\ std::endl}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Theta:\ "{}}\ <<\ std::setw(5)\ <<\ opt.theta()\ \ \ \ \ \ \ \ \ <<\ std::endl}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Vega:\ \ "{}}\ <<\ std::setw(5)\ <<\ opt.vega(sigma\ *\ h)\ <<\ std::endl}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Rho:\ \ \ "{}}\ <<\ std::setw(5)\ <<\ opt.rho(h)\ \ \ \ \ \ \ \ \ \ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{class_option_exceptions}{OptionExceptions}}\&\ e)\ \{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Exception\ -\/>\ "{}}\ <<\ e.\mbox{\hyperlink{class_option_exceptions_a6e35c300bd24d172ac97aa498e66e833}{what}}();}
-\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\&\ e)\ \{}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\&\ e)\ \{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}General\ exception:\ "{}}\ <<\ e.what();}
-\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{catch}\ (...)\ \{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Unknown\ exception"{}};}
 \DoxyCodeLine{\ \ \ \ \}}
 \DoxyCodeLine{}
