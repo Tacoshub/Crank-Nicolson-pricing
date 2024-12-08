@@ -49,7 +49,7 @@ int main() {
 		double K = 1.0; //strike price
 		double T0 = 0.0; //starting time
 		double S0 = 1; //starting value of underlying
-		std::vector<std::pair<double, double>> ir = { {0.0, 0.0212}, {1.0, 0.0212} }; //discrete interest rate curve
+		std::vector<std::pair<double, double>> ir = { {0.0, 0.0}, {1.0, 0.0212} }; //discrete interest rate curve
 		
 		double sigma = 0.1; //volatility
 		unsigned int N = 400; //time mesh
