@@ -54,7 +54,7 @@
   *         double K = 40.0; // Strike price
   *         double T0 = 0.0; // Starting time
   *         double S0 = 50.0; // Starting value of underlying
-  *         std::vector<std::pair<double, double>> ir = { {0.0, 0.0212}, {1.0, 0.0212} }; // Discrete interest rate curve
+  *         std::vector<std::pair<double, double>> ir = { {0.0, 0.0}, {1.0, 0.0212} }; // Discrete interest rate curve
   *
   *         double sigma = 0.1; // Volatility
   *         unsigned int N = 500; // Time mesh
@@ -112,4 +112,8 @@
   *
   * Authors:
   * Boccia Flavio, Costa Ludovico
+  * 
+  * Contacts:
+  * flaviosalvatore.boccia@gmail.com
+  * ludocosta2002@gmail.com
   */

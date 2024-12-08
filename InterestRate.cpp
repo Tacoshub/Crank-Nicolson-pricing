@@ -7,14 +7,17 @@
 #include <iostream>
 
  /**
-  * @brief Evaluates the interest rate at a given time using linear interpolation.
+  * @brief Evaluates the interest rate at a specified time using linear interpolation.
   *
-  * Locates the interval \([t_i, t_{i+1}]\) where \( t \) lies and performs linear interpolation
-  * between the corresponding interest rates \( r_i \) and \( r_{i+1} \).
+  * This function locates the interval \([t_i, t_{i+1}]\) where the input time \( t \) lies within
+  * the defined time points of the interest rate curve. It then performs linear interpolation
+  * between the corresponding interest rates \( r_i \) and \( r_{i+1} \) to compute the interpolated value.
   *
-  * @param t The time at which to evaluate the interest rate.
-  * @return The interpolated interest rate at time \( t \).
-  * @throw InvalidTime If \( t \) is outside the bounds of the interest rate curve.
+  * If \( t \) is outside the range of the defined intervals, the function returns the interest rate
+  * corresponding to the latest time point.
+  *
+  * @param t The time at which the interest rate is to be evaluated.
+  * @return The interpolated interest rate at the specified time \( t \).
   */
 double InterestRate::operator()(double t) const {
     for (auto it = interest_rate_.begin(); it != std::prev(interest_rate_.end(), 1); ++it) {
@@ -62,7 +65,6 @@ double support_integral(double r1, double r2, double t1, double t2) {
  *
  * @param t0 The upper limit of integration.
  * @return The integral value from 0 to \( t_0 \).
- * @throw InvalidTime If \( t_0 \) is outside the range of the interest rate curve.
  */
 double InterestRate::integral(double t0) const {
     double res = 0;

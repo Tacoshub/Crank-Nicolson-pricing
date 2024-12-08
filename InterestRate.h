@@ -51,7 +51,6 @@ public:
      *
      * @param t The time at which to evaluate the interest rate.
      * @return The interpolated interest rate at time \( t \).
-     * @throws OptionException If \( t \) is outside the defined range of the interest rate curve.
      */
     double operator()(double t) const;
 
@@ -63,7 +62,6 @@ public:
      *
      * @param t0 The upper limit of integration (time).
      * @return The computed integral value from \( 0 \) to \( t_0 \).
-     * @throws OptionException If \( t_0 \) is outside the range of the interest rate curve.
      */
     double integral(double t0) const;
 };

@@ -122,35 +122,33 @@ public:
 
     /**
      * @brief Computes the delta of the option.
-     * @param h Step size for finite difference.
+     * @param S The current price of the underlying asset.
      * @return Delta of the option.
      */
     double delta(double S);
 
     /**
      * @brief Computes the gamma of the option.
-     * @param h Step size for finite difference.
      * @return Gamma of the option.
      */
     double gamma();
 
     /**
      * @brief Computes the theta of the option.
-     * @param h Step size for finite difference.
      * @return Theta of the option.
      */
     double theta();
 
     /**
      * @brief Computes the vega of the option.
-     * @param h Step size for finite difference.
+     * @param h Step size for finite difference, default value is 0.01
      * @return Vega of the option.
      */
     double vega(double h = 0.01);
 
     /**
      * @brief Computes the rho of the option.
-     * @param h Step size for finite difference.
+     * @param h Step size for finite difference, default value is 0.01
      * @return Rho of the option.
      */
     double rho(double h = 0.01);

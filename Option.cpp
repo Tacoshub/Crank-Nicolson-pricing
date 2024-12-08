@@ -172,8 +172,7 @@ void Option::create_grid() {
 /**
  * @brief Computes coefficients \( a_j \) for the tridiagonal matrix in the finite difference method.
  *
- * Coefficients \( a_j \) are used for the subdiagonal elements in the tridiagonal matrix and
- * depend on the volatility and interest rate at the current time step.
+ * Coefficients \( a_j \) are used for the subdiagonal elements in the tridiagonal matrix
  *
  * @param i Time step index.
  * @return Vector of coefficients \( a_j \).
@@ -190,7 +189,6 @@ std::vector<double> Option::compute_aj(size_t i) {
  * @brief Computes coefficients \( b_j \) for the tridiagonal matrix in the finite difference method.
  *
  * Coefficients \( b_j \) are used for the diagonal elements in the tridiagonal matrix
- * and depend on the volatility and interest rate at the current time step.
  *
  * @param i Time step index.
  * @return Vector of coefficients \( b_j \).
@@ -206,8 +204,7 @@ std::vector<double> Option::compute_bj(size_t i) {
 /**
  * @brief Computes coefficients \( c_j \) for the tridiagonal matrix in the finite difference method.
  *
- * Coefficients \( c_j \) are used for the superdiagonal elements in the tridiagonal matrix and
- * depend on the volatility and interest rate at the current time step.
+ * Coefficients \( c_j \) are used for the superdiagonal elements in the tridiagonal matrix
  *
  * @param i Time step index.
  * @return Vector of coefficients \( c_j \).
@@ -374,8 +371,7 @@ void Option::american_price() {
 /**
  * @brief Solves the option pricing problem.
  *
- * Initializes the pricing grid and determines the option price at earlier time steps
- * using either the `european_price` or `american_price` method.
+ * Initializes and fills the pricing grid using either the `european_price` or `american_price` method.
  */
 void Option::solve() {
     double Sk = 0;
@@ -402,7 +398,8 @@ void Option::solve() {
 /**
  * @brief Computes the price of the option using the finite difference method.
  *
- * Initializes the time and spot price step sizes, creates the grid, and solves the problem.
+ * Determines the grid index corresponding to the initial value of the underlying asset (\( S_0 \)),
+ * then retrieves and returns the computed option price at time \( T_0 \) from the finite difference grid.
  *
  * @return The computed option price at \( S_0 \) and \( T_0 \).
  */
@@ -429,13 +426,13 @@ void Option::display_grid() {
 /**
  * @brief Computes the Delta of the option.
  *
- * Delta measures the sensitivity of the option price to changes in the underlying asset price \( S_0 \).
- * It is computed using finite differences as:
+ * Delta quantifies the sensitivity of the option price to small changes in the underlying asset price \( S \).
+ * It is calculated using a central finite difference approximation:
  * \[
- * \Delta = \frac{\text{price}(S_0 + h) - \text{price}(S_0)}{h}
+ * \Delta = \frac{\text{price}(S + \Delta S) - \text{price}(S - \Delta S)}{2 \cdot \Delta S}
  * \]
  *
- * @param h Small increment for the underlying asset price.
+ * @param S The current price of the underlying asset.
  * @return The computed Delta value.
  */
 double Option::delta(double S) {
@@ -449,13 +446,13 @@ double Option::delta(double S) {
 /**
  * @brief Computes the Gamma of the option.
  *
- * Gamma measures the sensitivity of Delta to changes in the underlying asset price \( S_0 \).
- * It is computed using finite differences as:
+ * Gamma quantifies the sensitivity of the option's Delta to changes in the underlying asset price (\( S_0 \)).
+ * It provides a second-order measure of how the option price changes with respect to the underlying asset price.
+ * Gamma is calculated using a finite difference approximation:
  * \[
- * \Gamma = \frac{\Delta(S_0 + h) - \Delta(S_0)}{h}
+ * \Gamma = \frac{\text{price}(S_0 + \Delta S) + \text{price}(S_0 - \Delta S) - 2 \cdot \text{price}(S_0)}{\Delta S^2}
  * \]
  *
- * @param h Small increment for the underlying asset price.
  * @return The computed Gamma value.
  */
 double Option::gamma() {
@@ -469,13 +466,12 @@ double Option::gamma() {
 /**
  * @brief Computes the Theta of the option.
  *
- * Theta measures the sensitivity of the option price to changes in time to maturity \( T \).
- * It is computed using finite differences as:
+ * Theta quantifies the sensitivity of the option price to changes in time to maturity (\( T \)).
+ * Theta is calculated using a backward finite difference approximation:
  * \[
- * \Theta = \frac{\text{price}(T - h) - \text{price}(T)}{h}
+ * \Theta = \frac{\text{price}(T - \Delta T) - \text{price}(T)}{\Delta T}
  * \]
  *
- * @param h Small decrement for the time to maturity.
  * @return The computed Theta value.
  */
 double Option::theta() {
@@ -488,13 +484,14 @@ double Option::theta() {
 /**
  * @brief Computes the Vega of the option.
  *
- * Vega measures the sensitivity of the option price to changes in volatility \( \sigma \).
- * It is computed using finite differences as:
+ * Vega quantifies the sensitivity of the option price to changes in volatility (\( \sigma \)).
+ * It measures how much the option price changes when the volatility of the underlying asset increases by a small amount.
+ * Vega is calculated using a finite difference approximation:
  * \[
- * \nu = \frac{\text{price}(\sigma + h) - \text{price}(\sigma)}{h}
+ * \nu = \frac{\text{price}(\sigma + \Delta \sigma) - \text{price}(\sigma)}{\Delta \sigma}
  * \]
  *
- * @param h Small increment for the volatility.
+ * @param h Proportional increment for the volatility (\( \Delta \sigma = \sigma \cdot h \)).
  * @return The computed Vega value.
  */
 double Option::vega(double h) {
@@ -507,13 +504,14 @@ double Option::vega(double h) {
 /**
  * @brief Computes the Rho of the option.
  *
- * Rho measures the sensitivity of the option price to changes in the interest rate \( r \).
- * It is computed using finite differences as:
+ * Rho quantifies the sensitivity of the option price to changes in the interest rate (\( r \)).
+ * It measures how the option price changes when the interest rate increases by a small amount.
+ * Rho is calculated using a finite difference approximation:
  * \[
- * \rho = \frac{\text{price}(r + h) - \text{price}(r)}{h}
+ * \rho = \frac{\text{price}(r + \Delta r) - \text{price}(r)}{\Delta r}
  * \]
  *
- * @param h Small increment for the interest rate.
+ * @param h Proportional increment for the interest rate (\( \Delta r = h \cdot r \)).
  * @return The computed Rho value.
  */
 double Option::rho(double h) {
