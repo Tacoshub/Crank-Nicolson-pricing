@@ -121,5 +121,6 @@ Suggestions for future development:
 Developed as part of an advanced computational finance project. This framework is intended for educational purposes and as a foundation for further research in option pricing techniques.
 
 Authors: Boccia Flavio, Costa Ludovico
+Contacts: flaviosalvatore.boccia@gmail.com, ludocosta2002@gmail.com
 
 
