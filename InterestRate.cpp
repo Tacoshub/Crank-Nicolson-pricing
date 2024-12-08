@@ -4,6 +4,7 @@
  */
 
 #include "InterestRate.h"
+#include <iostream>
 
  /**
   * @brief Evaluates the interest rate at a given time using linear interpolation.
@@ -42,12 +43,12 @@ double InterestRate::operator()(double t) const {
  */
 double support_integral(double r1, double r2, double t1, double t2) {
     if ((r1 >= 0 && r2 >= 0) || (r1 <= 0 && r2 <= 0)) {
-        return (abs(r1 + r2) * (t2 - t1)) / 2;
+        return ((r1 + r2) * (t2 - t1)) / 2;
     }
     else {
         double x = (t1 * r2 - t2 * r1) / (r2 - r1);
-        double tri1 = abs((x - t1) * r1 / 2);
-        double tri2 = abs((t2 - x) * r2 / 2);
+        double tri1 = ((x - t1) * r1 / 2);
+        double tri2 = ((t2 - x) * r2 / 2);
         return tri1 + tri2;
     }
 }
