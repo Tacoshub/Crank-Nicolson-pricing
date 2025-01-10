@@ -49,6 +49,8 @@ $$
 c_{j,n} = \frac{{\Delta t}}{4}j(\sigma^2j + r(t_n))
 $$
 
+This formulation is very important since in this project we handle time-varying interest rate and most of the literature only covers the case of constant interest rate.
+
 ## Features
 
 The key features of this framework include:
