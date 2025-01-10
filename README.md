@@ -17,7 +17,7 @@ To solve this PDE numerically, we employ the **Crank-Nicolson Method**, which is
 ### Derivation steps
 
 - **Discretization Using Finite Differences:**
-The time and spatial derivatives in the Black-SHoles PDE are discretized as follows:
+The time and spatial derivatives in the Black-Scholes PDE are discretized as follows:
 
 $$
 \frac{\partial V}{\partial t}(S_i, t_n) \approx \frac{V(S_i, t_{n+1}) - V(S_i, t_{n})}{\Delta t}
@@ -31,8 +31,8 @@ $$
 \frac{\partial^2 V}{\partial S^2}(S_i, t_n) \approx \frac{V(S_{i+1}, t_n) - 2V(S_i, t_n)  + V(S_{i-1}, t_n)}{\Delta S^2}
 $$
 
-- Avarage them to obtain the Crank-Nicolson method
-Grouping the terms toghether we obtain the following formulation:
+- **Crank-Nicolson Averaging:**
+By taking the average of the Forward Euler and Backward Euler discretizations, we obtain the Crank-Nicolson scheme. Grouping the terms together results in the following system of equations:
 
 $$
 -a_{j,n}V(S_{i-1}, t_n) + (1-b_{j,n})V(S_i, t_n) - c_{j,n}V(S_{i+1}, t_n) = a_{j,n+1}V(S_{i-1}, t_{n+1}) + (1+b_{j,n+1})V(S_i, t_{n+1}) + c_{j,n}V(S_{i+1}, t_{n+1})
@@ -52,7 +52,8 @@ $$
 c_{j,n} = \frac{{\Delta t}}{4}j(\sigma^2j + r(t_n))
 $$
 
-This formulation is very important since in this project we handle time-varying interest rate and most of the literature only covers the case of constant interest rate.
+- **Key Feature:**
+This formulation is particularly significant as it accomodates **time-varying interest rates**, which are often not adressed in the literature that assumes constant interest rate. By including this flexibility, the method provides a robust framework for pricing options in more realistic financial scenarios.
 
 ## Features
 
