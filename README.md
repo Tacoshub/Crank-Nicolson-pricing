@@ -17,7 +17,7 @@ To solve this PDE numerically, we employ the **Crank-Nicolson Method**, which is
 ### Derivation steps
 
 - **Discretization Using Finite Differences:**
-The time and spatial derivatives in the Black-Scholes PDE are discretized as follows:
+The time and spatial derivatives in the Black-Scholes PDE are discretized as follows
 
 $$
 \frac{\partial V}{\partial t}(S_i, t_n) \approx \frac{V(S_i, t_{n+1}) - V(S_i, t_{n})}{\Delta t}
