@@ -32,7 +32,7 @@ $$
 $$
 
 - **Crank-Nicolson Averaging:**
-By taking the average of the Forward Euler and Backward Euler discretizations, we obtain the Crank-Nicolson scheme. Grouping the terms together results in the following system of equations:
+By taking the average of the Forward Euler and Backward Euler discretizations, we obtain the Crank-Nicolson scheme. Grouping the terms together results in the following system of equations
 
 $$
 -a_{j,n}V(S_{i-1}, t_n) + (1-b_{j,n})V(S_i, t_n) - c_{j,n}V(S_{i+1}, t_n) = a_{j,n+1}V(S_{i-1}, t_{n+1}) + (1+b_{j,n+1})V(S_i, t_{n+1}) + c_{j,n}V(S_{i+1}, t_{n+1})
