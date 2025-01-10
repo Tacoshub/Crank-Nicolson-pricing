@@ -41,6 +41,14 @@ $$
 a_{j,n} = \frac{{\Delta t}}{4}j(\sigma^2j - r(t_n))
 $$
 
+$$
+b_{j,n} = -\frac{{\Delta t}}{2}j(\sigma^2j^2 - r(t_n))
+$$
+
+$$
+c_{j,n} = \frac{{\Delta t}}{4}j(\sigma^2j + r(t_n))
+$$
+
 ## Features
 
 The key features of this framework include:
