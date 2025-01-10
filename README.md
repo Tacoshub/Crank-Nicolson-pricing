@@ -14,7 +14,7 @@ $$
 
 To solve this PDE numerically, we employ the **Crank-Nicolson Method**, which is a finite difference technique. The Crank-Nicolson scheme is derived by taking the average of the Forward Euler and Backward Euler discretizations of the Black-Scholes PDE. This results in a method that is second-order accurate in both time and space, while also being unconditionally stable for parabolic PDEs.
 
-# Derivation steps
+### Derivation steps
 
 - **Discretization Using Finite Differences:**
 The time and spatial derivatives in the Black-SHoles PDE are discretized as follows:
