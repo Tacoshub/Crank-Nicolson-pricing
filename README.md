@@ -17,20 +17,18 @@ To derive the numerical method we proceeded as follows:
 - Discretized the equation using the two Euler methods: for each method we discretized the time partial derivative using forward differences and the spatial partial derivative using central differences
 
 $$
-\frac{\partial V}{\partial t} \approx \frac{V(S_n, t_{n+1}) - V(S_n, t_{n})}{\Delta t}
+\frac{\partial V}{\partial t} \approx \frac{V(S_i, t_{n+1}) - V(S_i, t_{n})}{\Delta t}
 $$
 
 $$
-\[
-\frac{\partial^2 V}{\partial S^2} \approx \frac{V_{i+1} - 2V_i + V_{i-1}}{\Delta S^2}.
-\]
+\frac{\partial V}{\partial S} \approx \frac{V(S_{i+1}, t_n) - V(S_{i-1}, t_n)}{2\Delta S}
 $$
 
 $$
-\[
-\frac{\partial V}{\partial S} \approx \frac{V_{i+1} - V_{i-1}}{2\Delta S}.
-\]
+\frac{\partial^2 V}{\partial S^2} \approx \frac{V(S_{i+1}, t_n) - 2V(S_i, t_n)  + V(S_{i-1}, t_n)}{\Delta S^2}
 $$
+
+
 
 - Avaraged them to obtain the Crank-Nicolson method
 Grouping the terms toghether we obtain the following formulation
