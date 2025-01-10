@@ -17,15 +17,15 @@ To derive the numerical method we proceeded as follows:
 - Discretized the equation using the two Euler methods: for each method we discretized the time partial derivative using forward differences and the spatial partial derivative using central differences
 
 $$
-\frac{\partial V}{\partial t} \approx \frac{V(S_i, t_{n+1}) - V(S_i, t_{n})}{\Delta t}
+\frac{\partial V}{\partial t}(S_i, t_n) \approx \frac{V(S_i, t_{n+1}) - V(S_i, t_{n})}{\Delta t}
 $$
 
 $$
-\frac{\partial V}{\partial S} \approx \frac{V(S_{i+1}, t_n) - V(S_{i-1}, t_n)}{2\Delta S}
+\frac{\partial V}{\partial S}(S_i, t_n) \approx \frac{V(S_{i+1}, t_n) - V(S_{i-1}, t_n)}{2\Delta S}
 $$
 
 $$
-\frac{\partial^2 V}{\partial S^2} \approx \frac{V(S_{i+1}, t_n) - 2V(S_i, t_n)  + V(S_{i-1}, t_n)}{\Delta S^2}
+\frac{\partial^2 V}{\partial S^2}(S_i, t_n) \approx \frac{V(S_{i+1}, t_n) - 2V(S_i, t_n)  + V(S_{i-1}, t_n)}{\Delta S^2}
 $$
 
 
