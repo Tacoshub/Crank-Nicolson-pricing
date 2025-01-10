@@ -18,7 +18,7 @@ To derive the numerical method we proceeded as follows:
 
 $$
 \[
-\frac{\partial V}{\partial t} \approx \frac{V^{n+1} - V^n}{\Delta t}.
+\frac{\partial V}{\partial t} \approx \frac{V(S_n, t_{n+1}) - V(S_n, t_{n+1})}{\Delta t}.
 \]
 $$
 
