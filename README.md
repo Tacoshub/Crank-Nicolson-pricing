@@ -30,6 +30,7 @@ $$
 
 - Avarage them to obtain the Crank-Nicolson method
 Grouping the terms toghether we obtain the following formulation:
+
 $$
 -a_{j,n}V(S_{i-1}, t_n) + (1-b_{j,n})V(S_i, t_n) - c_{j,n}V(S_{i+1}, t_n) = -a_{j,n+1}V(S_{i-1}, t_{n+1}) + (1+b_{j,n+1})V(S_i, t_{n+1}) - c_{j,n}V(S_{i+1}, t_{n+1})
 $$
