@@ -17,9 +17,7 @@ To derive the numerical method we proceeded as follows:
 - Discretized the equation using the two Euler methods: for each method we discretized the time partial derivative using forward differences and the spatial partial derivative using central differences
 
 $$
-\[
-\frac{\partial V}{\partial t} \approx \frac{V(S_n, t_{n+1}) - V(S_n, t_{n+1})}{\Delta t}.
-\]
+\frac{\partial V}{\partial t} \approx \frac{V(S_n, t_{n+1}) - V(S_n, t_{n})}{\Delta t}
 $$
 
 $$
