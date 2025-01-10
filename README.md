@@ -13,8 +13,11 @@ $$
 $$
 
 To solve this PDE numerically, we employ the **Crank-Nicolson Method**, which is a finite difference technique. The Crank-Nicolson scheme is derived by taking the average of the Forward Euler and Backward Euler discretizations of the Black-Scholes PDE. This results in a method that is second-order accurate in both time and space, while also being unconditionally stable for parabolic PDEs.
-To derive the numerical method we proceed as follows:
-- Discretize the equation using the two Euler methods: for each method we discretize the time partial derivative using forward differences and the spatial partial derivative using central differences
+
+# Derivation steps
+
+- **Discretization Using Finite Differences:**
+The time and spatial derivatives in the Black-SHoles PDE are discretized as follows:
 
 $$
 \frac{\partial V}{\partial t}(S_i, t_n) \approx \frac{V(S_i, t_{n+1}) - V(S_i, t_{n})}{\Delta t}
