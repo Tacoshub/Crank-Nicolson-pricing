@@ -4,12 +4,13 @@
 
 This project implements a comprehensive framework for pricing financial options using numerical methods. It supports both European and American options, employing finite difference methods for solving the partial differential equations governing option prices. The framework is designed to handle various scenarios, including dynamic interest rates and early exercise features.
 
-## Introduction
+## Derivation
 
+The numerical framework for option pricing begins with the **Black-Scholes Partial Differential Equation (PDE)**:
 $$
 \frac{\partial V}{\partial t} + \frac{1}{2} \sigma^2 S^2 \frac{\partial^2 V}{\partial S^2} + r S \frac{\partial V}{\partial S} - r V = 0
 $$
-
+To solve this PDE numerically, we employ the **Crank-Nicolson Method**, which is a finite difference technique. The Crank-Nicolson scheme is derived by taking the average of the Forward Euler and Backward Euler discretizations of the Black-Scholes PDE. This results in a method that is second-order accurate in both time and space, while also being unconditionally stable for parabolic PDEs.
 ## Features
 
 The key features of this framework include:
