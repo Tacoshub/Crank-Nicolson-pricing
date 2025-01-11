@@ -52,6 +52,15 @@ $$
 c_{j,n} = \frac{{\Delta t}}{4}j(\sigma^2j + r(t_n))
 $$
 
+- **Matrix Formulation:**
+The method can be formulated in matrix form:
+
+$$
+CV_{n} = DV_{n+1} + K_{n} + K_{n+1}
+$$
+
+where $V_{n}$ is the price vector such that $(V_{n})_i = V(S_i, t_n)$, C and D are tridiagonal matrices with the coefficients derived in the previous section 
+
 - **Key Feature:**
 This formulation is particularly significant as it accomodates **time-varying interest rates**, which are often not adressed in the literature that assumes constant interest rate. By including this flexibility, the method provides a robust framework for pricing options in more realistic financial scenarios.
 
