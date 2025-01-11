@@ -59,7 +59,8 @@ $$
 CV_{n} = DV_{n+1} + K_{n} + K_{n+1}, \space \space \space n = N, ..., 1
 $$
 
-where $V_{n}$ is the price vector with such that $(V_{n})_i = V(S_i, t_n)$. The matrices C and D are tridiagonal, with coefficients derived in the previous section while $K_n$ is a vector that incorporates the boundary conditions.
+ where $V_{n}$ is the price vector with such that $(V_{n})_i = V(S_i, t_n)$. The matrices C and D are tridiagonal, with coefficients derived in the previous section while 
+ $K_n$ is a vector that incorporates the boundary conditions.
 
 - **Key Feature:**
 This formulation is particularly significant as it accomodates **time-varying interest rates**, which are often not adressed in the literature that assumes constant interest rate. By including this flexibility, the method provides a robust framework for pricing options in more realistic financial scenarios.
@@ -183,5 +184,7 @@ Developed as part of an advanced computational finance project. This framework i
 Authors: Boccia Flavio, Costa Ludovico
 
 Contacts: flaviosalvatore.boccia@gmail.com, ludocosta2002@gmail.com
+
+## Precise Derivation Of The Scheme:
 
 
