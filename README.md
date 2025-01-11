@@ -185,7 +185,7 @@ Authors: Boccia Flavio, Costa Ludovico
 
 Contacts: flaviosalvatore.boccia@gmail.com, ludocosta2002@gmail.com
 
-## Precise Derivation Of The Scheme:
+## Precise Derivation Of The Scheme
 
-In the following can be found a precise derivation of the scheme
-[Crank Nicolson Scheme.pdf](https://github.com/user-attachments/files/18387625/Crank.Nicolson.Scheme.pdf)
+The following provides a precise derivation of the Crank-Nicolson scheme:
+[Crank Nicolson Scheme.pdf](https://github.com/user-attachments/files/18387636/Crank.Nicolson.Scheme.pdf)
